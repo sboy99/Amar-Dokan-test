@@ -27,7 +27,12 @@ import Navbar from "./sub-pages/Navbar";
 import PageHero from "./sub-pages/PageHero";
 import Sidebar from "./sub-pages/Sidebar";
 
+import Layout from "./layout/Layout";
+import Protected from "./layout/ProtectedRoute";
+
 export {
+  Protected,
+  Layout,
   AddToCart,
   AmountButtons,
   CartButtons,
