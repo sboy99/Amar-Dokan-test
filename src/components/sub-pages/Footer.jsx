@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <section className="min-h-16 border-y-4 border-white/60 bg-white/30 p-4 md:p-8">
+    <section className="z-0 min-h-16 border-y-4 border-white/60 bg-white/30 p-4 md:p-8">
       <div className="container mx-auto mb-4 flex flex-col gap-6">
-        <Brand />
+        <div className="-z-10">
+          <Brand />
+        </div>
         <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
           {footerLinks.map((link) => (
             <FooterLinks

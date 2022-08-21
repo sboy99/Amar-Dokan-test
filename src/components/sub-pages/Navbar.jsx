@@ -58,7 +58,7 @@ const Navbar = () => {
 
   const SmLinks = () => {
     return (
-      <Menu as={`div`} className="z-10 inline-block text-left">
+      <Menu as={`div`} className="z-50 inline-block text-left">
         <div>
           <Menu.Button className="rounded-full  p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
             <MenuIcon className="h-6 w-6 text-slate-900 dark:text-slate-100" />
