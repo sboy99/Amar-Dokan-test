@@ -26,11 +26,13 @@ import Loading from "./sub-pages/Loading";
 import Navbar from "./sub-pages/Navbar";
 import PageHero from "./sub-pages/PageHero";
 import Sidebar from "./sub-pages/Sidebar";
+import Category from "./sub-pages/Category";
 
 import Layout from "./layout/Layout";
 import Protected from "./layout/ProtectedRoute";
 
 export {
+  Category,
   Protected,
   Layout,
   AddToCart,

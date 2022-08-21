@@ -26,6 +26,10 @@ module.exports = {
         1280: "1280px",
         1400: "1400px",
       },
+      minHeight: {
+        16: "4rem",
+        64: "16rem",
+      },
     },
   },
   plugins: [

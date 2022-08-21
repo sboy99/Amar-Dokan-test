@@ -1,7 +1,11 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { MenuIcon } from "@heroicons/react/outline";
-import { BellIcon, ShoppingCartIcon } from "@heroicons/react/solid";
+import {
+  BellIcon,
+  ShoppingCartIcon,
+  DotsVerticalIcon,
+} from "@heroicons/react/solid";
 // import { useResize } from "../../hooks";
 import { Menu, Transition } from "@headlessui/react";
 import { NavbarItems } from "../../data";
@@ -14,16 +18,16 @@ const Navbar = () => {
     return (
       <div className=" flex items-center gap-7">
         <Brand />
-        <div className="ml-4 flex items-center gap-7 text-base font-semibold tracking-tight ">
+        <div className="ml-4 flex flex-shrink-0 items-center gap-7 text-lg font-semibold leading-6">
           {NavbarItems.map((item) => (
             <NavLink
               key={item?.id}
               to={item?.to}
               className={({ isActive }) =>
-                `rounded-lg px-4 py-1 hover:bg-white/80 ${
+                `px-4 py-1 hover:text-sky-500 ${
                   isActive
-                    ? `bg-white/95 text-indigo-600 backdrop-blur-md dark:text-blue-500`
-                    : `text-slate-800`
+                    ? `rounded-full bg-sky-500/5 text-sky-500 dark:text-blue-500`
+                    : `text-slate-700`
                 }`
               }
             >
@@ -42,10 +46,8 @@ const Navbar = () => {
           <NavLink
             to={item.to}
             className={`${
-              active
-                ? `bg-slate-50 text-slate-900`
-                : `font-semibold text-slate-900/95`
-            } group mx-auto flex w-full items-center gap-2 rounded-md px-4 py-2 text-lg tracking-tight`}
+              active ? `text-sky-500` : `text-slate-800`
+            } group mx-auto flex w-full items-center gap-2 rounded-md px-4 py-2 text-lg font-semibold tracking-tight`}
           >
             <span className="text-xl ">{item.name}</span>
           </NavLink>
@@ -89,7 +91,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative h-16 bg-white/50 text-gray-700 shadow-sm backdrop-blur dark:text-gray-100">
+    <div className="relative h-16 border-b-2 border-white/70 bg-white/50 text-gray-700 backdrop-blur dark:text-gray-100">
       <div className="container mx-auto flex h-full items-center justify-between px-4">
         {/* links for devices */}
         <div className="hidden md:block">
@@ -101,15 +103,22 @@ const Navbar = () => {
 
         {/* buttons */}
         <div className=" flex items-center gap-1 md:gap-2">
+          <IconButton Icon={ShoppingCartIcon} link={true} to="/cart" />
           <IconButton
-            Icon={ShoppingCartIcon}
-            onClick={() => {}}
-            notify={false}
+            Icon={BellIcon}
+            onClick={() => {
+              console.log("Belled");
+            }}
+            notify={true}
           />
-          <IconButton Icon={BellIcon} onClick={() => {}} notify={true} />
+          <IconButton
+            Icon={DotsVerticalIcon}
+            onClick={() => {}}
+            className="md:hidden"
+          />
           <NavLink
             to={"/signin"}
-            className="flex items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-bold capitalize tracking-wide text-gray-100 dark:bg-blue-500 "
+            className="hidden items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-bold capitalize tracking-wide text-gray-100 dark:bg-blue-500 md:flex"
           >
             Get Started
           </NavLink>

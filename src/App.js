@@ -13,7 +13,7 @@ import {
 
 const App = () => {
   return (
-    <div className="">
+    <main className="">
       <section className="min-h-screen w-full bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100">
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -34,7 +34,7 @@ const App = () => {
           </Route>
         </Routes>
       </section>
-    </div>
+    </main>
   );
 };
 
