@@ -14,7 +14,7 @@ import {
 const App = () => {
   return (
     <div className="">
-      <section className=" min-h-screen w-full bg-primary-light-bg text-gray-700 dark:bg-primary-dark-bg dark:text-gray-100">
+      <section className="min-h-screen w-full bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
