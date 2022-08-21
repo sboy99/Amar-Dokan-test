@@ -1,15 +1,14 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { MenuIcon } from "@heroicons/react/outline";
 import { BellIcon, ShoppingCartIcon } from "@heroicons/react/solid";
-import { useResize } from "../../hooks";
+// import { useResize } from "../../hooks";
 import { Menu, Transition } from "@headlessui/react";
 import { NavbarItems } from "../../data";
 import { IconButton, Brand } from "../../utils";
 
 const Navbar = () => {
-  const areaExpand = useRef(null);
-  const [width] = useResize(window);
+  // const [width] = useResize(window);
 
   const MdLinks = () => {
     return (
@@ -59,10 +58,7 @@ const Navbar = () => {
     return (
       <Menu as={`div`} className="z-10 inline-block text-left">
         <div>
-          <Menu.Button
-            ref={areaExpand}
-            className="rounded-full  p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
+          <Menu.Button className="rounded-full  p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
             <MenuIcon className="h-6 w-6 text-slate-900 dark:text-slate-100" />
           </Menu.Button>
         </div>
@@ -96,7 +92,12 @@ const Navbar = () => {
     <div className="relative h-16 bg-white/50 text-gray-700 shadow-sm backdrop-blur dark:text-gray-100">
       <div className="container mx-auto flex h-full items-center justify-between px-4">
         {/* links for devices */}
-        {width > 768 ? <MdLinks /> : <SmLinks />}
+        <div className="hidden md:block">
+          <MdLinks />
+        </div>
+        <div className=" md:hidden">
+          <SmLinks />{" "}
+        </div>
 
         {/* buttons */}
         <div className=" flex items-center gap-1 md:gap-2">
