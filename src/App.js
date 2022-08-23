@@ -9,6 +9,7 @@ import {
   Cart,
   CheckOut,
   Error,
+  SignIn,
 } from "./pages";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="products" element={<Products />} />
             <Route path="products/:id" element={<SingleProduct />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="signin" element={<SignIn />} />
             <Route
               path="checkout"
               element={

@@ -6,8 +6,10 @@ import CheckOut from "./CheckOut";
 import Error from "./ErrorPage";
 import Products from "./ProductPage";
 import SingleProduct from "./SingleProductPage";
+import SignIn from "./SignInPage";
 
 export {
+  SignIn,
   Home,
   About,
   AuthWrapper,
