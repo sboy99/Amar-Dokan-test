@@ -31,7 +31,10 @@ import Category from "./sub-pages/Category";
 import Layout from "./layout/Layout";
 import Protected from "./layout/ProtectedRoute";
 
+import CommandPallete from "./CommandPallete";
+
 export {
+  CommandPallete,
   Category,
   Protected,
   Layout,

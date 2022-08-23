@@ -25,6 +25,7 @@ export const NavbarItems = [
   },
 ];
 
+//> Footer Links
 export const footerLinks = [
   {
     id: 1,
@@ -51,5 +52,29 @@ export const footerLinks = [
         to: `/cart`,
       },
     ],
+  },
+];
+
+//> Search Items..
+export const searchItems = [
+  {
+    id: 1,
+    title: `Option1`,
+  },
+  {
+    id: 2,
+    title: `Option2`,
+  },
+  {
+    id: 3,
+    title: `Option3`,
+  },
+  {
+    id: 4,
+    title: `Option4`,
+  },
+  {
+    id: 5,
+    title: `Option5`,
   },
 ];

@@ -1,18 +1,20 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { MenuIcon } from "@heroicons/react/outline";
 import {
-  BellIcon,
+  MenuIcon,
+  SearchIcon,
   ShoppingCartIcon,
-  DotsVerticalIcon,
-} from "@heroicons/react/solid";
-// import { useResize } from "../../hooks";
+  BellIcon,
+} from "@heroicons/react/outline";
+import { DotsVerticalIcon } from "@heroicons/react/solid";
 import { Menu, Transition } from "@headlessui/react";
 import { NavbarItems } from "../../data";
 import { IconButton, Brand } from "../../utils";
+import { useDispatch } from "react-redux";
+import { setIsOpen } from "../../features/LayoutSlice";
 
 const Navbar = () => {
-  // const [width] = useResize(window);
+  const dispatch = useDispatch();
 
   const MdLinks = () => {
     return (
@@ -60,7 +62,7 @@ const Navbar = () => {
     return (
       <Menu as={`div`} className="z-50 inline-block text-left">
         <div>
-          <Menu.Button className="rounded-full  p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+          <Menu.Button className="rounded-full p-2 hover:bg-gray-100 focus:outline-none dark:hover:bg-gray-700">
             <MenuIcon className="h-6 w-6 text-slate-900 dark:text-slate-100" />
           </Menu.Button>
         </div>
@@ -103,14 +105,21 @@ const Navbar = () => {
 
         {/* buttons */}
         <div className=" flex items-center gap-1 md:gap-2">
+          {/* Search Icon */}
+          <IconButton
+            Icon={SearchIcon}
+            onClick={() => dispatch(setIsOpen(true))}
+          />
+          {/* Cart Icon */}
           <IconButton Icon={ShoppingCartIcon} link={true} to="/cart" />
+          {/* Bell Icon */}
           <IconButton
             Icon={BellIcon}
-            onClick={() => {
-              console.log("Belled");
-            }}
+            onClick={() => {}}
             notify={true}
+            className="hidden md:block"
           />
+          {/* Dot Icon */}
           <IconButton
             Icon={DotsVerticalIcon}
             onClick={() => {}}
@@ -120,7 +129,7 @@ const Navbar = () => {
             to={"/signin"}
             className="hidden items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-bold capitalize tracking-wide text-gray-100 dark:bg-blue-500 md:flex"
           >
-            Get Started
+            Sign In
           </NavLink>
         </div>
       </div>

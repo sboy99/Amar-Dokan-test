@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Navbar, Footer } from "..";
+import { Navbar, Footer, CommandPallete } from "..";
 import laserBeam from "../../assets/img/laser_beam.png";
 
 const Layout = () => {
@@ -23,6 +23,7 @@ const Layout = () => {
   return (
     <div className=" relative z-0">
       <Navbar />
+      <CommandPallete />
       <div className="container mx-auto">
         <Outlet />
       </div>
