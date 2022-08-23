@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isOpen: false,
+  searchOpen: false,
+  menuOpen: false,
   searchText: ``,
 };
 
@@ -9,8 +10,11 @@ const LayoutSlice = createSlice({
   name: `Layout`,
   initialState,
   reducers: {
-    setIsOpen: (state, action) => {
-      state.isOpen = action.payload;
+    setSearchOpen: (state, action) => {
+      state.searchOpen = action.payload;
+    },
+    setMenuOpen: (state, action) => {
+      state.menuOpen = action.payload;
     },
     setSearchText: (state, action) => {
       state.searchText = action.payload;
@@ -18,5 +22,6 @@ const LayoutSlice = createSlice({
   },
 });
 
-export const { setIsOpen, setSearchText } = LayoutSlice.actions;
+export const { setSearchOpen, setSearchText, setMenuOpen } =
+  LayoutSlice.actions;
 export default LayoutSlice.reducer;

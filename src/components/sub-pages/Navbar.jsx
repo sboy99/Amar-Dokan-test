@@ -1,19 +1,24 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import {
   MenuIcon,
   SearchIcon,
   ShoppingCartIcon,
   BellIcon,
+  XIcon,
 } from "@heroicons/react/outline";
 import { DotsVerticalIcon } from "@heroicons/react/solid";
-import { Menu, Transition } from "@headlessui/react";
 import { NavbarItems } from "../../data";
 import { IconButton, Brand } from "../../utils";
-import { useDispatch } from "react-redux";
-import { setIsOpen } from "../../features/LayoutSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSearchOpen,
+  setMenuOpen as setIsOpen,
+} from "../../features/LayoutSlice";
+import { Layout } from "../../app/store";
 
 const Navbar = () => {
+  const { menuOpen: isOpen } = useSelector(Layout);
   const dispatch = useDispatch();
 
   const MdLinks = () => {
@@ -41,57 +46,6 @@ const Navbar = () => {
     );
   };
 
-  const NavbarItem = () => {
-    return NavbarItems.map((item) => (
-      <Menu.Item key={item.id}>
-        {({ active }) => (
-          <NavLink
-            to={item.to}
-            className={`${
-              active ? `text-sky-500` : `text-slate-800`
-            } group mx-auto flex w-full items-center gap-2 rounded-md px-4 py-2 text-lg font-semibold tracking-tight`}
-          >
-            <span className="text-xl ">{item.name}</span>
-          </NavLink>
-        )}
-      </Menu.Item>
-    ));
-  };
-
-  const SmLinks = () => {
-    return (
-      <Menu as={`div`} className="z-50 inline-block text-left">
-        <div>
-          <Menu.Button className="rounded-full p-2 hover:bg-gray-100 focus:outline-none dark:hover:bg-gray-700">
-            <MenuIcon className="h-6 w-6 text-slate-900 dark:text-slate-100" />
-          </Menu.Button>
-        </div>
-        <Transition
-          as={Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
-        >
-          <Menu.Items className="absolute left-1/2 z-50 mt-3 flex w-[90%] origin-top-left -translate-x-1/2 flex-col gap-2 overflow-hidden rounded-2xl bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5 backdrop-blur-xl focus:outline-none">
-            <div className="ml-4">
-              <Brand />
-            </div>
-            <NavbarItem />
-            <div className="float-right w-full py-3 px-4">
-              <button className="w-full rounded-md bg-gradient-to-r from-blue-600 to-cyan-500 py-2 text-center text-lg font-bold capitalize tracking-wide text-white focus:outline-none">
-                Login
-              </button>
-            </div>
-          </Menu.Items>
-        </Transition>
-        <Menu.Items className="fixed inset-0 -z-10 h-screen w-full bg-slate-300/50 "></Menu.Items>
-      </Menu>
-    );
-  };
-
   return (
     <div className="relative h-16 border-b-2 border-white/70 bg-white/50 text-gray-700 backdrop-blur dark:text-gray-100">
       <div className="container mx-auto flex h-full items-center justify-between px-4">
@@ -99,8 +53,12 @@ const Navbar = () => {
         <div className="hidden md:block">
           <MdLinks />
         </div>
-        <div className=" md:hidden">
-          <SmLinks />{" "}
+        <div className="flex items-center md:hidden">
+          <IconButton
+            Icon={isOpen ? XIcon : MenuIcon}
+            onClick={() => dispatch(setIsOpen(true))}
+            className="z-50"
+          />
         </div>
 
         {/* buttons */}
@@ -108,7 +66,7 @@ const Navbar = () => {
           {/* Search Icon */}
           <IconButton
             Icon={SearchIcon}
-            onClick={() => dispatch(setIsOpen(true))}
+            onClick={() => dispatch(setSearchOpen(true))}
           />
           {/* Cart Icon */}
           <IconButton Icon={ShoppingCartIcon} link={true} to="/cart" />
@@ -117,17 +75,17 @@ const Navbar = () => {
             Icon={BellIcon}
             onClick={() => {}}
             notify={true}
-            className="hidden md:block"
+            className="hidden lg:block"
           />
           {/* Dot Icon */}
           <IconButton
             Icon={DotsVerticalIcon}
             onClick={() => {}}
-            className="md:hidden"
+            className="lg:hidden"
           />
           <NavLink
             to={"/signin"}
-            className="hidden items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-bold capitalize tracking-wide text-gray-100 dark:bg-blue-500 md:flex"
+            className="hidden items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-bold capitalize tracking-wide text-gray-100 dark:bg-blue-500 lg:flex"
           >
             Sign In
           </NavLink>

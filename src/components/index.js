@@ -31,10 +31,12 @@ import Category from "./sub-pages/Category";
 import Layout from "./layout/Layout";
 import Protected from "./layout/ProtectedRoute";
 
-import CommandPallete from "./CommandPallete";
+import SearchPallete from "./SearchPallete";
+import MobileNavbar from "./sub-pages/MobileNavbar";
 
 export {
-  CommandPallete,
+  MobileNavbar,
+  SearchPallete,
   Category,
   Protected,
   Layout,
