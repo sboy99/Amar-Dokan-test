@@ -34,7 +34,18 @@ import Protected from "./layout/ProtectedRoute";
 import SearchPallete from "./SearchPallete";
 import MobileNavbar from "./sub-pages/MobileNavbar";
 
+import Register from "./signin/Register";
+import Login from "./signin/Login";
+import ForgotPassword from "./signin/ForgotPassword";
+import ResetPassword from "./signin/ResetPassword";
+import HeadLine from "./signin/HeadLine";
+
 export {
+  HeadLine,
+  Register,
+  Login,
+  ForgotPassword,
+  ResetPassword,
   MobileNavbar,
   SearchPallete,
   Category,

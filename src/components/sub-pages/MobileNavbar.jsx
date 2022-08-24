@@ -2,13 +2,13 @@ import React, { Fragment } from "react";
 import { Transition, Dialog } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Layout } from "../../app/store";
+import { layout } from "../../app/store";
 import { setMenuOpen as setIsOpen } from "../../features/LayoutSlice";
 import { NavbarItems } from "../../data";
 import { Brand } from "../../utils";
 
 const MobileNavbar = () => {
-  const { menuOpen: isOpen } = useSelector(Layout);
+  const { menuOpen: isOpen } = useSelector(layout);
   const dispatch = useDispatch();
 
   const NavItem = () => {

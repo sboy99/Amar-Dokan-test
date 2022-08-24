@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { LayoutReducer } from "../features";
+import { LayoutReducer, AuthReducer } from "../features";
 
 export const store = configureStore({
   reducer: {
-    Layout: LayoutReducer,
+    layout: LayoutReducer,
+    auth: AuthReducer,
   },
 });
 
-export const Layout = (store) => store.Layout;
+export const layout = (store) => store.layout;
+export const auth = (store) => store.auth;

@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Dialog, Combobox, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/outline";
 import { searchItems } from "../data";
-import { Layout } from "../app/store";
+import { layout } from "../app/store";
 import {
   setSearchOpen as setIsOpen,
   setSearchText,
@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 const SearchPallete = () => {
-  const { searchOpen: isOpen } = useSelector(Layout);
+  const { searchOpen: isOpen } = useSelector(layout);
   const dispatch = useDispatch();
   const [query, setQuery] = useState(``);
 

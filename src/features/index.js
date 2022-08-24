@@ -1,3 +1,4 @@
+import AuthReducer from "./AuthSlice";
 import LayoutReducer from "./LayoutSlice";
 
-export { LayoutReducer };
+export { AuthReducer, LayoutReducer };

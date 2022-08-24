@@ -15,10 +15,10 @@ import {
   setSearchOpen,
   setMenuOpen as setIsOpen,
 } from "../../features/LayoutSlice";
-import { Layout } from "../../app/store";
+import { layout } from "../../app/store";
 
 const Navbar = () => {
-  const { menuOpen: isOpen } = useSelector(Layout);
+  const { menuOpen: isOpen } = useSelector(layout);
   const dispatch = useDispatch();
 
   const MdLinks = () => {
@@ -47,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative h-16 border-b-2 border-white/70 bg-white/50 text-gray-700 backdrop-blur dark:text-gray-100">
+    <div className="fixed inset-0 z-50 h-16 border-b-2 border-white/70 bg-white/50 text-gray-700 backdrop-blur dark:text-gray-100">
       <div className="container mx-auto flex h-full items-center justify-between px-4">
         {/* links for devices */}
         <div className="hidden md:block">

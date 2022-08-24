@@ -5,7 +5,7 @@ import laserBeam from "../../assets/img/laser_beam.png";
 
 const Layout = () => {
   const BgImage = () => (
-    <div className="absolute inset-x-0 top-0 -z-10 flex justify-center overflow-hidden">
+    <div className="absolute inset-0 -z-10 flex justify-center overflow-hidden">
       <div className="flex w-[108rem] flex-none justify-end">
         <picture className="">
           <img
@@ -25,7 +25,7 @@ const Layout = () => {
       <Navbar />
       <MobileNavbar />
       <SearchPallete />
-      <div className="container mx-auto">
+      <div className="container mx-auto pt-16">
         <Outlet />
       </div>
       <BgImage />

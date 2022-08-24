@@ -4,6 +4,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        poppins: "Poppins",
+      },
       fontSize: {
         xss: "10px",
         14: "14px",
@@ -29,6 +32,9 @@ module.exports = {
       minHeight: {
         16: "4rem",
         64: "16rem",
+      },
+      maxWidth: {
+        15: `15rem`,
       },
     },
   },
