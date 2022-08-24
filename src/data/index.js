@@ -4,6 +4,8 @@ import {
   TemplateIcon,
 } from "@heroicons/react/outline";
 
+export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
 export const NavbarItems = [
   {
     id: 1,

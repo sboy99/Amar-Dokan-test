@@ -1,0 +1,118 @@
+import React from "react";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { HeadLine } from "..";
+import { FormikCheckBox, FormikInput, Submit } from "../../utils";
+import { useFormikError } from "../../hooks";
+import { LightningBoltIcon } from "@heroicons/react/outline";
+import { useDispatch } from "react-redux";
+import { setRegister, setForgotPassword } from "../../features/AuthSlice";
+
+const validationSchema = yup.object({
+  email: yup
+    .string()
+    .required(`Please enter your email`)
+    .email(`Please enter a valid email`),
+  password: yup.string().required(`Please enter your password`),
+  remember: yup.boolean().required(),
+});
+
+//> Login Component
+const Login = () => {
+  const dispatch = useDispatch();
+
+  const onSubmit = (values) => {
+    //todo: Form Submit...
+    console.log(values);
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email: ``,
+      password: ``,
+      remember: false,
+    },
+    validateOnBlur: true,
+    onSubmit,
+    validateOnMount: true,
+    validationSchema,
+  });
+  const formikError = useFormikError(formik);
+
+  const handleSignUp = () => {
+    dispatch(setRegister(true));
+  };
+
+  const handleForgotPass = () => {
+    dispatch(setForgotPassword(true));
+  };
+
+  return (
+    <div className="mx-auto w-full max-w-sm py-10 px-4">
+      <HeadLine Icon={LightningBoltIcon} />
+      <form onSubmit={formik.handleSubmit} className="flex flex-col gap-2">
+        <div className="mb-4">
+          <h1 className="bg-gradient-to-r from-violet-700 to-blue-600  bg-clip-text font-poppins text-4xl font-bold text-transparent">
+            Welcome Back
+          </h1>
+          <p className="mt-1 pl-1 text-sm font-medium text-slate-500">
+            Don't let go exciting offers,Sing In now!
+          </p>
+        </div>
+        <FormikInput
+          label="email"
+          placeholder="user@web.com"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formikError}
+        />
+        <FormikInput
+          label="password"
+          type="password"
+          placeholder="min 6 character"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formikError}
+        />
+        <div className="flex flex-wrap-reverse items-center justify-center gap-3 sm:justify-between">
+          <FormikCheckBox
+            name="remember"
+            value={formik.values.remember}
+            onChange={formik.handleChange}
+          >
+            Remember Me
+          </FormikCheckBox>
+          <button
+            type="button"
+            className="px-3 py-1 font-poppins font-medium capitalize text-indigo-600 outline-none focus:bg-indigo-50"
+            onClick={handleForgotPass}
+          >
+            forgot password?
+          </button>
+        </div>
+
+        <Submit disabled={!formik.isValid}>Sign In</Submit>
+      </form>
+      {/* // new user */}
+      <div
+        className="mt-3
+       flex flex-col items-center justify-center"
+      >
+        <p className="text-lg font-semibold capitalize tracking-tight text-slate-600">
+          So excited to be with you
+        </p>
+        <button
+          type="button"
+          className="text-lg font-semibold text-sky-500"
+          onClick={handleSignUp}
+        >
+          Sign Up
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

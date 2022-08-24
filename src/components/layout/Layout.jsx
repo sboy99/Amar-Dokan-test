@@ -25,7 +25,7 @@ const Layout = () => {
       <Navbar />
       <MobileNavbar />
       <SearchPallete />
-      <div className="container mx-auto pt-16">
+      <div className="mx-auto pt-16">
         <Outlet />
       </div>
       <BgImage />

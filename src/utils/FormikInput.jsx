@@ -14,7 +14,7 @@ const FormikInput = ({
     <div className="flex flex-col gap-1">
       <label
         htmlFor={label}
-        className="font-poppins text-sm font-medium capitalize text-slate-700"
+        className="text-sm font-semibold capitalize text-slate-700"
       >
         {label}
       </label>
@@ -27,10 +27,10 @@ const FormikInput = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        className={`rounded-full border bg-transparent px-4 outline-none placeholder:text-slate-500/50 focus:border focus:ring-0 ${
+        className={`rounded-full border bg-transparent px-4 outline-none placeholder:text-slate-500/80 focus:border focus:ring-0 ${
           errorMessage
             ? `border-rose-600 focus:border-rose-600`
-            : `border-gray-200 focus:border-indigo-600`
+            : `border-gray-300 focus:border-indigo-600`
         }`}
       />
       <p className="ml-5 max-w-15 text-xs text-rose-600">{errorMessage}</p>
