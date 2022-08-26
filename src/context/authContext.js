@@ -19,7 +19,6 @@ import {
   resetState,
 } from "../features/AuthSlice";
 import { getMessage } from "../utils";
-import { async } from "@firebase/util";
 
 const AuthContext = createContext();
 
