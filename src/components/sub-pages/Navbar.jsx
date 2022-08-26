@@ -15,11 +15,14 @@ import {
   setSearchOpen,
   setMenuOpen as setIsOpen,
 } from "../../features/LayoutSlice";
-import { layout } from "../../app/store";
+import { auth, layout } from "../../app/store";
+import { useAuth } from "../../context/authContext";
 
 const Navbar = () => {
   const { menuOpen: isOpen } = useSelector(layout);
   const dispatch = useDispatch();
+  const { user } = useSelector(auth);
+  const { logoutUser } = useAuth();
 
   const MdLinks = () => {
     return (
@@ -83,12 +86,17 @@ const Navbar = () => {
             onClick={() => {}}
             className="lg:hidden"
           />
-          <NavLink
-            to={"/signin"}
-            className="hidden items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-bold capitalize tracking-wide text-gray-100 dark:bg-blue-500 lg:flex"
-          >
-            Sign In
-          </NavLink>
+          <div className="hidden items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-bold tracking-wide text-gray-100 dark:bg-blue-500 lg:flex">
+            {user ? (
+              <button className="capitalize" onClick={() => logoutUser()}>
+                logout
+              </button>
+            ) : (
+              <NavLink to={"/signin"} className="capitalize">
+                Sign In
+              </NavLink>
+            )}
+          </div>
         </div>
       </div>
     </div>

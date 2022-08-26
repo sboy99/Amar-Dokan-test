@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { HeadLine } from "..";
-import {
-  FormikCheckBox,
-  FormikInput,
-  Submit,
-  FormikFormLayout,
-} from "../../utils";
+import { FormikCheckBox, FormikInput, FormikFormLayout } from "../../utils";
 import { useFormikError } from "../../hooks";
 import { LightningBoltIcon } from "@heroicons/react/outline";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setRegister, setForgotPassword } from "../../features/AuthSlice";
+import { useAuth } from "../../context/authContext";
+import { auth } from "../../app/store";
 
 const validationSchema = yup.object({
   email: yup
@@ -24,12 +20,14 @@ const validationSchema = yup.object({
 
 //> Login Component
 const Login = () => {
+  const { isSuccess, isLoading } = useSelector(auth);
   const dispatch = useDispatch();
+  const { loginUser } = useAuth();
 
-  const onSubmit = (values) => {
-    //todo: Form Submit...
-    console.log(values);
-  };
+  useEffect(() => {
+    if (isSuccess) formik.resetForm();
+    //eslint-disable-next-line
+  }, [isSuccess]);
 
   const formik = useFormik({
     initialValues: {
@@ -38,7 +36,7 @@ const Login = () => {
       remember: false,
     },
     validateOnBlur: true,
-    onSubmit,
+    onSubmit: loginUser,
     validateOnMount: true,
     validationSchema,
   });
@@ -58,8 +56,8 @@ const Login = () => {
       handleSubmit={formik.handleSubmit}
       headTitle="Welcome Back"
       grettings="Don't let go exciting offers,Sing In now!"
-      submitDisabled={!formik.isValid}
-      submitText="Sign In"
+      submitDisabled={!formik.isValid || isLoading}
+      submitText={isLoading ? "Authenticating..." : "Sign In"}
       navigation={true}
       navigationMessage="So excited to be with you"
       navigationText="Sign Up"

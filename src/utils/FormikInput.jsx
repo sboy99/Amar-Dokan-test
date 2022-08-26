@@ -1,6 +1,7 @@
 import React from "react";
 
 const FormikInput = ({
+  name = null,
   label,
   type = `text`,
   placeholder = ``,
@@ -16,7 +17,7 @@ const FormikInput = ({
         htmlFor={label}
         className="text-sm font-semibold capitalize text-slate-700"
       >
-        {label}
+        {name || label}
       </label>
       <input
         id={label}

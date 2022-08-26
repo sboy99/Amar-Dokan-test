@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { PW_REGX } from "../../data";
 import * as yup from "yup";
@@ -6,15 +6,17 @@ import { useFormikError } from "../../hooks";
 import { LightBulbIcon } from "@heroicons/react/outline";
 import { FormikFormLayout, FormikCheckBox, FormikInput } from "../../utils";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setRegister } from "../../features/AuthSlice";
+import { useAuth } from "../../context/authContext";
+import { auth } from "../../app/store";
 
 const validationSchema = yup.object({
   name: yup
     .string()
-    .required(`Please enter your name`)
-    .min(2, `minimum name should be 2`)
-    .max(25, `maximum name length should be 25`),
+    .min(2, `Name should consist atleast 2 character`)
+    .max(50, `Name should be atmost 50 character`)
+    .required(`Please provide a name`),
   email: yup
     .string()
     .required(`Please provide your email`)
@@ -26,15 +28,27 @@ const validationSchema = yup.object({
       PW_REGX,
       `Minimum 6 characters,at least one letter and one number`
     ),
+  confirmPassword: yup
+    .string()
+    .required("Please confirm your password")
+    .when("password", {
+      is: (password) => (password && password.length > 0 ? true : false),
+      then: yup
+        .string()
+        .oneOf([yup.ref("password")], `Password does not match`),
+    }),
   termAccepted: yup.boolean().required().isTrue(),
 });
 
 const Register = () => {
+  const { isSuccess, isLoading } = useSelector(auth);
   const dispatch = useDispatch();
-  const onSubmit = (values) => {
-    console.log(values);
-    // todo: Handle new user register
-  };
+  const { createUser } = useAuth();
+
+  useEffect(() => {
+    if (isSuccess) formik.resetForm();
+    //eslint-disable-next-line
+  }, [isSuccess]);
 
   // Formik object
   const formik = useFormik({
@@ -42,11 +56,12 @@ const Register = () => {
       name: ``,
       email: ``,
       password: ``,
+      confirmPassword: ``,
       termAccepted: false,
     },
     validateOnBlur: true,
     validateOnMount: true,
-    onSubmit,
+    onSubmit: createUser,
     validationSchema,
   });
   const formikError = useFormikError(formik);
@@ -63,8 +78,8 @@ const Register = () => {
       headTitle="Jump In"
       headTitleColor="from-blue-500 to-sky-400"
       grettings="Don't let go exciting offers,Sing Up now!"
-      submitDisabled={!formik.isValid}
-      submitText="Sign Up"
+      submitDisabled={!formik.isValid || isLoading}
+      submitText={isLoading ? "Registering..." : "Sign Up"}
       submitColor="from-blue-600 to-sky-500"
       navigation={true}
       navigationMessage="Already have an account?"
@@ -73,6 +88,7 @@ const Register = () => {
       linkColor="text-indigo-600"
     >
       <FormikInput
+        name="Full Name"
         label="name"
         value={formik.values.name}
         onChange={formik.handleChange}
@@ -82,6 +98,7 @@ const Register = () => {
       <FormikInput
         label="email"
         value={formik.values.email}
+        placeholder="user@website.com"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         error={formikError}
@@ -89,7 +106,19 @@ const Register = () => {
       <FormikInput
         label="password"
         type="password"
+        placeholder="minimum 6 characters"
         value={formik.values.password}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formikError}
+      />
+
+      <FormikInput
+        name="Confirm Password"
+        label="confirmPassword"
+        type="password"
+        placeholder="Re-enter your password"
+        value={formik.values.confirmPassword}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         error={formikError}

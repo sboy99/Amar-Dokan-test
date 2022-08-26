@@ -4,8 +4,11 @@ import FormikFormLayout from "./FormikFormLayout";
 import FormikInput from "./FormikInput";
 import IconButton from "./IconButton";
 import Submit from "./Submit";
+import { getMessage, sleep } from "./utilityFunc";
 
 export {
+  sleep,
+  getMessage,
   FormikFormLayout,
   FormikCheckBox,
   Submit,
