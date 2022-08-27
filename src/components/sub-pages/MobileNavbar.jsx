@@ -46,8 +46,8 @@ const MobileNavbar = () => {
           enterFrom="opacity-0 scale-90 -translate-y-8 -translate-x-6"
           enterTo="opacity-100 scale-100 translate-y-0 translate-x-0"
           leave="duration-100 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-90"
+          leaveFrom="opacity-100 scale-100 translate-y-0 translate-x-0"
+          leaveTo="opacity-0 scale-90 -translate-y-8 -translate-x-6"
         >
           <div className="relative mx-auto  max-w-xl divide-y divide-slate-900/10 rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-900/5">
             <div className="pb-2">

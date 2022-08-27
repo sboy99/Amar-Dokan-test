@@ -1,8 +1,10 @@
 import {
   HomeIcon,
   InformationCircleIcon,
-  TemplateIcon,
-} from "@heroicons/react/outline";
+  ComputerDesktopIcon,
+  ArrowLeftOnRectangleIcon as LogoutIcon,
+} from "@heroicons/react/24/outline";
+import GLogo from "../assets/G_Logo.svg";
 
 export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
@@ -15,7 +17,7 @@ export const NavbarItems = [
   },
   {
     id: 2,
-    icon: TemplateIcon,
+    icon: ComputerDesktopIcon,
     name: "Products",
     to: "/products",
   },
@@ -80,3 +82,17 @@ export const searchItems = [
     title: `Option5`,
   },
 ];
+
+export const profileLinks = [
+  {
+    id: 1,
+    Icon: LogoutIcon,
+    text: `Logout`,
+  },
+];
+
+//default user
+export const defaultUser =
+  "https://cdn.pixabay.com/photo/2013/07/13/10/44/man-157699_960_720.png";
+
+export { GLogo };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Dialog, Combobox, Transition } from "@headlessui/react";
-import { SearchIcon } from "@heroicons/react/outline";
+import { MagnifyingGlassIcon as SearchIcon } from "@heroicons/react/24/outline";
 import { searchItems } from "../data";
 import { layout } from "../app/store";
 import {

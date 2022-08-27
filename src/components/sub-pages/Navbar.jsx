@@ -1,15 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {
-  MenuIcon,
-  SearchIcon,
+  Bars3Icon,
+  MagnifyingGlassIcon as SearchIcon,
   ShoppingCartIcon,
   BellIcon,
-  XIcon,
-} from "@heroicons/react/outline";
-import { DotsVerticalIcon } from "@heroicons/react/solid";
+  XMarkIcon,
+  ArrowLeftOnRectangleIcon as LogoutIcon,
+  ArrowRightOnRectangleIcon as LoginIcon,
+} from "@heroicons/react/24/outline";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/solid";
 import { NavbarItems } from "../../data";
-import { IconButton, Brand } from "../../utils";
+import { IconButton, Brand, Panel, PopBtn, PopLink } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setSearchOpen,
@@ -58,7 +60,7 @@ const Navbar = () => {
         </div>
         <div className="flex items-center md:hidden">
           <IconButton
-            Icon={isOpen ? XIcon : MenuIcon}
+            Icon={isOpen ? XMarkIcon : Bars3Icon}
             onClick={() => dispatch(setIsOpen(true))}
             className="z-50"
           />
@@ -81,22 +83,30 @@ const Navbar = () => {
             className="hidden lg:block"
           />
           {/* Dot Icon */}
-          <IconButton
-            Icon={DotsVerticalIcon}
-            onClick={() => {}}
-            className="lg:hidden"
-          />
-          <div className="hidden items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-bold tracking-wide text-gray-100 dark:bg-blue-500 lg:flex">
+          <Panel
+            photo={user?.photo}
+            Icon={EllipsisVerticalIcon}
+            popClass={`${!user && `lg:hidden`}`}
+            className="flex flex-col divide-y bg-white py-1 shadow-xl ring-1 ring-slate-900/10"
+          >
             {user ? (
-              <button className="capitalize" onClick={() => logoutUser()}>
+              <PopBtn onClick={() => logoutUser()} Icon={LogoutIcon}>
                 logout
-              </button>
+              </PopBtn>
             ) : (
-              <NavLink to={"/signin"} className="capitalize">
+              <PopLink to={`/signin`} Icon={LoginIcon}>
                 Sign In
-              </NavLink>
+              </PopLink>
             )}
-          </div>
+          </Panel>
+          {!user && (
+            <NavLink
+              to={"/signin"}
+              className="hidden items-center justify-center rounded-md bg-indigo-600 px-4 py-1 font-poppins font-bold capitalize tracking-wide text-gray-100 dark:bg-blue-500 lg:flex"
+            >
+              Sign In
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

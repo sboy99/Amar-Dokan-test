@@ -1,5 +1,5 @@
 import React from "react";
-import { CubeIcon } from "@heroicons/react/outline";
+import { CubeIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 const Brand = () => {

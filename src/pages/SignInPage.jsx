@@ -19,7 +19,7 @@ const SignInPage = () => {
 
   return (
     <section className="relative px-4 py-6 ">
-      <div className="mx-auto min-h-64 max-w-lg overflow-hidden rounded-lg bg-white/25 ring-2 ring-white backdrop-blur ">
+      <div className="mx-auto min-h-64 max-w-lg overflow-hidden rounded-lg bg-white/50 ring-2 ring-white backdrop-blur ">
         {/* decor */}
         <div className="decor hidden bg-indigo-600 lg:block"></div>
         {/* form */}
@@ -36,7 +36,7 @@ const SignInPage = () => {
         <img
           src={beams}
           alt="beams"
-          className="-z-10 h-screen object-cover object-center"
+          className="-z-10 h-full object-cover object-center"
         />
         <div
           className="absolute inset-0 z-10"

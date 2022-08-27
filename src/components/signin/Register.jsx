@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { PW_REGX } from "../../data";
+import { GLogo, PW_REGX } from "../../data";
 import * as yup from "yup";
 import { useFormikError } from "../../hooks";
-import { LightBulbIcon } from "@heroicons/react/outline";
+import { LightBulbIcon } from "@heroicons/react/24/outline";
 import { FormikFormLayout, FormikCheckBox, FormikInput } from "../../utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setRegister } from "../../features/AuthSlice";
 import { useAuth } from "../../context/authContext";
@@ -43,10 +43,15 @@ const validationSchema = yup.object({
 const Register = () => {
   const { isSuccess, isLoading } = useSelector(auth);
   const dispatch = useDispatch();
-  const { createUser } = useAuth();
+  const { createUser, loginWithGoogle } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isSuccess) formik.resetForm();
+    if (isSuccess) {
+      formik.resetForm();
+      navigate("/", { state: { from: location }, replace: true });
+    }
     //eslint-disable-next-line
   }, [isSuccess]);
 
@@ -87,6 +92,20 @@ const Register = () => {
       handleNavigation={handleSignIn}
       linkColor="text-indigo-600"
     >
+      <div
+        as="button"
+        onClick={loginWithGoogle}
+        className="group flex h-11 w-full cursor-pointer items-center justify-center gap-4 rounded-full border border-slate-300 px-2 font-semibold text-slate-700 outline-none transition-all duration-500 ease-in-out hover:bg-white hover:!text-indigo-600 hover:shadow focus:ring-1 focus:ring-indigo-600"
+      >
+        <img src={GLogo} alt="google" className="w-6 gap-6 " /> Sign In with
+        Google
+      </div>
+      <p className=" my-1 flex items-center gap-2 text-center capitalize text-slate-500">
+        <div className="h-[2px] flex-auto rounded-full bg-slate-400/50"></div>
+        or continue with
+        <div className="h-[2px] flex-auto rounded-full bg-slate-400/50"></div>
+      </p>
+
       <FormikInput
         name="Full Name"
         label="name"

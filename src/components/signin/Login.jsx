@@ -3,11 +3,13 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { FormikCheckBox, FormikInput, FormikFormLayout } from "../../utils";
 import { useFormikError } from "../../hooks";
-import { LightningBoltIcon } from "@heroicons/react/outline";
+import { BoltIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { setRegister, setForgotPassword } from "../../features/AuthSlice";
 import { useAuth } from "../../context/authContext";
 import { auth } from "../../app/store";
+import { GLogo } from "../../data";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const validationSchema = yup.object({
   email: yup
@@ -22,10 +24,15 @@ const validationSchema = yup.object({
 const Login = () => {
   const { isSuccess, isLoading } = useSelector(auth);
   const dispatch = useDispatch();
-  const { loginUser } = useAuth();
+  const { loginUser, loginWithGoogle } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isSuccess) formik.resetForm();
+    if (isSuccess) {
+      formik.resetForm();
+      navigate("/", { state: { from: location }, replace: true });
+    }
     //eslint-disable-next-line
   }, [isSuccess]);
 
@@ -52,7 +59,7 @@ const Login = () => {
 
   return (
     <FormikFormLayout
-      Icon={LightningBoltIcon}
+      Icon={BoltIcon}
       handleSubmit={formik.handleSubmit}
       headTitle="Welcome Back"
       grettings="Don't let go exciting offers,Sing In now!"
@@ -63,6 +70,19 @@ const Login = () => {
       navigationText="Sign Up"
       handleNavigation={handleSignUp}
     >
+      <div
+        as="button"
+        onClick={loginWithGoogle}
+        className="group flex h-11 w-full cursor-pointer items-center justify-center gap-4 rounded-full border border-slate-300 px-2 font-semibold text-slate-700 outline-none transition-all duration-500 ease-in-out hover:bg-white hover:!text-indigo-600 hover:shadow focus:ring-1 focus:ring-indigo-600"
+      >
+        <img src={GLogo} alt="google" className="w-6 gap-6 " /> Sign In with
+        Google
+      </div>
+      <p className=" my-1 flex items-center gap-2 text-center capitalize text-slate-500">
+        <div className="h-[2px] flex-auto rounded-full bg-slate-400/50"></div>
+        or continue with
+        <div className="h-[2px] flex-auto rounded-full bg-slate-400/50"></div>
+      </p>
       <FormikInput
         label="email"
         placeholder="user@web.com"

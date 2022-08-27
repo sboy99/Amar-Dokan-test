@@ -6,8 +6,9 @@ import {
   onAuthStateChanged,
   updateProfile,
   sendEmailVerification,
+  signInWithPopup,
 } from "firebase/auth";
-import auth from "../auth/firebase.config";
+import auth, { googleProvider } from "../auth/firebase.config";
 import { useSelector, useDispatch } from "react-redux";
 import { auth as authState } from "../app/store";
 import {
@@ -25,7 +26,6 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const { isSuccess, isError } = useSelector(authState);
   const dispatch = useDispatch();
-
   //reset server response//
   useEffect(() => {
     const timeOut = setTimeout(() => {
@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
         const user = {
           userId: userCred.uid,
           name: userCred.displayName,
-          image: userCred.photoURL,
+          photo: userCred.photoURL,
           isVerified: userCred.emailVerified,
         };
         dispatch(setUser(user));
@@ -111,12 +111,26 @@ const AuthProvider = ({ children }) => {
     return sendEmailVerification(auth?.currentUser);
   };
 
+  //> Google sign in with pop up
+  const loginWithGoogle = async () => {
+    dispatch(setLoading(true));
+    try {
+      await signInWithPopup(auth, googleProvider);
+      dispatch(setSuccess());
+    } catch (error) {
+      console.log(error.code);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
   const values = {
     createUser,
     loginUser,
     logoutUser,
     updateUserName,
     sendVerificationMail,
+    loginWithGoogle,
   };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
