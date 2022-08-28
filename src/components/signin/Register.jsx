@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { useFormikError } from "../../hooks";
 import { LightBulbIcon } from "@heroicons/react/24/outline";
 import { FormikFormLayout, FormikCheckBox, FormikInput } from "../../utils";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setRegister } from "../../features/AuthSlice";
 import { useAuth } from "../../context/authContext";
@@ -44,13 +44,10 @@ const Register = () => {
   const { isSuccess, isLoading } = useSelector(auth);
   const dispatch = useDispatch();
   const { createUser, loginWithGoogle } = useAuth();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccess) {
       formik.resetForm();
-      navigate("/", { state: { from: location }, replace: true });
     }
     //eslint-disable-next-line
   }, [isSuccess]);
@@ -78,9 +75,9 @@ const Register = () => {
   return (
     <FormikFormLayout
       Icon={LightBulbIcon}
-      iconColor="fill-sky-500 text-sky-500"
+      iconColor="text-sky-500"
       handleSubmit={formik.handleSubmit}
-      headTitle="Jump In"
+      headTitle="Light Up"
       headTitleColor="from-blue-500 to-sky-400"
       grettings="Don't let go exciting offers,Sing Up now!"
       submitDisabled={!formik.isValid || isLoading}
@@ -101,9 +98,9 @@ const Register = () => {
         Google
       </div>
       <p className=" my-1 flex items-center gap-2 text-center capitalize text-slate-500">
-        <div className="h-[2px] flex-auto rounded-full bg-slate-400/50"></div>
+        <span className="h-[2px] flex-auto rounded-full bg-slate-400/50"></span>
         or continue with
-        <div className="h-[2px] flex-auto rounded-full bg-slate-400/50"></div>
+        <span className="h-[2px] flex-auto rounded-full bg-slate-400/50"></span>
       </p>
 
       <FormikInput

@@ -23,8 +23,8 @@ const HeadLine = ({ Icon, className }) => {
     <div ref={shakeObj} className="mb-6 flex items-center gap-2">
       <Icon
         className={`h-10 w-10 ${className} ${
-          isSuccess && `!fill-emerald-500 !text-emerald-500`
-        } ${isError && `!fill-rose-600  !text-rose-600`}`}
+          isSuccess && `!fill-transparent !text-emerald-500`
+        } ${isError && `!fill-transparent  !text-rose-600`}`}
       />
       <p
         className={`font-semibold ${isSuccess && `text-emerald-500`} ${

@@ -56,13 +56,7 @@ const MobileNavbar = () => {
             <div className="mb-2 flex flex-col text-xl tracking-tight text-slate-900">
               <NavItem />
             </div>
-            <NavLink
-              className="block w-full p-2 text-xl text-slate-900 outline-none"
-              to="/signin"
-              onClick={() => dispatch(setIsOpen(false))}
-            >
-              Sign In
-            </NavLink>
+            {/* //last section */}
           </div>
         </Transition.Child>
       </Dialog>

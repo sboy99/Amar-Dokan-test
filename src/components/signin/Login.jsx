@@ -9,8 +9,6 @@ import { setRegister, setForgotPassword } from "../../features/AuthSlice";
 import { useAuth } from "../../context/authContext";
 import { auth } from "../../app/store";
 import { GLogo } from "../../data";
-import { useNavigate, useLocation } from "react-router-dom";
-
 const validationSchema = yup.object({
   email: yup
     .string()
@@ -25,13 +23,10 @@ const Login = () => {
   const { isSuccess, isLoading } = useSelector(auth);
   const dispatch = useDispatch();
   const { loginUser, loginWithGoogle } = useAuth();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccess) {
       formik.resetForm();
-      navigate("/", { state: { from: location }, replace: true });
     }
     //eslint-disable-next-line
   }, [isSuccess]);
@@ -61,7 +56,7 @@ const Login = () => {
     <FormikFormLayout
       Icon={BoltIcon}
       handleSubmit={formik.handleSubmit}
-      headTitle="Welcome Back"
+      headTitle="Charge It"
       grettings="Don't let go exciting offers,Sing In now!"
       submitDisabled={!formik.isValid || isLoading}
       submitText={isLoading ? "Authenticating..." : "Sign In"}
@@ -79,9 +74,9 @@ const Login = () => {
         Google
       </div>
       <p className=" my-1 flex items-center gap-2 text-center capitalize text-slate-500">
-        <div className="h-[2px] flex-auto rounded-full bg-slate-400/50"></div>
+        <span className="h-[2px] flex-auto rounded-full bg-slate-400/50"></span>
         or continue with
-        <div className="h-[2px] flex-auto rounded-full bg-slate-400/50"></div>
+        <span className="h-[2px] flex-auto rounded-full bg-slate-400/50"></span>
       </p>
       <FormikInput
         label="email"

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Layout, Protected } from "./components";
+import { Layout, Protected, ResetPassword } from "./components";
 import {
   Home,
   About,
@@ -24,6 +24,7 @@ const App = () => {
             <Route path="products/:id" element={<SingleProduct />} />
             <Route path="cart" element={<Cart />} />
             <Route path="signin" element={<SignIn />} />
+            <Route path="reset-password" element={<ResetPassword />} />
             <Route
               path="checkout"
               element={

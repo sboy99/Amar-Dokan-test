@@ -25,11 +25,11 @@ const FormikFormLayout = ({
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="mb-4">
           <h1
-            className={`bg-gradient-to-r ${headTitleColor}  bg-clip-text font-poppins text-4xl font-bold text-transparent`}
+            className={`bg-gradient-to-r ${headTitleColor} bg-clip-text pb-2 font-poppins text-4xl font-bold text-transparent`}
           >
             {headTitle}
           </h1>
-          <p className="mt-1 pl-1 text-sm font-medium text-slate-500">
+          <p className=" pl-1 text-sm font-medium text-slate-500">
             {grettings}
           </p>
         </div>

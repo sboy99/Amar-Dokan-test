@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <section className="relative z-0 min-h-16 overflow-hidden border-y-4 border-white/60 bg-white/30 p-4 backdrop-blur-lg md:p-8">
+    <section className="relative z-0 min-h-16 overflow-hidden border-t-4 border-white/60 bg-white/30 p-4 backdrop-blur-lg md:p-8">
       <div className="container mx-auto mb-4 flex flex-col gap-6">
         <Brand />
         <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">

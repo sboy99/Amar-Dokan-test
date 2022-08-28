@@ -36,7 +36,7 @@ const SignInPage = () => {
         <img
           src={beams}
           alt="beams"
-          className="-z-10 h-full object-cover object-center"
+          className="-z-10 h-full w-full object-cover object-center"
         />
         <div
           className="absolute inset-0 z-10"

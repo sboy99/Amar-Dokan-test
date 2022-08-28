@@ -1,4 +1,5 @@
 import React, { useEffect, createContext, useContext } from "react";
+import { sendPasswordResetEmail } from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -7,10 +8,12 @@ import {
   updateProfile,
   sendEmailVerification,
   signInWithPopup,
+  confirmPasswordReset,
 } from "firebase/auth";
 import auth, { googleProvider } from "../auth/firebase.config";
 import { useSelector, useDispatch } from "react-redux";
 import { auth as authState } from "../app/store";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   setUser,
   setLoading,
@@ -21,9 +24,20 @@ import {
 } from "../features/AuthSlice";
 import { getMessage } from "../utils";
 
-const AuthContext = createContext();
+const AuthContext = createContext({
+  forgotPassword: () => Promise,
+  createUser: () => Promise,
+  loginUser: () => Promise,
+  logoutUser: () => Promise,
+  updateUserName: () => Promise,
+  sendVerificationMail: () => Promise,
+  loginWithGoogle: () => Promise,
+  resetPassword: (oobCode, newPassword, continueUrl) => Promise,
+});
 
 const AuthProvider = ({ children }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { isSuccess, isError } = useSelector(authState);
   const dispatch = useDispatch();
   //reset server response//
@@ -66,6 +80,7 @@ const AuthProvider = ({ children }) => {
       await updateUserName(name);
       await sendVerificationMail();
       dispatch(setSuccess());
+      navigate("/", { state: { from: location }, replace: true });
     } catch (error) {
       dispatch(setError());
       dispatch(setMessage(getMessage(error.code)));
@@ -80,10 +95,10 @@ const AuthProvider = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       dispatch(setSuccess());
+      navigate("/", { state: { from: location }, replace: true });
     } catch (error) {
-      dispatch(setError(true));
+      dispatch(setError());
       dispatch(setMessage(getMessage(error.code)));
-      console.log(error.code);
     } finally {
       dispatch(setLoading(false));
     }
@@ -117,20 +132,61 @@ const AuthProvider = ({ children }) => {
     try {
       await signInWithPopup(auth, googleProvider);
       dispatch(setSuccess());
+      navigate("/", { state: { from: location }, replace: true });
     } catch (error) {
       console.log(error.code);
     } finally {
       dispatch(setLoading(false));
     }
   };
+  //> Google Forgot Password
+  const forgotPassword = async (values) => {
+    const { email } = values;
+    dispatch(setLoading(true));
+    try {
+      await sendPasswordResetEmail(auth, email, {
+        url: `${process.env.REACT_APP_ORIGIN}/signin`,
+      });
+      dispatch(setSuccess());
+      dispatch(setMessage(`Open your email & reset your password`));
+    } catch (error) {
+      dispatch(setError());
+      dispatch(setMessage(getMessage(error.code)));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  //> Google Reset Password
+  const resetPassword = async (oobCode, newPassword, continueUrl) => {
+    dispatch(setLoading(true));
+    try {
+      await confirmPasswordReset(auth, oobCode, newPassword);
+      dispatch(setSuccess());
+      dispatch(setMessage(`Password has been updated successfully`));
+      navigate("/signin", {
+        state: {
+          from: location,
+        },
+        replace: true,
+      });
+    } catch (error) {
+      dispatch(setError());
+      dispatch(setMessage(error.code));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
 
   const values = {
+    forgotPassword,
     createUser,
     loginUser,
     logoutUser,
     updateUserName,
     sendVerificationMail,
     loginWithGoogle,
+    resetPassword,
   };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
