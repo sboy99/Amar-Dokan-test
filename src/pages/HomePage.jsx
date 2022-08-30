@@ -4,7 +4,7 @@ import { blueBG } from "../data";
 
 const HomePage = () => {
   return (
-    <section className="Home">
+    <section className="Home ">
       {/* Hero */}
       <div className="snap-start p-4">
         <Hero />

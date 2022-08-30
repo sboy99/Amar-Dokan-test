@@ -23,7 +23,7 @@ const Layout = () => {
   //> JSX
 
   return (
-    <div className=" relative z-0 snap-start scroll-smooth">
+    <div className=" relative z-0 scroll-smooth">
       <Navbar />
       <MobileNavbar />
       <SearchPallete />

@@ -28,9 +28,9 @@ const Benefits = () => {
         </Tab.List>
         {/* panel */}
         <Tab.Panels className="mx-auto mt-2 max-w-lg rounded-md border border-slate-900/10 bg-white shadow-lg lg:max-w-lg">
-          {BenefitTabs.map((panel, index) => (
+          {BenefitTabs.map((panel) => (
             <Tab.Panel
-              key={panel.id + index}
+              key={panel.id}
               className={`relative z-0 overflow-hidden p-4 ${panel.content.textColor}`}
             >
               {
@@ -113,7 +113,7 @@ const Benefits = () => {
   }
 
   return (
-    <article className="container mx-auto snap-start py-16 ">
+    <article className="container mx-auto py-16 ">
       {/* name */}
       <div className="px-4 text-lg font-semibold text-lime-400 md:hidden md:text-xl lg:px-0">
         Benefits
