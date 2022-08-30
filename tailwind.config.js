@@ -41,6 +41,7 @@ module.exports = {
         "screen-50": "50vh",
         "screen-75": "75vh",
         "screen-85": "85vh",
+        "screen-90": "90vh",
       },
       maxWidth: {
         15: `15rem`,

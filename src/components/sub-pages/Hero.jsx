@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="container mx-auto grid min-h-screen-85 snap-start grid-cols-1 p-5 lg:grid-cols-2">
+    <div className="container mx-auto grid min-h-screen-85 grid-cols-1 lg:grid-cols-2">
       {/* Text */}
       <div className="relative flex flex-col justify-center gap-4 ">
         <h1 className="relative flex flex-col gap-2 font-poppins text-4xl font-extrabold text-slate-800 lg:gap-4 lg:text-7xl">
@@ -48,7 +48,8 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-      {/* Image */}
+      {/* //TODO:Image */}
+      <div className="h-full w-full"></div>
     </div>
   );
 };

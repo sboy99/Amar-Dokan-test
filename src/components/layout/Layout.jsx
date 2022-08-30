@@ -12,6 +12,8 @@ const Layout = () => {
             src={laserBeam}
             alt="bgImg"
             className="w-[71rem] max-w-none flex-none md:w-[81rem]"
+            loading="lazy"
+            decoding="async"
           />
         </picture>
       </div>

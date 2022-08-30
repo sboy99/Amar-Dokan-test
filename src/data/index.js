@@ -3,11 +3,16 @@ import {
   InformationCircleIcon,
   ComputerDesktopIcon,
   ArrowLeftOnRectangleIcon as LogoutIcon,
+  RectangleGroupIcon,
+  SparklesIcon,
+  HeartIcon,
+  BoltIcon,
 } from "@heroicons/react/24/outline";
 import GLogo from "../assets/G_Logo.svg";
 import notFound from "../assets/img/not_found.png";
+import blueBG from "../assets/img/blue_bg.jpg";
 
-export { GLogo, notFound };
+export { GLogo, notFound, blueBG };
 
 export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
@@ -97,3 +102,50 @@ export const profileLinks = [
 //default user
 export const defaultUser =
   "https://cdn.pixabay.com/photo/2013/07/13/10/44/man-157699_960_720.png";
+
+export const BenefitTabs = [
+  {
+    id: `tab1`,
+    tab: { name: `Plenty Options` },
+    content: {
+      Icon: RectangleGroupIcon,
+      textColor: `text-indigo-600`,
+      iconBg: `bg-indigo-600`,
+      heading: "Choose what ever you want",
+      desc: `  Cumque ut rerum ratione molestias quae excepturi magnam saepe, iure eos, blanditiis tempore. Ipsa, voluptatibus at quas nulla delectus ex. Temporibus animi quidem quam et voluptate totam voluptatibus facere impedit doloribus!`,
+    },
+  },
+  {
+    id: `tab2`,
+    tab: { name: `Fast Delivary` },
+    content: {
+      Icon: BoltIcon,
+      textColor: `text-teal-600`,
+      iconBg: `bg-teal-600`,
+      heading: "fast & on time delivery experienced never before",
+      desc: `  Cumque ut rerum ratione molestias quae excepturi magnam saepe, iure eos, blanditiis tempore. Ipsa, voluptatibus at quas nulla delectus ex. Temporibus animi quidem quam et voluptate totam voluptatibus facere impedit doloribus!`,
+    },
+  },
+  {
+    id: `tab3`,
+    tab: { name: `Fresh & Authentic` },
+    content: {
+      Icon: SparklesIcon,
+      textColor: `text-amber-500`,
+      iconBg: `bg-amber-500`,
+      heading: "100% new comers & fresh products",
+      desc: `  Cumque ut rerum ratione molestias quae excepturi magnam saepe, iure eos, blanditiis tempore. Ipsa, voluptatibus at quas nulla delectus ex. Temporibus animi quidem quam et voluptate totam voluptatibus facere impedit doloribus!`,
+    },
+  },
+  {
+    id: `tab4`,
+    tab: { name: `Affrodable` },
+    content: {
+      Icon: HeartIcon,
+      textColor: `text-rose-600`,
+      iconBg: `bg-rose-600`,
+      heading: "Quality products that suits everyone",
+      desc: `  Cumque ut rerum ratione molestias quae excepturi magnam saepe, iure eos, blanditiis tempore. Ipsa, voluptatibus at quas nulla delectus ex. Temporibus animi quidem quam et voluptate totam voluptatibus facere impedit doloribus!`,
+    },
+  },
+];

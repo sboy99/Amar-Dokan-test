@@ -18,10 +18,10 @@ const SignInPage = () => {
   }, []);
 
   return (
-    <section className="relative snap-start px-4 py-6">
-      <div className="mx-auto min-h-64 max-w-lg overflow-hidden rounded-lg bg-white/50 ring-2 ring-white backdrop-blur ">
+    <section className="relative flex min-h-screen snap-start items-center justify-center px-4 py-6">
+      <div className="mx-auto min-h-64 w-full max-w-lg overflow-hidden rounded-lg bg-white/50 ring-2 ring-white backdrop-blur ">
         {/* decor */}
-        <div className="decor hidden bg-indigo-600 lg:block"></div>
+        {/* <div className="decor hidden shrink-0 bg-indigo-600 lg:block"></div> */}
         {/* form */}
 
         {isRegister ? (
@@ -32,6 +32,7 @@ const SignInPage = () => {
           <Login />
         )}
       </div>
+      {/* decoration */}
       <div className="absolute  inset-x-0 top-0 -z-10 h-full ">
         <img
           src={beams}
