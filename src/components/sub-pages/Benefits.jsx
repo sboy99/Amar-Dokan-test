@@ -7,10 +7,10 @@ const Benefits = () => {
     return (
       <Tab.Group
         as={`div`}
-        className="mx-auto rounded border border-white/10 bg-white/20 p-4 backdrop-blur-lg"
+        className="mx-auto rounded border border-white/10 bg-white/10 p-4 backdrop-blur-lg"
       >
         {/* list */}
-        <Tab.List className="mx-auto flex w-full snap-x snap-mandatory items-center gap-4 overflow-auto py-4">
+        <Tab.List className="flex w-full items-center gap-x-4 overflow-x-auto whitespace-nowrap pb-4">
           {BenefitTabs.map((tab) => (
             <Tab
               key={tab.id}
@@ -19,7 +19,7 @@ const Benefits = () => {
                   selected
                     ? ` bg-white text-blue-600`
                     : ` text-white/80 hover:bg-white/10 hover:text-white`
-                } shrink-0 snap-end rounded-full px-4 py-2 font-poppins text-lg font-medium outline-none`
+                } shrink-0 rounded-full px-4 py-2 font-poppins text-lg font-medium outline-none`
               }
             >
               {tab.tab.name}
