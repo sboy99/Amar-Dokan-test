@@ -29,9 +29,18 @@ module.exports = {
         1280: "1280px",
         1400: "1400px",
       },
+      height: {
+        "screen-50": "50vh",
+        "screen-75": "75vh",
+        "screen-85": "85vh",
+      },
       minHeight: {
         16: "4rem",
         64: "16rem",
+        "screen-3/4": "75vh",
+        "screen-50": "50vh",
+        "screen-75": "75vh",
+        "screen-85": "85vh",
       },
       maxWidth: {
         15: `15rem`,
@@ -41,5 +50,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/forms"),
     require("prettier-plugin-tailwindcss"),
+    require("@tailwindcss/line-clamp"),
   ],
 };

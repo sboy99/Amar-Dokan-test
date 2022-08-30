@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import {
   Bars3Icon,
@@ -52,7 +52,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 h-16 border-b-2 border-white/70 bg-white/50 text-gray-700 backdrop-blur dark:text-gray-100">
+    <div
+      className={`fixed inset-0 z-50 h-16 snap-start 
+       border-b-2 border-white/70 bg-white
+       text-gray-700 backdrop-blur dark:text-gray-100`}
+    >
       <div className="container mx-auto flex h-full items-center justify-between px-4">
         {/* links for devices */}
         <div className="hidden md:block">

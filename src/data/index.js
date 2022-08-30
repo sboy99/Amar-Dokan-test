@@ -5,6 +5,9 @@ import {
   ArrowLeftOnRectangleIcon as LogoutIcon,
 } from "@heroicons/react/24/outline";
 import GLogo from "../assets/G_Logo.svg";
+import notFound from "../assets/img/not_found.png";
+
+export { GLogo, notFound };
 
 export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
@@ -94,5 +97,3 @@ export const profileLinks = [
 //default user
 export const defaultUser =
   "https://cdn.pixabay.com/photo/2013/07/13/10/44/man-157699_960_720.png";
-
-export { GLogo };
