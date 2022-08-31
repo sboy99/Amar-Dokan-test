@@ -11,8 +11,10 @@ import {
 import GLogo from "../assets/G_Logo.svg";
 import notFound from "../assets/img/not_found.png";
 import blueBG from "../assets/img/blue_bg.jpg";
-
-export { GLogo, notFound, blueBG };
+import homeBg from "../assets/img/beams-home.jpg";
+import laserBeam from "../assets/img/laser_beam.png";
+import beams from "../assets/img/beams.jpg";
+export { GLogo, notFound, blueBG, homeBg, laserBeam, beams };
 
 export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
@@ -102,6 +104,9 @@ export const profileLinks = [
 //default user
 export const defaultUser =
   "https://cdn.pixabay.com/photo/2013/07/13/10/44/man-157699_960_720.png";
+
+export const furniture =
+  "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80";
 
 export const BenefitTabs = [
   {

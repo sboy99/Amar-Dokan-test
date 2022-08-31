@@ -28,6 +28,7 @@ import PageHero from "./sub-pages/PageHero";
 import Sidebar from "./sub-pages/Sidebar";
 import Category from "./sub-pages/Category";
 import Benefits from "./sub-pages/Benefits";
+import PopularProduct from "./sub-pages/PopularProduct";
 
 import Layout from "./layout/Layout";
 import Protected from "./layout/ProtectedRoute";
@@ -42,6 +43,7 @@ import ResetPassword from "./signin/ResetPassword";
 import HeadLine from "./signin/HeadLine";
 
 export {
+  PopularProduct,
   Benefits,
   HeadLine,
   Register,

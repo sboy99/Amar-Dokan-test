@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar, Footer, SearchPallete, MobileNavbar } from "..";
-import laserBeam from "../../assets/img/laser_beam.png";
+import { laserBeam } from "../../data";
 
 const Layout = () => {
   const BgImage = () => (
@@ -30,7 +30,6 @@ const Layout = () => {
       <div className="mx-auto pt-16">
         <Outlet />
       </div>
-      <BgImage />
       <Footer />
     </div>
   );

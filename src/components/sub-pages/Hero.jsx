@@ -7,8 +7,11 @@ const Hero = () => {
   return (
     <div className="container mx-auto grid min-h-screen-85 grid-cols-1 lg:grid-cols-2">
       {/* Text */}
-      <div className="relative flex flex-col justify-center gap-4 ">
+      <div className="relative mt-16 flex flex-col gap-2 lg:mt-0 lg:justify-center ">
         <h1 className="relative flex flex-col gap-2 font-poppins text-4xl font-extrabold text-slate-800 lg:gap-4 lg:text-7xl">
+          <p className="mb-2 font-poppins text-base font-semibold capitalize text-blue-600 md:text-lg">
+            Get desired product at your doorstep
+          </p>
           <p>Get 100%</p>
           <p className="flex flex-wrap items-center gap-3 text-blue-600">
             <span className="relative bg-blue-600 px-2 py-1 !text-white">
@@ -19,20 +22,20 @@ const Hero = () => {
           </p>
           <p className="flex flex-wrap items-center gap-3 text-3xl !text-slate-600 lg:text-6xl">
             at a Affrodable
-            <span className="relative rounded-xl bg-emerald-100 py-1 px-4 text-emerald-700 lg:mx-3">
+            <span className="relative rounded-lg  bg-emerald-400/10 py-1 px-4 text-emerald-500 backdrop-blur-md lg:mx-3">
               Price
               {/* floating icon */}
               <CurrencyRupeeIcon className="absolute top-0 right-0 h-6 w-6 translate-x-1/2 -translate-y-1/2 animate-pulse text-amber-500 lg:h-8 lg:w-8" />
             </span>
           </p>
         </h1>
-        <p className="text-lg text-slate-400 line-clamp-2 lg:mt-6 lg:text-center lg:line-clamp-3">
+        <p className="text-xl text-stone-700 line-clamp-4 lg:mt-6 lg:line-clamp-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae a id
           ad, dolor tempora ipsam harum dolore! dolor sit amet consectetur
           adipisicing elit. Cumque maiores eligendi, expedita nobis maxime esse.
         </p>
         {/* button */}
-        <div className="flex items-center justify-start gap-4 ">
+        <div className="mt-2 flex items-center justify-start gap-4">
           <Link
             to="/products"
             className="max-w-xs rounded-lg bg-slate-900 px-5 py-2 text-center font-semibold text-white outline-none transition duration-200 ease-in-out hover:bg-slate-700 lg:text-lg"
