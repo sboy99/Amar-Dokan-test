@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: "Poppins",
+        lexend: "Lexend",
       },
       fontSize: {
         xss: "10px",

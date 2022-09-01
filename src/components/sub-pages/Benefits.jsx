@@ -78,7 +78,7 @@ const Benefits = () => {
                     />
                   }
                 </p>
-                <p className="mt-2 font-poppins text-2xl font-bold capitalize">
+                <p className="mt-2 font-lexend text-2xl font-bold capitalize">
                   {panel.content.heading}
                 </p>
               </h1>
@@ -99,7 +99,7 @@ const Benefits = () => {
                 } max-w-xl rounded-xl px-6 py-4 text-start outline-none`
               }
             >
-              <h1 className="text-xl font-semibold text-white/90">
+              <h1 className="font-lexend text-xl font-medium tracking-wide text-white/90">
                 {tab.tab.name}
               </h1>
               <p className="tracking-tight text-white/70 line-clamp-2">

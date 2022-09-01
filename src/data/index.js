@@ -8,6 +8,14 @@ import {
   HeartIcon,
   BoltIcon,
 } from "@heroicons/react/24/outline";
+
+import {
+  TruckIcon,
+  CheckBadgeIcon,
+  HomeModernIcon,
+  CalendarIcon,
+} from "@heroicons/react/24/solid";
+
 import GLogo from "../assets/G_Logo.svg";
 import notFound from "../assets/img/not_found.png";
 import blueBG from "../assets/img/blue_bg.jpg";
@@ -209,5 +217,28 @@ export const HomeProducts = [
     image:
       "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80",
     price: 99,
+  },
+];
+
+export const Incentives = [
+  {
+    id: 1,
+    Icon: HomeModernIcon,
+    title: `Home Friendly`,
+  },
+  {
+    id: 2,
+    Icon: TruckIcon,
+    title: `Fast Delivary`,
+  },
+  {
+    id: 3,
+    Icon: CalendarIcon,
+    title: `1 year warenty`,
+  },
+  {
+    id: 4,
+    Icon: CheckBadgeIcon,
+    title: `Quality tested`,
   },
 ];

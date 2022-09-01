@@ -42,7 +42,7 @@ const HomePage = () => {
   return (
     <section className="Home ">
       {/* Hero */}
-      <div className="relative snap-start overflow-hidden p-4">
+      <div className="relative snap-start overflow-hidden p-4 backdrop-blur-md">
         <HomeBg />
         <Hero />
       </div>

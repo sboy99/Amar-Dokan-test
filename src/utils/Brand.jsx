@@ -1,19 +1,17 @@
 import React from "react";
-import { CubeIcon } from "@heroicons/react/24/outline";
+import { HomeModernIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
 const Brand = () => {
   return (
     <Link
       to={"/"}
-      className="flex items-center gap-4 border-0 outline-none focus:outline-none"
+      className="flex items-end gap-2 border-0 outline-none focus:outline-none"
     >
-      <CubeIcon className="h-9 w-9 -rotate-90 text-indigo-600 dark:text-blue-500" />
-      <div className="flex flex-col justify-center font-bold">
-        <h2 className="-ml-1 text-xl text-indigo-600 dark:text-blue-500">
-          Amar
-        </h2>
-        <h1 className="-mt-3 text-2xl text-slate-600">Dokan</h1>
+      <HomeModernIcon className="h-9 w-9  text-indigo-700 dark:text-blue-500" />
+      <div className="flex items-center gap-2 text-2xl font-bold tracking-tighter text-stone-700">
+        <h2 className="">Amar</h2>
+        <h1 className="">Dokan</h1>
       </div>
     </Link>
   );
