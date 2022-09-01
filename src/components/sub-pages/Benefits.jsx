@@ -58,7 +58,7 @@ const Benefits = () => {
     return (
       <Tab.Group
         as={`div`}
-        className="mt-8 flex items-center justify-center -space-x-2"
+        className="mt-8 flex flex-wrap-reverse items-center justify-center gap-y-4 -space-x-2 md:flex-nowrap"
       >
         <Tab.Panels
           className={`relative z-10 min-h-screen-50 max-w-sm overflow-hidden rounded-2xl bg-white shadow-md`}
@@ -94,7 +94,7 @@ const Benefits = () => {
               className={({ selected }) =>
                 `${
                   selected
-                    ? `border border-white/10 bg-white/10 backdrop-blur`
+                    ? `snap-start border border-white/10 bg-white/10 backdrop-blur`
                     : `hover:bg-white/5`
                 } max-w-xl rounded-xl px-6 py-4 text-start outline-none`
               }
@@ -113,22 +113,18 @@ const Benefits = () => {
   }
 
   return (
-    <article className="container mx-auto snap-start py-16 ">
+    <article className="container mx-auto w-full snap-start py-10 ">
       {/* name */}
-      <div className="px-4 text-lg font-semibold text-lime-400 md:hidden md:text-xl lg:px-0">
+      <div className="px-4 text-xl font-semibold text-lime-300 md:hidden md:text-xl lg:px-0">
         Benefits
       </div>
       {/* headline */}
-      <h1 className="px-4 font-poppins text-3xl font-extrabold text-white md:px-0 md:text-center md:text-5xl">
+      <h1 className="px-4 font-poppins text-4xl font-extrabold tracking-tighter text-white md:px-0 md:text-center md:text-6xl">
         <p>Benefits of</p>
         <p>Choosing Our Service</p>
       </h1>
-      {/* dialog tabs md device*/}
-      <div className="mt-4 md:hidden">
-        <MBenefitTab />
-      </div>
       {/* dialog tabs lg device */}
-      <div className="mt-4 hidden md:block">
+      <div className="mt-4 snap-start">
         <LBenefitTab />
       </div>
     </article>

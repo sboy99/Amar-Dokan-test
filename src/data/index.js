@@ -105,9 +105,7 @@ export const profileLinks = [
 export const defaultUser =
   "https://cdn.pixabay.com/photo/2013/07/13/10/44/man-157699_960_720.png";
 
-export const furniture =
-  "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80";
-
+//> Home
 export const BenefitTabs = [
   {
     id: `tab1`,
@@ -152,5 +150,64 @@ export const BenefitTabs = [
       heading: "Quality products that suits everyone",
       desc: `  Cumque ut rerum ratione molestias quae excepturi magnam saepe, iure eos, blanditiis tempore. Ipsa, voluptatibus at quas nulla delectus ex. Temporibus animi quidem quam et voluptate totam voluptatibus facere impedit doloribus!`,
     },
+  },
+];
+
+export const HomeProducts = [
+  {
+    id: 1,
+    title: `Albany Chair`,
+    category: `Furniture`,
+    image:
+      "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80",
+    price: 69,
+  },
+  {
+    id: 2,
+    title: `Mobiles`,
+    category: `Electronics`,
+    image:
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=629&q=80",
+    price: 299,
+  },
+  {
+    id: 3,
+    title: `Monitor`,
+    category: `Electronics`,
+    image:
+      "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+    price: 349,
+  },
+  {
+    id: 4,
+    title: `Sport Shoes`,
+    category: `Sports`,
+    image:
+      "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+    price: 99,
+  },
+  {
+    id: 5,
+    title: `Gaming Keyboards`,
+    category: `gaming`,
+    image:
+      "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1265&q=80",
+    price: 29,
+  },
+  {
+    id: 6,
+    title: `Jeans`,
+    category: `fashion`,
+    image:
+      "https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+    price: 49,
+  },
+  {
+    id: 7,
+    title: `Headphones`,
+    category: `accessories`,
+    image:
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80",
+    price: 99,
   },
 ];

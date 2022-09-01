@@ -47,7 +47,7 @@ const HomePage = () => {
         <Hero />
       </div>
       {/* benefits */}
-      <div className="relative snap-start overflow-hidden border-t-2 border-lime-400 ">
+      <div className="relative grid min-h-screen-90 snap-start items-center overflow-hidden border-t-2 border-lime-400 ">
         <img
           src={blueBG}
           alt=""
@@ -58,10 +58,13 @@ const HomePage = () => {
         <Benefits />
       </div>
       {/* products */}
-      <div className="relative min-h-screen-85 snap-start border-t border-slate-900/10 bg-white/25">
+      <section
+        key="homeProducts"
+        className="relative min-h-screen-85 snap-start border-t border-slate-900/10 bg-white/25"
+      >
         <GridOverlay />
         <PopularProduct />
-      </div>
+      </section>
       {/* start shoping */}
       <div className="relative min-h-64 snap-start bg-pink-600"></div>
     </section>
