@@ -12,9 +12,8 @@ import {
 import {
   TruckIcon,
   CheckBadgeIcon,
-  HomeModernIcon,
-  CalendarIcon,
-} from "@heroicons/react/24/solid";
+  ShieldCheckIcon,
+} from "@heroicons/react/24/outline";
 
 import GLogo from "../assets/G_Logo.svg";
 import notFound from "../assets/img/not_found.png";
@@ -22,7 +21,20 @@ import blueBG from "../assets/img/blue_bg.jpg";
 import homeBg from "../assets/img/beams-home.jpg";
 import laserBeam from "../assets/img/laser_beam.png";
 import beams from "../assets/img/beams.jpg";
-export { GLogo, notFound, blueBG, homeBg, laserBeam, beams };
+import heavyRain from "../assets/pattern/heavy-rain.svg";
+import rails from "../assets/pattern/rails.svg";
+import cage from "../assets/pattern/cage.svg";
+export {
+  GLogo,
+  notFound,
+  blueBG,
+  homeBg,
+  laserBeam,
+  beams,
+  heavyRain,
+  rails,
+  cage,
+};
 
 export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
@@ -223,22 +235,31 @@ export const HomeProducts = [
 export const Incentives = [
   {
     id: 1,
-    Icon: HomeModernIcon,
-    title: `Home Friendly`,
+    Icon: TruckIcon,
+    title: `Fast Delivary`,
+    desc: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui nostrum quasi ut, consequuntur animi quia?`,
   },
   {
     id: 2,
-    Icon: TruckIcon,
-    title: `Fast Delivary`,
+    Icon: CheckBadgeIcon,
+    title: `Quality tested`,
+    desc: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui nostrum quasi ut, consequuntur animi quia?`,
   },
   {
     id: 3,
-    Icon: CalendarIcon,
-    title: `1 year warenty`,
+    Icon: ShieldCheckIcon,
+    title: `Sequre Payment`,
+    desc: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui nostrum quasi ut, consequuntur animi quia?`,
   },
+];
+
+export const HomeTestimonials = [
   {
-    id: 4,
-    Icon: CheckBadgeIcon,
-    title: `Quality tested`,
+    userName: `Sagar Bera`,
+    domain: `@sagar`,
+    rating: 4.7,
+    profile: `https://avatars.githubusercontent.com/u/86586277?s=400&u=61afff291bf863a4231020c311230340615a8b59&v=4`,
+    title: `Good quality product`,
+    desc: `Amet consectetur adipisicing elit. Architecto error, reprehenderit ex magni omnis aspernatur!`,
   },
 ];

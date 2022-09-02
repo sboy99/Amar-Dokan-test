@@ -3,18 +3,20 @@ import { CurrencyRupeeIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon } from "@heroicons/react/24/solid";
 // import { Incentives } from "../../data";
 import { Link } from "react-router-dom";
+import { Incentives } from "../../data";
 
 const Hero = () => {
-  function Incentive({ Icon, title }) {
+  function Incentive({ Icon, title, desc }) {
     return (
-      <div className="shrink-0 px-2">
-        <div className="flex items-center gap-2">
-          <div className="">
-            {<Icon className="h-10 w-10 text-slate-600" />}
-          </div>
-          <p className="inline-block text-2xl font-bold capitalize tracking-tighter text-slate-800">
+      <div className="flex w-full max-w-sm shrink-0 items-start gap-6">
+        <div className="rounded-lg border-2 border-blue-600/75 p-1">
+          <Icon className="h-8 w-8 text-blue-600" />
+        </div>
+        <div className="flex flex-col gap-1">
+          <h1 className="font-inter font-semibold capitalize text-slate-900">
             {title}
-          </p>
+          </h1>
+          <p className="leading-5 text-slate-700 line-clamp-3">{desc}</p>
         </div>
       </div>
     );
@@ -23,8 +25,8 @@ const Hero = () => {
   return (
     <div className="container mx-auto grid min-h-screen-85 grid-cols-1">
       {/* Text */}
-      <div className="relative mt-16 flex flex-col items-center gap-4 lg:mt-0 lg:justify-center ">
-        <h1 className="relative flex flex-col items-center gap-2 font-lexend text-4xl font-extrabold tracking-tight text-slate-800 lg:gap-4 lg:text-7xl">
+      <div className="relative mt-16 flex flex-col gap-4 sm:items-center lg:mt-0 lg:justify-center ">
+        <h1 className="relative flex flex-col gap-2 font-lexend text-4xl font-extrabold tracking-tight text-slate-900 sm:items-center md:text-7xl lg:gap-4">
           <p className="font-poppins">Get 100%</p>
           <p className="flex flex-wrap items-center gap-3 text-blue-600">
             <span className="relative bg-blue-600 py-1 px-4 !text-white">
@@ -42,7 +44,7 @@ const Hero = () => {
             </span>
           </p>
         </h1>
-        <p className="max-w-3xl text-center text-lg tracking-tighter text-stone-700 line-clamp-3 lg:mt-2 lg:line-clamp-3">
+        <p className="max-w-2xl font-inter text-lg text-slate-700 line-clamp-3 sm:text-center lg:mt-2 lg:line-clamp-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae a id
           ad, dolor tempora ipsam harum dolore! dolor sit amet consectetur
           adipisicing elit. Cumque maiores eligendi, expedita nobis maxime esse.
@@ -64,8 +66,13 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-      {/* //TODO:Image */}
-      <div className="h-full w-full"></div>
+      <div className="col-start-1 row-start-2  w-full">
+        <div className="mt-2 flex flex-wrap items-center justify-evenly gap-4 p-4 sm:gap-6">
+          {Incentives.map((inc) => (
+            <Incentive key={inc.id} {...inc} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

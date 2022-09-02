@@ -81,7 +81,7 @@ const PopularProduct = () => {
           Our Popular products
         </p>
         {/* desc */}
-        <p className="mt-2 tracking-tight text-stone-600 md:text-lg">
+        <p className="mt-2 font-inter tracking-tight text-stone-600 md:text-lg">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Et ducimus
           cumque voluptate itaque consectetur minima vero autem alias recusandae
           voluptas?
@@ -116,7 +116,6 @@ const PopularProduct = () => {
             ))
           }
         </div>
-
         <button
           onClick={moveNext}
           disabled={isDisabled("next")}

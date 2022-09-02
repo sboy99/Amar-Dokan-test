@@ -55,7 +55,7 @@ const Navbar = () => {
     <div
       className={`fixed inset-0 z-50 h-16 snap-start 
        border-b-2 border-white/70 bg-white
-       text-gray-700 backdrop-blur dark:text-gray-100`}
+       font-inter text-gray-700 backdrop-blur dark:text-gray-100`}
     >
       <div className="container mx-auto flex h-full items-center justify-between px-4">
         {/* links for devices */}

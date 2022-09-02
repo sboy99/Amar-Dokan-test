@@ -1,11 +1,11 @@
 import React from "react";
-import { Benefits, Hero, PopularProduct } from "../components";
-import { blueBG, homeBg, beams } from "../data";
+import { Benefits, Hero, PopularProduct, Testimonials } from "../components";
+import { blueBG, homeBg, beams, rails } from "../data";
 
 const HomePage = () => {
   function HomeBg() {
     return (
-      <div className="absolute -top-[3rem] left-1/2 -z-10 -ml-[40rem] w-[163.125rem] max-w-none hue-rotate-30 sm:-ml-[67.5rem] lg:rotate-180">
+      <div className="absolute -top-[3rem] left-1/2 -z-20 -ml-[40rem] w-[163.125rem] max-w-none hue-rotate-30 sm:-ml-[67.5rem] lg:rotate-180">
         <picture>
           <img
             src={homeBg}
@@ -30,7 +30,7 @@ const HomePage = () => {
           loading="lazy"
         />
         <div
-          className="absolute inset-x-0 top-0 z-10 h-80 [mask-image:linear-gradient(to_top,transparen,white)]"
+          className="absolute inset-x-0 top-0 z-10 h-full [mask:linear-gradient(to_top,transparent,white)]"
           style={{
             backgroundImage: `url("https://play.tailwindcss.com/img/grid.svg")`,
           }}
@@ -43,6 +43,10 @@ const HomePage = () => {
     <section className="Home ">
       {/* Hero */}
       <div className="relative snap-start overflow-hidden p-4 backdrop-blur-md">
+        <div
+          className="absolute inset-x-0 bottom-0 -z-10 h-[75%] opacity-[0.03] [mask:linear-gradient(to_bottom,transparent,white)]"
+          style={{ backgroundImage: `url(${rails})` }}
+        ></div>
         <HomeBg />
         <Hero />
       </div>
@@ -66,7 +70,9 @@ const HomePage = () => {
         <PopularProduct />
       </section>
       {/* start shoping */}
-      <div className="relative min-h-64 snap-start bg-pink-600"></div>
+      <div className="relative min-h-64 snap-start bg-slate-800">
+        <Testimonials />
+      </div>
     </section>
   );
 };
