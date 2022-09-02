@@ -4,7 +4,7 @@ import { HomeTestimonials } from "../../data";
 
 const Testimonials = () => {
   return (
-    <div className="container z-0 mx-auto grid grid-cols-1 gap-x-4 p-4 py-8 sm:py-10 lg:grid-cols-2">
+    <div className="container z-0 mx-auto grid grid-cols-1 gap-x-4 gap-y-6 p-4 py-8 sm:py-10 lg:grid-cols-2">
       <h1 className="font relative z-0 font-poppins">
         <HeartIcon className="absolute left-0 top-1/2 -z-10 h-10 w-10 -translate-x-1/2 -translate-y-1/2 -rotate-12 text-sky-400 sm:h-12 sm:w-12" />
         <p className="font-semibold capitalize text-sky-400 sm:text-xl">
@@ -21,7 +21,7 @@ const Testimonials = () => {
       </h1>
       {/* testimonials.. */}
       <div className="overflow-hidden ">
-        <div className="relative mt-4 flex h-full w-full items-center justify-center sm:mt-0">
+        <div className="relative mt-4 flex h-full w-full items-center sm:mt-0 lg:justify-center">
           {HomeTestimonials.map((tetimonial, index) => (
             <Testimonial key={index} {...tetimonial} />
           ))}
