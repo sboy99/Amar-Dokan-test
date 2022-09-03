@@ -89,45 +89,46 @@ const Testimonials = () => {
     };
 
     return (
-      // <AnimatePresence>
-      show && (
-        // <motion.div
-        //   variants={varient}
-        //   initial={left ? `left` : `right`}
-        //   animate={{ opacity: 1, x: 0 }}
-        //   transition={{ duration: 0.75 }}
-        //   exit={{ opacity: 0 }}
-        <div className="w-full max-w-sm divide-y divide-slate-200/50">
-          <h1 className="py-3 font-inter">
-            <p className="text-lg font-semibold text-lime-400">{title}</p>
-            <p className=" leading-6 text-slate-300 line-clamp-4">{desc} </p>
-          </h1>
-          <div className="flex items-center justify-between py-3">
-            <div className="flex items-center gap-2 text-lg text-lime-400">
-              <StarIcon className="h-6 w-6 " /> {rating}
-            </div>
-            {/* profile */}
-            <div className="flex items-center gap-2">
-              <h1 className="-space-y-2 text-right">
-                <p className="font-inter font-semibold text-white">
-                  {userName}
-                </p>
-                <p className="text-sm tracking-tight text-slate-200">
-                  {domain}
-                </p>
-              </h1>
-              <div className="rounded-full bg-lime-500 p-1">
-                <img
-                  src={profile}
-                  alt={userName}
-                  className="h-8 w-8 rounded-full object-cover object-center"
-                />
+      <AnimatePresence>
+        {show && (
+          <motion.div
+            variants={varient}
+            initial={left ? `left` : `right`}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75 }}
+            exit={{ opacity: 0 }}
+            className="w-full max-w-sm divide-y divide-slate-200/50"
+          >
+            <h1 className="py-3 font-inter">
+              <p className="text-lg font-semibold text-lime-400">{title}</p>
+              <p className=" leading-6 text-slate-300 line-clamp-4">{desc} </p>
+            </h1>
+            <div className="flex items-center justify-between py-3">
+              <div className="flex items-center gap-2 text-lg text-lime-400">
+                <StarIcon className="h-6 w-6 " /> {rating}
+              </div>
+              {/* profile */}
+              <div className="flex items-center gap-2">
+                <h1 className="-space-y-2 text-right">
+                  <p className="font-inter font-semibold text-white">
+                    {userName}
+                  </p>
+                  <p className="text-sm tracking-tight text-slate-200">
+                    {domain}
+                  </p>
+                </h1>
+                <div className="rounded-full bg-lime-500 p-1">
+                  <img
+                    src={profile}
+                    alt={userName}
+                    className="h-8 w-8 rounded-full object-cover object-center"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )
-      // </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
     );
   }
 
