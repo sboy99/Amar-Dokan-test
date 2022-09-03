@@ -262,4 +262,20 @@ export const HomeTestimonials = [
     title: `Good quality product`,
     desc: `Amet consectetur adipisicing elit. Architecto error, reprehenderit ex magni omnis aspernatur!`,
   },
+  {
+    userName: `Monisha Bera`,
+    domain: `@moni`,
+    rating: 4.8,
+    profile: `https://avatars.githubusercontent.com/u/86586277?s=400&u=61afff291bf863a4231020c311230340615a8b59&v=4`,
+    title: `Super quality product`,
+    desc: `Amet consectetur adipisicing elit. Architecto error, reprehenderit ex magni omnis aspernatur!`,
+  },
+  {
+    userName: `Sudipta Tung`,
+    domain: `@sudipta`,
+    rating: 5.0,
+    profile: `https://avatars.githubusercontent.com/u/86586277?s=400&u=61afff291bf863a4231020c311230340615a8b59&v=4`,
+    title: `Fully Satified`,
+    desc: `Amet consectetur adipisicing elit. Architecto error, reprehenderit ex magni omnis aspernatur!`,
+  },
 ];
