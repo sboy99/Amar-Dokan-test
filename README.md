@@ -1,1 +1,2 @@
-Next task: Home Component Design!
+1. Subscribe to Mail..
+2. Data fetching....

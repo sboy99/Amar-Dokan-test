@@ -95,7 +95,7 @@ const Testimonials = () => {
             variants={varient}
             initial={left ? `left` : `right`}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.75 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
             exit={{ opacity: 0 }}
             className="w-full max-w-sm divide-y divide-slate-200/50"
           >

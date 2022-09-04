@@ -69,8 +69,9 @@ const HomePage = () => {
         <GridOverlay />
         <PopularProduct />
       </section>
-      {/* start shoping */}
-      <div className="relative min-h-64 snap-start bg-slate-800">
+      {/* Testimonial */}
+      <div className="relative min-h-64 snap-start overflow-x-hidden bg-slate-800">
+        <div className="absolute top-0 right-0 h-12 w-32 -translate-y-1/2 translate-x-1/2 rounded-full bg-sky-400"></div>
         <Testimonials />
       </div>
     </section>

@@ -266,7 +266,7 @@ export const HomeTestimonials = [
     userName: `Monisha Bera`,
     domain: `@moni`,
     rating: 4.8,
-    profile: `https://avatars.githubusercontent.com/u/86586277?s=400&u=61afff291bf863a4231020c311230340615a8b59&v=4`,
+    profile: `https://avatars.githubusercontent.com/u/112371330?v=4`,
     title: `Super quality product`,
     desc: `Amet consectetur adipisicing elit. Architecto error, reprehenderit ex magni omnis aspernatur!`,
   },
