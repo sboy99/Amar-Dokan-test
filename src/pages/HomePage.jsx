@@ -64,7 +64,7 @@ const HomePage = () => {
   }
 
   return (
-    <section className="Home ">
+    <section className="Home pt-16">
       {/* Hero */}
       <div className="relative snap-start overflow-hidden p-4 backdrop-blur-md">
         <div
