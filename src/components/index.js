@@ -30,6 +30,7 @@ import Category from "./sub-pages/Category";
 import Benefits from "./sub-pages/Benefits";
 import PopularProduct from "./sub-pages/PopularProduct";
 import Testimonials from "./sub-pages/Testimonials";
+import GetInTouch from "./sub-pages/GetInTouch";
 
 import Layout from "./layout/Layout";
 import Protected from "./layout/ProtectedRoute";
@@ -44,6 +45,7 @@ import ResetPassword from "./signin/ResetPassword";
 import HeadLine from "./signin/HeadLine";
 
 export {
+  GetInTouch,
   Testimonials,
   PopularProduct,
   Benefits,

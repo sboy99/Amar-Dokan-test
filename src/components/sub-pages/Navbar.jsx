@@ -53,7 +53,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 h-16 snap-start 
+      className={`sticky inset-x-0 top-0 z-50 h-16 snap-start 
        border-b-2 border-white/70 bg-white
        font-inter text-gray-700 backdrop-blur dark:text-gray-100`}
     >
