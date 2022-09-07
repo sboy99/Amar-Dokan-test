@@ -61,6 +61,7 @@ const AuthProvider = ({ children }) => {
           isVerified: userCred.emailVerified,
         };
         dispatch(setUser(user));
+        navigate("/products", { state: { from: location }, replace: true });
       } else {
         dispatch(setUser(null));
       }

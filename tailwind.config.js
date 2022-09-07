@@ -32,6 +32,8 @@ module.exports = {
         1400: "1400px",
       },
       height: {
+        "screen-16": "16vh",
+        "screen-33": "33vh",
         "screen-50": "50vh",
         "screen-75": "75vh",
         "screen-85": "85vh",

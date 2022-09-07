@@ -38,6 +38,11 @@ export {
 
 export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
+//> URLs
+export const products_url = "/react-store-products";
+export const single_product_url = "/react-store-single-product?id=";
+
+//> Navbar
 export const NavbarItems = [
   {
     id: 1,

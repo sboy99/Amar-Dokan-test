@@ -34,9 +34,9 @@ const GetInTouch = () => {
         <p className="text-lg font-semibold capitalize leading-none tracking-tight text-rose-500 md:text-2xl">
           Get in touch
         </p>
-        <h1 className="max-w-xs font-lexend text-4xl font-extrabold capitalize leading-8 tracking-tighter text-slate-700 md:-ml-2 md:max-w-lg md:text-6xl">
+        <p className="max-w-xs font-lexend text-4xl font-extrabold capitalize leading-8 tracking-tighter text-slate-700 md:-ml-2 md:max-w-lg md:text-6xl">
           Get latest updates from us
-        </h1>
+        </p>
         <p className="max-w-lg text-lg leading-5 tracking-tight text-slate-500 md:leading-6">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi,
           autem! Non laboriosam aliquam voluptas eveniet!
