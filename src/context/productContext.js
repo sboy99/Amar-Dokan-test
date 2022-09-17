@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 import { useFetchProductsQuery } from "../api/apiSlice";
 
 const ProductContext = createContext({
-  product: [],
+  allProducts: [],
   getFeaturedProducts: () => {},
   isLoading: true,
   isSuccess: null,
@@ -11,7 +11,7 @@ const ProductContext = createContext({
 });
 export const ProductProvider = ({ children }) => {
   const {
-    data: product,
+    data: allProducts,
     isLoading,
     isError,
     isSuccess,
@@ -20,14 +20,14 @@ export const ProductProvider = ({ children }) => {
 
   function getFeaturedProducts() {
     if (isSuccess) {
-      return product.filter((product) => product?.featured === true);
+      return allProducts.filter((product) => product?.featured === true);
     }
     return [];
   }
 
   const value = {
     getFeaturedProducts,
-    product,
+    allProducts,
     isLoading,
     isError,
     isSuccess,

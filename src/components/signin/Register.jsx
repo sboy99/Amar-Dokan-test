@@ -7,7 +7,7 @@ import { LightBulbIcon } from "@heroicons/react/24/outline";
 import { FormikFormLayout, FormikCheckBox, FormikInput } from "../../utils";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setRegister } from "../../features/AuthSlice";
+import { setRegister } from "../../features";
 import { useAuth } from "../../context/authContext";
 import { auth } from "../../app/store";
 

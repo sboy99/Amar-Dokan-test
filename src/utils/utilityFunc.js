@@ -8,3 +8,9 @@ export const getMessage = (code) => {
 export const sleep = (sec) => {
   return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 };
+
+export const formatToINR = (price) =>
+  new Intl.NumberFormat("en-In", {
+    style: "currency",
+    currency: "INR",
+  }).format(price);

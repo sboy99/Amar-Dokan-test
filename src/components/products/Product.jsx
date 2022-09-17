@@ -1,8 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { formatToINR } from "../../utils";
 
-const Product = ({ name, image, price, company, description, category }) => {
+const Product = ({
+  id,
+  name,
+  image,
+  price,
+  company,
+  description,
+  category,
+}) => {
   return (
-    <div className="w-64  shrink-0 bg-white pb-2">
+    <Link to={`/products/${id}`} className="w-64  shrink-0 bg-white pb-2">
       <div className="overflow-hidden rounded-lg ">
         <img
           src={image}
@@ -14,18 +24,18 @@ const Product = ({ name, image, price, company, description, category }) => {
       </div>
       <div className="flex flex-col gap-2 py-4">
         <h1 className="flex items-center justify-between">
-          <p className="font-lexend text-lg font-semibold capitalize leading-5 tracking-tight text-slate-800">
+          <p className="font-lexend text-lg font-semibold capitalize leading-5  text-slate-900/80">
             {name}
           </p>
-          <p className="rounded-lg bg-slate-100 px-4 py-1 text-xl font-semibold text-slate-900">
-            ${price}
+          <p className="rounded-lg bg-slate-100 px-4 py-1 text-lg font-semibold text-slate-900/75">
+            {formatToINR(price)}
           </p>
         </h1>
         <p className="max-w-sm font-inter text-sm leading-5 text-slate-600 line-clamp-3">
           {description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

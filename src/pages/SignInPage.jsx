@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../app/store";
 import { Register, Login, ForgotPassword } from "../components";
 import beams from "../assets/img/beams-templates.png";
-import { setRegister, setForgotPassword } from "../features/AuthSlice";
+import { setRegister, setForgotPassword } from "../features";
 
 const SignInPage = () => {
   const { isRegister, isForgotPassword } = useSelector(auth);

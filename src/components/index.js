@@ -16,8 +16,13 @@ import StripeCheckOut from "./payment/StripeCheckOut";
 
 import FeaturedProduct from "./products/FeaturedProduct";
 import Product from "./products/Product";
-import ProductList from "./products/ProductList";
+import ViewProducts from "./products/ViewProducts";
 import ShopByCategory from "./products/ShopByCategory";
+import ProductMenu from "./products/ProductMenu";
+import ProductCategory from "./products/ProductCategory";
+import Comapny from "./products/Comapny";
+import PriceSlider from "./products/PriceSlider";
+import ProductList from "./products/ProductList";
 
 import Contact from "./sub-pages/Contact";
 import Error from "./sub-pages/Error";
@@ -46,6 +51,11 @@ import ResetPassword from "./signin/ResetPassword";
 import HeadLine from "./signin/HeadLine";
 
 export {
+  ProductList,
+  PriceSlider,
+  ProductCategory,
+  Comapny,
+  ProductMenu,
   ShopByCategory,
   GetInTouch,
   Testimonials,
@@ -80,7 +90,7 @@ export {
   StripeCheckOut,
   PageHero,
   Product,
-  ProductList,
+  ViewProducts,
   Sidebar,
   Sort,
   Stars,

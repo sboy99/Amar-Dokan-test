@@ -5,7 +5,7 @@ import { FormikFormLayout, FormikInput } from "../../utils";
 import { KeyIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../../app/store";
-import { setForgotPassword } from "../../features/AuthSlice";
+import { setForgotPassword } from "../../features";
 import { useFormikError } from "../../hooks";
 import { useAuth } from "../../context/authContext";
 

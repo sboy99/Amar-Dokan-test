@@ -10,6 +10,7 @@ const Panel = ({
   popClass,
   className,
   photo = null,
+  allignPanel = "right-0 origin-top-right",
 }) => {
   return (
     <Popover as={`div`} className={`${popClass} relative`}>
@@ -56,7 +57,9 @@ const Panel = ({
             leaveFrom="opacity-100 translate-y-0 "
             leaveTo="opacity-0 translate-y-3 "
           >
-            <Popover.Panel className="absolute right-0 z-10 mt-3 w-screen max-w-15 overflow-hidden rounded-lg bg-slate-300 shadow-md ring-slate-900/5">
+            <Popover.Panel
+              className={`absolute z-10 mt-3 min-w-[16rem] overflow-hidden rounded-lg bg-slate-300 shadow-md ring-slate-900/5 ${allignPanel}`}
+            >
               <div className={className}>{children}</div>
             </Popover.Panel>
           </Transition>

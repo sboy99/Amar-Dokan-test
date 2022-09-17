@@ -284,3 +284,51 @@ export const HomeTestimonials = [
     desc: `Amet consectetur adipisicing elit. Architecto error, reprehenderit ex magni omnis aspernatur!`,
   },
 ];
+
+//> Product
+
+export const Categories = [
+  {
+    id: 1,
+    name: `Fashion`,
+  },
+  {
+    id: 2,
+    name: `Sports`,
+  },
+  {
+    id: 3,
+    name: `Electronics`,
+  },
+  {
+    id: 4,
+    name: `Home & Appliance`,
+  },
+  {
+    id: 5,
+    name: `Smart Phones`,
+  },
+  {
+    id: 6,
+    name: `Decorations`,
+  },
+];
+
+export const SortOrders = [
+  {
+    id: 1,
+    name: `Relevence`,
+  },
+  {
+    id: 2,
+    name: `Name`,
+  },
+  {
+    id: 3,
+    name: `Date`,
+  },
+  {
+    id: 4,
+    name: `Popularity`,
+  },
+];

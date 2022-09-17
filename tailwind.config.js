@@ -50,6 +50,13 @@ module.exports = {
       maxWidth: {
         15: `15rem`,
       },
+      gridTemplateColumns: {
+        "autofill-8": "repeat(auto-fill,minmax(8rem,1fr))",
+        "autofill-12": "repeat(auto-fill,minmax(12rem,1fr))",
+        "autofill-14": "repeat(auto-fill,minmax(14rem,1fr))",
+        "autofill-16": "repeat(auto-fill,minmax(16rem,1fr))",
+        "autofill-20": "repeat(auto-fill,minmax(20rem,1fr))",
+      },
     },
   },
   plugins: [

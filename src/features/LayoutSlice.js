@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  gridView: true,
   searchOpen: false,
   menuOpen: false,
   searchText: ``,
@@ -19,9 +20,10 @@ const LayoutSlice = createSlice({
     setSearchText: (state, action) => {
       state.searchText = action.payload;
     },
+    setGridView: (state, action) => {
+      state.gridView = action.payload;
+    },
   },
 });
 
-export const { setSearchOpen, setSearchText, setMenuOpen } =
-  LayoutSlice.actions;
-export default LayoutSlice.reducer;
+export default LayoutSlice;

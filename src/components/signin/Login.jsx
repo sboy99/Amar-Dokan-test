@@ -5,7 +5,7 @@ import { FormikCheckBox, FormikInput, FormikFormLayout } from "../../utils";
 import { useFormikError } from "../../hooks";
 import { BoltIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
-import { setRegister, setForgotPassword } from "../../features/AuthSlice";
+import { setRegister, setForgotPassword } from "../../features";
 import { useAuth } from "../../context/authContext";
 import { auth } from "../../app/store";
 import { GLogo } from "../../data";

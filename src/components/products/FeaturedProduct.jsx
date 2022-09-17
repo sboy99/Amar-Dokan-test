@@ -1,9 +1,20 @@
 import React from "react";
-import { useProductContext } from "../../context/productContext";
+import { useDispatch, useSelector } from "react-redux";
+// import { useProductContext } from "../../context/productContext";
 import Product from "./Product";
+import { getFeaturedProducts } from "../../features";
+import { products } from "../../app/store";
+import { useEffect } from "react";
 
 const FeaturedProduct = () => {
-  const { getFeaturedProducts } = useProductContext();
+  const dispatch = useDispatch();
+  const { featuredProducts } = useSelector(products);
+  useEffect(() => {
+    if (featuredProducts.length === 0) dispatch(getFeaturedProducts());
+
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <div className="container mx-auto p-4 py-8 sm:py-16">
       <h1 className="font-lexend font-semibold text-indigo-600 md:text-xl">
@@ -17,7 +28,7 @@ const FeaturedProduct = () => {
         sint tempore dolores.
       </p>
       <div className="mt-4 flex items-center gap-4 overflow-auto pb-4">
-        {getFeaturedProducts().map((product, index) => (
+        {featuredProducts.map((product, index) => (
           <Product key={product?.id | index} {...product} />
         ))}
       </div>

@@ -21,7 +21,7 @@ import {
   setError,
   setMessage,
   resetState,
-} from "../features/AuthSlice";
+} from "../features";
 import { getMessage } from "../utils";
 
 const AuthContext = createContext({
@@ -40,6 +40,7 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const { isSuccess, isError } = useSelector(authState);
   const dispatch = useDispatch();
+
   //reset server response//
   useEffect(() => {
     const timeOut = setTimeout(() => {
@@ -133,13 +134,14 @@ const AuthProvider = ({ children }) => {
     try {
       await signInWithPopup(auth, googleProvider);
       dispatch(setSuccess());
-      navigate("/", { state: { from: location }, replace: true });
+      navigate("/products", { state: { from: location }, replace: true });
     } catch (error) {
       console.log(error.code);
     } finally {
       dispatch(setLoading(false));
     }
   };
+
   //> Google Forgot Password
   const forgotPassword = async (values) => {
     const { email } = values;

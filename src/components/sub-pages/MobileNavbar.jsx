@@ -3,7 +3,7 @@ import { Transition, Dialog } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { layout } from "../../app/store";
-import { setMenuOpen as setIsOpen } from "../../features/LayoutSlice";
+import { setMenuOpen as setIsOpen } from "../../features";
 import { NavbarItems } from "../../data";
 import { Brand } from "../../utils";
 

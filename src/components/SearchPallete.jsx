@@ -3,10 +3,7 @@ import { Dialog, Combobox, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon as SearchIcon } from "@heroicons/react/24/outline";
 import { searchItems } from "../data";
 import { layout } from "../app/store";
-import {
-  setSearchOpen as setIsOpen,
-  setSearchText,
-} from "../features/LayoutSlice";
+import { setSearchOpen as setIsOpen, setSearchText } from "../features";
 import { useSelector, useDispatch } from "react-redux";
 
 const SearchPallete = () => {

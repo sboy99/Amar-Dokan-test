@@ -13,10 +13,7 @@ import { EllipsisVerticalIcon } from "@heroicons/react/24/solid";
 import { NavbarItems } from "../../data";
 import { IconButton, Brand, Panel, PopBtn, PopLink } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setSearchOpen,
-  setMenuOpen as setIsOpen,
-} from "../../features/LayoutSlice";
+import { setSearchOpen, setMenuOpen as setIsOpen } from "../../features";
 import { auth, layout } from "../../app/store";
 import { useAuth } from "../../context/authContext";
 
@@ -53,7 +50,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed inset-x-0 top-0 z-50 h-16 snap-start 
+      className={`sticky inset-x-0 top-0 z-50 h-16 snap-start 
        border-b-2 border-white/70 bg-white
        font-inter text-gray-700 backdrop-blur dark:text-gray-100`}
     >

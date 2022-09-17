@@ -1,10 +1,11 @@
 import React from "react";
-import { FeaturedProduct, ShopByCategory } from "../components";
-import { useProductContext } from "../context/productContext";
+import { useSelector } from "react-redux";
+import { products } from "../app/store";
+import { FeaturedProduct, ShopByCategory, ViewProducts } from "../components";
 import { RailsDecor } from "../utils";
 
 const ProductPage = () => {
-  const { isLoading, isSuccess } = useProductContext();
+  const { isLoading, isSuccess } = useSelector(products);
 
   if (isLoading) return <h1>Loading...</h1>;
 
@@ -12,15 +13,18 @@ const ProductPage = () => {
     isSuccess && (
       <section className="Product">
         {/* category college */}
-        <div className="relative snap-start  bg-white">
+        <div className="relative bg-white">
           <ShopByCategory />
         </div>
         {/* featured products */}
-        <div className="relative snap-start border-t-2 border-slate-900/5">
+        <div className="relative overflow-hidden border-t-2 border-slate-900/5">
           <RailsDecor className="h-1/3" />
           <FeaturedProduct />
         </div>
         {/* products */}
+        <div className="relative min-h-64 bg-slate-200">
+          <ViewProducts />
+        </div>
       </section>
     )
   );
