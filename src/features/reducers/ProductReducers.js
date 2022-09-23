@@ -39,10 +39,36 @@ const getFeaturedProducts = (state) => {
   }
 };
 
+//> sort by name
+const sortByName = (state) => {
+  console.log("Name");
+};
+//> sort by newest
+const sortByNewest = () => {
+  console.log("New");
+};
+//> sort by oldest
+const sortByOldest = () => {
+  console.log("Old");
+};
+//> sort by lowest price
+const sortByLowestPrice = () => {
+  console.log("Low");
+};
+//> sort by highest price
+const sortByHighestPrice = () => {
+  console.log("High");
+};
+
 export {
   fetchAllProducts,
   getFeaturedProducts,
   fetchAllProductsPending,
   fetchAllProductsFullfilled,
   fetchAllProductsRejected,
+  sortByName,
+  sortByNewest,
+  sortByOldest,
+  sortByLowestPrice,
+  sortByHighestPrice,
 };

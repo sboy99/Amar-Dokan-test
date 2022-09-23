@@ -23,7 +23,14 @@ export const {
 } = AuthSlice.actions;
 export const { setSearchOpen, setSearchText, setMenuOpen, setGridView } =
   LayoutSlice.actions;
-export const { getFeaturedProducts } = ProductSlice.actions;
+export const {
+  getFeaturedProducts,
+  sortByName,
+  sortByNewest,
+  sortByOldest,
+  sortByLowestPrice,
+  sortByHighestPrice,
+} = ProductSlice.actions;
 
 // -Export Async Thunks- //
 export { fetchAllProducts };

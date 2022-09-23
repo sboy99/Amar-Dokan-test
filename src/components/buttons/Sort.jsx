@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../utils";
 import { SortOrders } from "../../data";
 import { Listbox } from "@headlessui/react";
@@ -12,6 +12,13 @@ import {
   Bars3CenterLeftIcon,
   AdjustmentsHorizontalIcon,
 } from "@heroicons/react/24/outline";
+import {
+  sortByName,
+  sortByNewest,
+  sortByOldest,
+  sortByLowestPrice,
+  sortByHighestPrice,
+} from "../../features";
 
 const Sort = () => {
   const dispatch = useDispatch();
@@ -21,7 +28,7 @@ const Sort = () => {
     <div className="z-0 inline-flex w-full flex-wrap items-center justify-between gap-y-2 px-4 py-2">
       <div className="flex gap-x-2">
         {/* filter button for medium devices */}
-        <div className="z-10 flex-shrink-0 lg:hidden">
+        <div className="z-50 flex-shrink-0 lg:hidden">
           <Tip tip="Filters">
             <Panel
               className="w-fit"
@@ -65,13 +72,29 @@ const Sort = () => {
 
 function SortBy({ list = [] }) {
   const [selected, setSelected] = React.useState(list[0]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (selected?.id === 1) {
+      dispatch(sortByName());
+    } else if (selected?.id === 2) {
+      dispatch(sortByNewest());
+    } else if (selected?.id === 3) {
+      dispatch(sortByOldest());
+    } else if (selected?.id === 4) {
+      dispatch(sortByLowestPrice());
+    } else {
+      dispatch(sortByHighestPrice());
+    }
+    //eslint-disable-next-line
+  }, [selected]);
 
   return (
     <Listbox
       value={selected}
       as="div"
       onChange={setSelected}
-      className="relative "
+      className="relative z-40 cursor-pointer"
     >
       <Listbox.Button
         className={`rounded bg-sky-50 py-1 px-2 text-start font-medium text-sky-500 outline-none`}
@@ -86,9 +109,9 @@ function SortBy({ list = [] }) {
           <Listbox.Option key={elem?.id} as="li" value={elem}>
             {({ active, selected }) => (
               <div
-                className={`py-2 px-4 ${active && `bg-slate-100`} rounded ${
-                  selected && `font-semibold`
-                } text-slate-800`}
+                className={`whitespace-nowrap py-2 px-4 ${
+                  active && `bg-slate-100`
+                } rounded ${selected && `font-semibold`} text-slate-800`}
               >
                 {elem?.name}
               </div>

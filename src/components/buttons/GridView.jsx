@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { single_product_url } from "../../data";
 import { formatToINR } from "../../utils";
 
-const GridView = ({ products }) => {
+const GridView = ({ products=[] }) => {
   return (
     <div className="grid grid-flow-dense grid-cols-autofill-12 place-content-center gap-3">
       {products.map((product) => (

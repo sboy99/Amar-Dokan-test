@@ -317,18 +317,22 @@ export const Categories = [
 export const SortOrders = [
   {
     id: 1,
-    name: `Relevence`,
-  },
-  {
-    id: 2,
     name: `Name`,
   },
   {
+    id: 2,
+    name: `Newest`,
+  },
+  {
     id: 3,
-    name: `Date`,
+    name: `Oldest`,
   },
   {
     id: 4,
-    name: `Popularity`,
+    name: `Lowest Price`,
+  },
+  {
+    id: 5,
+    name: `Highest Price`,
   },
 ];

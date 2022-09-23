@@ -5,6 +5,11 @@ import {
   fetchAllProductsPending,
   fetchAllProductsRejected,
   getFeaturedProducts,
+  sortByName,
+  sortByNewest,
+  sortByOldest,
+  sortByLowestPrice,
+  sortByHighestPrice,
 } from "./reducers/ProductReducers";
 
 const initialState = {
@@ -22,6 +27,11 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     getFeaturedProducts,
+    sortByName,
+    sortByNewest,
+    sortByOldest,
+    sortByLowestPrice,
+    sortByHighestPrice,
   },
   extraReducers: {
     [fetchAllProducts.pending]: fetchAllProductsPending,

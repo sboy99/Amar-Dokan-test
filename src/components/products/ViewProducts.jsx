@@ -10,8 +10,10 @@ const ViewProducts = () => {
           <ProductMenu />
         </div>
         {/* Filter Product List */}
-        <div className="min-h-screen-75 flex-auto rounded-lg bg-white shadow shadow-stone-500/25">
-          <Sort />
+        <div className="z-0 flex-auto rounded-lg bg-white pb-4 shadow shadow-stone-500/25">
+          <div className="z-10">
+            <Sort />
+          </div>
           <ProductList />
         </div>
       </div>

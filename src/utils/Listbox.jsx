@@ -24,7 +24,7 @@ const List = ({ list = [], title = "" }) => {
                   key={item?.id}
                 >
                   {({ active, selected }) => (
-                    <li
+                    <div
                       className={`flex w-full items-center gap-x-2 rounded p-2 ${
                         active && `bg-sky-100 text-blue-600`
                       } ${selected && `font-semibold`}`}
@@ -33,7 +33,7 @@ const List = ({ list = [], title = "" }) => {
                       {selected && (
                         <CheckIcon className="h-5 w-5 text-emerald-500" />
                       )}
-                    </li>
+                    </div>
                   )}
                 </Listbox.Option>
               ))}
