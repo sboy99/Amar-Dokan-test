@@ -12,13 +12,7 @@ import {
   Bars3CenterLeftIcon,
   AdjustmentsHorizontalIcon,
 } from "@heroicons/react/24/outline";
-import {
-  sortByName,
-  sortByNewest,
-  sortByOldest,
-  sortByLowestPrice,
-  sortByHighestPrice,
-} from "../../features";
+import { sortBy } from "../../features";
 
 const Sort = () => {
   const dispatch = useDispatch();
@@ -75,17 +69,7 @@ function SortBy({ list = [] }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (selected?.id === 1) {
-      dispatch(sortByName());
-    } else if (selected?.id === 2) {
-      dispatch(sortByNewest());
-    } else if (selected?.id === 3) {
-      dispatch(sortByOldest());
-    } else if (selected?.id === 4) {
-      dispatch(sortByLowestPrice());
-    } else {
-      dispatch(sortByHighestPrice());
-    }
+    dispatch(sortBy(selected?.type));
     //eslint-disable-next-line
   }, [selected]);
 

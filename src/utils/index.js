@@ -1,5 +1,5 @@
 import Brand from "./Brand";
-import { RailsDecor } from "./Decor";
+import { RailsDecor, DiagonalLinesDecor, StarsDecor } from "./Decor";
 import FormikCheckBox from "./FormikCheckBox";
 import FormikFormLayout from "./FormikFormLayout";
 import FormikInput from "./FormikInput";
@@ -13,6 +13,8 @@ import Button from "./Button";
 import { getMessage, sleep, formatToINR } from "./utilityFunc";
 
 export {
+  StarsDecor,
+  DiagonalLinesDecor,
   Button,
   Tip,
   Listbox,

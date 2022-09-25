@@ -5,7 +5,7 @@ import { Categories } from "../../data";
 
 const ProductMenu = () => {
   return (
-    <div className="flex min-w-[16rem] flex-col gap-y-2 rounded-lg bg-white p-4 shadow shadow-stone-500/20 ">
+    <div className="flex min-w-[16rem] flex-col gap-y-2 rounded-lg bg-white p-4 ">
       {/* Heading */}
       <h1 className="flex-shrink-0 font-lexend text-lg font-bold tracking-wide text-stone-600">
         Product Filters

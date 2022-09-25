@@ -39,25 +39,38 @@ const getFeaturedProducts = (state) => {
   }
 };
 
-//> sort by name
-const sortByName = (state) => {
-  console.log("Name");
-};
-//> sort by newest
-const sortByNewest = () => {
-  console.log("New");
-};
-//> sort by oldest
-const sortByOldest = () => {
-  console.log("Old");
-};
-//> sort by lowest price
-const sortByLowestPrice = () => {
-  console.log("Low");
-};
-//> sort by highest price
-const sortByHighestPrice = () => {
-  console.log("High");
+const sortBy = (state, action) => {
+  switch (action?.payload) {
+    case "SORT_BY_NAME":
+      state.filteredProducts = state.filteredProducts.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+      break;
+    case "SORT_BY_NAME_REVERSE":
+      state.filteredProducts = state.filteredProducts.sort((a, b) =>
+        b.name.localeCompare(a.name)
+      );
+      break;
+    case "SORT_BY_NEWEST":
+      // Todo : sort by createdAt
+      break;
+    case "SORT_BY_OLDEST":
+      // Todo:
+      break;
+    case "SORT_BY_LOWEST_PRICE":
+      state.filteredProducts = state.filteredProducts.sort(
+        (a, b) => a.price - b.price
+      );
+      break;
+    case "SORT_BY_HIGHEST_PRICE":
+      state.filteredProducts = state.filteredProducts.sort(
+        (a, b) => b.price - a.price
+      );
+      break;
+    default:
+      state.filteredProducts = state.allProducts;
+      break;
+  }
 };
 
 export {
@@ -66,9 +79,5 @@ export {
   fetchAllProductsPending,
   fetchAllProductsFullfilled,
   fetchAllProductsRejected,
-  sortByName,
-  sortByNewest,
-  sortByOldest,
-  sortByLowestPrice,
-  sortByHighestPrice,
+  sortBy,
 };

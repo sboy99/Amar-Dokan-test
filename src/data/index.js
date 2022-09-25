@@ -22,8 +22,10 @@ import homeBg from "../assets/img/beams-home.jpg";
 import laserBeam from "../assets/img/laser_beam.png";
 import beams from "../assets/img/beams.jpg";
 import heavyRain from "../assets/pattern/heavy-rain.svg";
+import diagonalLines from "../assets/pattern/diagonal-lines.svg";
 import rails from "../assets/pattern/rails.svg";
 import cage from "../assets/pattern/cage.svg";
+import stars from "../assets/pattern/stars.svg";
 export {
   GLogo,
   notFound,
@@ -34,6 +36,8 @@ export {
   heavyRain,
   rails,
   cage,
+  diagonalLines,
+  stars,
 };
 
 export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
@@ -317,22 +321,32 @@ export const Categories = [
 export const SortOrders = [
   {
     id: 1,
-    name: `Name`,
+    name: `Name (a-z)`,
+    type: "SORT_BY_NAME",
   },
   {
     id: 2,
-    name: `Newest`,
+    name: `Name (z-a)`,
+    type: "SORT_BY_NAME_REVERSE",
   },
   {
     id: 3,
-    name: `Oldest`,
+    name: `Newest`,
+    type: "SORT_BY_NEWEST",
   },
   {
     id: 4,
-    name: `Lowest Price`,
+    name: `Oldest`,
+    type: "SORT_BY_OLDEST",
   },
   {
     id: 5,
+    name: `Lowest Price`,
+    type: "SORT_BY_LOWEST_PRICE",
+  },
+  {
+    id: 6,
     name: `Highest Price`,
+    type: "SORT_BY_HIGHEST_PRICE",
   },
 ];

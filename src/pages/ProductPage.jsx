@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { products } from "../app/store";
 import { FeaturedProduct, ShopByCategory, ViewProducts } from "../components";
-import { RailsDecor } from "../utils";
+import { RailsDecor, StarsDecor } from "../utils";
 
 const ProductPage = () => {
   const { isLoading, isSuccess } = useSelector(products);
@@ -22,7 +22,11 @@ const ProductPage = () => {
           <FeaturedProduct />
         </div>
         {/* products */}
-        <div className="relative min-h-64 bg-slate-200">
+        <div className="relative min-h-64 overflow-hidden ">
+          <StarsDecor
+            className="h-full scale-x-105"
+            bgColor={`bg-gradient-to-t from-rose-500/20 to-white h-3/4`}
+          />
           <ViewProducts />
         </div>
       </section>
