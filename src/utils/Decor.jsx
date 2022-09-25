@@ -1,4 +1,4 @@
-import { laserBeam, rails, diagonalLines, stars } from "../data";
+import { laserBeam, rails, diagonalLines } from "../data";
 
 function RailsDecor({ className = "h-full" }) {
   return (
