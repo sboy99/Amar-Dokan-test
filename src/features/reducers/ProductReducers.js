@@ -1,5 +1,5 @@
 import axios from "../../api/axios";
-import { products_url } from "../../data";
+import { products_url, single_product_url } from "../../data";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const fetchAllProducts = createAsyncThunk(
@@ -23,6 +23,9 @@ const fetchAllProductsFullfilled = (state, action) => {
 
 const fetchAllProductsPending = (state, action) => {
   state.isLoading = true;
+  state.isSuccess = false;
+  state.isError = false;
+  state.errorMessage = ``;
 };
 
 const fetchAllProductsRejected = (state, action) => {
@@ -37,6 +40,36 @@ const getFeaturedProducts = (state) => {
       (product) => product?.featured === true
     );
   }
+};
+
+const fetchSingleProduct = createAsyncThunk(
+  "products/fetchSingleProduct",
+  async ({ id, signal }) => {
+    try {
+      const { data } = await axios.get(single_product_url + id, { signal });
+      return data;
+    } catch (error) {
+      throw error?.response?.data;
+    }
+  }
+);
+
+const fetchSingleProductPending = (state, action) => {
+  state.isLoading = true;
+  state.isSuccess = false;
+  state.isError = false;
+  state.errorMessage = ``;
+};
+const fetchSingleProductFullfilled = (state, action) => {
+  state.isLoading = false;
+  state.isSuccess = true;
+  state.singleProduct = action.payload;
+};
+const fetchSingleProductRejected = (state, action) => {
+  state.isLoading = false;
+  state.isError = true;
+  state.singleProduct = {};
+  state.errorMessage = action.error?.message;
 };
 
 const sortBy = (state, action) => {
@@ -74,10 +107,14 @@ const sortBy = (state, action) => {
 };
 
 export {
-  fetchAllProducts,
   getFeaturedProducts,
+  fetchAllProducts,
   fetchAllProductsPending,
   fetchAllProductsFullfilled,
   fetchAllProductsRejected,
+  fetchSingleProduct,
+  fetchSingleProductPending,
+  fetchSingleProductFullfilled,
+  fetchSingleProductRejected,
   sortBy,
 };

@@ -2,7 +2,10 @@ import AuthSlice from "./AuthSlice";
 import LayoutSlice from "./LayoutSlice";
 import ProductSlice from "./ProductSlice";
 // Async Thunks //
-import { fetchAllProducts } from "./reducers/ProductReducers";
+import {
+  fetchAllProducts,
+  fetchSingleProduct,
+} from "./reducers/ProductReducers";
 
 const AuthReducer = AuthSlice.reducer;
 const LayoutReducer = LayoutSlice.reducer;
@@ -26,4 +29,4 @@ export const { setSearchOpen, setSearchText, setMenuOpen, setGridView } =
 export const { getFeaturedProducts, sortBy } = ProductSlice.actions;
 
 // -Export Async Thunks- //
-export { fetchAllProducts };
+export { fetchAllProducts, fetchSingleProduct };

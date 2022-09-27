@@ -1,10 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  getFeaturedProducts,
   fetchAllProducts,
   fetchAllProductsFullfilled,
   fetchAllProductsPending,
   fetchAllProductsRejected,
-  getFeaturedProducts,
+  fetchSingleProduct,
+  fetchSingleProductPending,
+  fetchSingleProductFullfilled,
+  fetchSingleProductRejected,
   sortBy,
 } from "./reducers/ProductReducers";
 
@@ -12,6 +16,7 @@ const initialState = {
   allProducts: [],
   featuredProducts: [],
   filteredProducts: [],
+  singleProduct: {},
   isLoading: true,
   isSuccess: false,
   isError: false,
@@ -29,6 +34,9 @@ const productSlice = createSlice({
     [fetchAllProducts.pending]: fetchAllProductsPending,
     [fetchAllProducts.fulfilled]: fetchAllProductsFullfilled,
     [fetchAllProducts.rejected]: fetchAllProductsRejected,
+    [fetchSingleProduct.pending]: fetchSingleProductPending,
+    [fetchSingleProduct.fulfilled]: fetchSingleProductFullfilled,
+    [fetchSingleProduct.rejected]: fetchSingleProductRejected,
   },
 });
 

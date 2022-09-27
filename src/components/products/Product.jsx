@@ -13,12 +13,12 @@ const Product = ({
 }) => {
   return (
     <Link to={`/products/${id}`} className="w-64  shrink-0 bg-white pb-2">
-      <div className="overflow-hidden rounded-lg ">
+      <div className="aspect-w-3 aspect-h-4 overflow-hidden rounded-lg ">
         <img
           src={image}
           loading="lazy"
           decoding="async"
-          className="h-80 w-64 object-cover object-center transition-all duration-150 hover:scale-105 hover:opacity-90"
+          className="h-full w-full object-cover object-center transition-all duration-150 hover:scale-105 hover:opacity-90"
           alt=""
         />
       </div>
