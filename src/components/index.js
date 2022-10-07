@@ -7,11 +7,11 @@ import Sort from "./buttons/Sort";
 import Stars from "./buttons/Stars";
 import Button from "./buttons/Button";
 
-import CartButtons from "./cart/CartButtons";
-import CartColumn from "./cart/CartColumn";
-import CartContent from "./cart/CartContent";
-import CartItem from "./cart/CartItem";
-import CartTotal from "./cart/CartTotal";
+import CartButtons from "./cartPage/CartButtons";
+import CartColumn from "./cartPage/CartColumn";
+import CartContent from "./cartPage/CartContent";
+import CartItem from "./cartPage/CartItem";
+import CartTotal from "./cartPage/CartTotal";
 
 import StripeCheckOut from "./payment/StripeCheckOut";
 
