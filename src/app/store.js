@@ -1,22 +1,29 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { LayoutReducer, AuthReducer, ProductReducer } from "../features";
-import { apiSlice } from "../api/apiSlice";
+import {
+  LayoutReducer,
+  AuthReducer,
+  ProductReducer,
+  CartReducer,
+} from "../features";
+// import { apiSlice } from "../api/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const store = configureStore({
   reducer: {
     layout: LayoutReducer,
     auth: AuthReducer,
-    [apiSlice.reducerPath]: apiSlice.reducer,
+    // [apiSlice.reducerPath]: apiSlice.reducer,
     products: ProductReducer,
+    cart: CartReducer,
   },
-  middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(apiSlice.middleware);
-  },
+  // middleware: (getDefaultMiddleware) => {
+  // return getDefaultMiddleware().concat(apiSlice.middleware);
+  // },
 });
 
 export const layout = (store) => store.layout;
 export const auth = (store) => store.auth;
 export const products = (store) => store.products;
+export const cart = (store) => store.cart;
 
 setupListeners(store.dispatch);

@@ -1,6 +1,7 @@
 import AuthSlice from "./AuthSlice";
 import LayoutSlice from "./LayoutSlice";
 import ProductSlice from "./ProductSlice";
+import CartSlice from "./CartSlice";
 // Async Thunks //
 import {
   fetchAllProducts,
@@ -10,9 +11,10 @@ import {
 const AuthReducer = AuthSlice.reducer;
 const LayoutReducer = LayoutSlice.reducer;
 const ProductReducer = ProductSlice.reducer;
+const CartReducer = CartSlice.reducer;
 
 // -Export Reducers- //
-export { AuthReducer, LayoutReducer, ProductReducer };
+export { AuthReducer, LayoutReducer, ProductReducer, CartReducer };
 // -Export Actions- //
 export const {
   resetState,
