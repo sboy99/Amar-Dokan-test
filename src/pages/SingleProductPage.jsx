@@ -7,6 +7,7 @@ import { fetchSingleProduct } from "../features";
 import { formatToINR } from "../utils";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { RadioGroup } from "@headlessui/react";
+import { Button, RecommendedProduct } from "../components";
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -19,30 +20,35 @@ const SingleProductPage = () => {
     return () => controller.abort();
 
     //eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   if (isLoading) return <div className="">Loading</div>;
 
   return (
     <div className="">
-      <div className="container mx-auto min-h-screen ">
+      <div className="container mx-auto min-h-screen divide-y divide-slate-200 ">
         {/* Image Grid */}
-        <div className="lg:hidden">
-          <ImageGridMd images={singleProduct?.images} />
-        </div>
-        <div className="hidden lg:block">
-          <ImageGridLg images={singleProduct?.images} />
-        </div>
-        {/* Information */}
-        <div className="mx-auto mt-8 grid min-h-64 w-full max-w-7xl grid-cols-1 px-4 lg:grid-cols-3 lg:divide-x lg:divide-slate-200 lg:px-6">
-          {/* Name & about */}
-          <div className="col-span-2 lg:pr-4">
-            <InfoOfProduct />
+        <div className="py-4">
+          <div className="lg:hidden">
+            <ImageGridMd images={singleProduct?.images} />
           </div>
-          {/* add to bag etc */}
-          <div className="hidden w-full lg:block lg:pl-4">
-            <PriceSection />
+          <div className="hidden lg:block">
+            <ImageGridLg images={singleProduct?.images} />
           </div>
+          {/* Information */}
+          <div className="mx-auto mt-8 grid min-h-64 w-full max-w-7xl grid-cols-1 px-4 lg:grid-cols-3 lg:divide-x lg:divide-slate-200 lg:px-6">
+            {/* Name & about */}
+            <div className="col-span-2 lg:pr-4">
+              <InfoOfProduct />
+            </div>
+            {/* add to bag etc */}
+            <div className="hidden w-full lg:block lg:pl-4">
+              <PriceSection />
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto max-w-7xl p-4">
+          <RecommendedProduct />
         </div>
       </div>
     </div>
@@ -218,11 +224,11 @@ function PriceSection() {
       {/* buttons */}
       <div className="mt-6 space-y-2">
         {/* add to bags*/}
-        <Button className="border border-slate-800 bg-slate-50 text-slate-800 transition duration-200 hover:bg-slate-100  ">
+        <Button className="w-full border border-slate-800 bg-slate-50 text-slate-800 transition duration-200 hover:bg-slate-100  ">
           Add to cart
         </Button>
         {/* buy now */}
-        <Button className="bg-slate-700 text-white transition duration-200 hover:bg-slate-600">
+        <Button className="w-full bg-slate-700 text-white transition duration-200 hover:bg-slate-600">
           Buy Now
         </Button>
       </div>
@@ -255,16 +261,5 @@ function Colors({ colors = [] }) {
         ))}
       </div>
     </RadioGroup>
-  );
-}
-
-function Button({ onClick = () => {}, children, className }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`flex w-full items-center justify-center rounded-md py-3 font-inter font-semibold capitalize leading-none tracking-tighter outline-none ${className}`}
-    >
-      {children}
-    </button>
   );
 }

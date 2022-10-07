@@ -12,7 +12,7 @@ const Product = ({
   category,
 }) => {
   return (
-    <Link to={`/products/${id}`} className="w-64  shrink-0 bg-white pb-2">
+    <Link to={`/products/${id}`} className="w-64  shrink-0 ">
       <div className="aspect-w-3 aspect-h-4 overflow-hidden rounded-lg ">
         <img
           src={image}

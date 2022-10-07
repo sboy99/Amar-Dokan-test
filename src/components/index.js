@@ -5,6 +5,7 @@ import GridView from "./buttons/GridView";
 import ListView from "./buttons/ListView";
 import Sort from "./buttons/Sort";
 import Stars from "./buttons/Stars";
+import Button from "./buttons/Button";
 
 import CartButtons from "./cart/CartButtons";
 import CartColumn from "./cart/CartColumn";
@@ -23,6 +24,8 @@ import ProductCategory from "./products/ProductCategory";
 import Comapny from "./products/Comapny";
 import PriceSlider from "./products/PriceSlider";
 import ProductList from "./products/ProductList";
+import ProductSlider from "./products/ProductSlider";
+import CompHeaderText from "./products/CompHeaderText";
 
 import Contact from "./sub-pages/Contact";
 import Error from "./sub-pages/Error";
@@ -50,7 +53,13 @@ import ForgotPassword from "./signin/ForgotPassword";
 import ResetPassword from "./signin/ResetPassword";
 import HeadLine from "./signin/HeadLine";
 
+import RecommendedProduct from "./singleProductPage/RecommendedProduct";
+
 export {
+  CompHeaderText,
+  ProductSlider,
+  RecommendedProduct,
+  Button,
   ProductList,
   PriceSlider,
   ProductCategory,

@@ -46,7 +46,7 @@ const GetInTouch = () => {
         onSubmit={formik.handleSubmit}
         className="grid h-full w-full items-center"
       >
-        <div className="mx-auto w-[20rem]">
+        <div className="mx-auto w-full max-w-[20rem]">
           <FormikInput
             label="email"
             placeholder="user@example.com"

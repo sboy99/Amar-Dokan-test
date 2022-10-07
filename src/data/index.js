@@ -350,3 +350,16 @@ export const SortOrders = [
     type: "SORT_BY_HIGHEST_PRICE",
   },
 ];
+
+export const HeaderTexts = {
+  featuredProducts: {
+    subject: "Trending Products",
+    title: "Only For You",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur sint tempore dolores.",
+  },
+  recommandedProducts: {
+    subject: "Recommeded",
+    title: "You'd like this also",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur sint tempore dolores.",
+  },
+};
