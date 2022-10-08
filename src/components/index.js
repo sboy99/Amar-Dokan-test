@@ -54,8 +54,10 @@ import ResetPassword from "./signin/ResetPassword";
 import HeadLine from "./signin/HeadLine";
 
 import RecommendedProduct from "./singleProductPage/RecommendedProduct";
+import PriceSection from "./singleProductPage/PriceSection";
 
 export {
+  PriceSection,
   CompHeaderText,
   ProductSlider,
   RecommendedProduct,

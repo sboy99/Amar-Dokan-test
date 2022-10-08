@@ -15,6 +15,7 @@ const CartReducer = CartSlice.reducer;
 
 // -Export Reducers- //
 export { AuthReducer, LayoutReducer, ProductReducer, CartReducer };
+
 // -Export Actions- //
 export const {
   resetState,
@@ -29,6 +30,7 @@ export const {
 export const { setSearchOpen, setSearchText, setMenuOpen, setGridView } =
   LayoutSlice.actions;
 export const { getFeaturedProducts, sortBy } = ProductSlice.actions;
+export const { addProdoductToCart } = CartSlice.actions;
 
 // -Export Async Thunks- //
 export { fetchAllProducts, fetchSingleProduct };

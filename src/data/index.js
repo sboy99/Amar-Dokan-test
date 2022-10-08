@@ -362,4 +362,8 @@ export const HeaderTexts = {
     title: "You'd like this also",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur sint tempore dolores.",
   },
+  cart: {
+    subject: "Checkout",
+    title: "Shopping Cart",
+  },
 };
