@@ -1,12 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import {
-  Layout,
-  Protected,
-  ResetPassword,
-  VerifyEmail,
-  Modal,
-} from "./components";
+import { Layout, Protected, ResetPassword, Modal } from "./components";
 import {
   Home,
   About,
