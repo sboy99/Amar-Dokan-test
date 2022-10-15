@@ -1,6 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Layout, Protected, ResetPassword } from "./components";
+import {
+  Layout,
+  Protected,
+  ResetPassword,
+  VerifyEmail,
+  Modal,
+} from "./components";
 import {
   Home,
   About,
@@ -15,7 +21,8 @@ import {
 const App = () => {
   return (
     <main className="">
-      <section className="h-screen w-full scroll-p-16 overflow-auto scroll-smooth bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100">
+      <section className="z-0 h-screen w-full scroll-p-16 overflow-auto scroll-smooth bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100">
+        <Modal />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -23,7 +30,6 @@ const App = () => {
             <Route path="products" element={<Products />} />
             <Route path="products/:id" element={<SingleProduct />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="signin" element={<SignIn />} />
             <Route path="reset-password" element={<ResetPassword />} />
             <Route
               path="checkout"
@@ -33,8 +39,11 @@ const App = () => {
                 </Protected>
               }
             />
-            <Route path="*" element={<Error />} />
           </Route>
+          <Route path="signin">
+            <Route index element={<SignIn />} />
+          </Route>
+          <Route path="*" element={<Error />} />
         </Routes>
       </section>
     </main>

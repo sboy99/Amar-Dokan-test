@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
   gridView: true,
   searchOpen: false,
   menuOpen: false,
   searchText: ``,
+  isModalOpen: false,
+  modalContext: {},
 };
 
 const LayoutSlice = createSlice({
@@ -22,6 +23,15 @@ const LayoutSlice = createSlice({
     },
     setGridView: (state, action) => {
       state.gridView = action.payload;
+    },
+    setModalOpen: (state, action) => {
+      state.isModalOpen = action.payload;
+    },
+    setModalContext: (state, action) => {
+      state.modalContext = action.payload;
+    },
+    resetModalContext: (state) => {
+      state.modalContext = {};
     },
   },
 });

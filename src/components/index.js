@@ -43,6 +43,7 @@ import GetInTouch from "./sub-pages/GetInTouch";
 
 import Layout from "./layout/Layout";
 import Protected from "./layout/ProtectedRoute";
+import Modal from "./layout/Modal";
 
 import SearchPallete from "./SearchPallete";
 import MobileNavbar from "./sub-pages/MobileNavbar";
@@ -57,6 +58,7 @@ import RecommendedProduct from "./singleProductPage/RecommendedProduct";
 import PriceSection from "./singleProductPage/PriceSection";
 
 export {
+  Modal,
   PriceSection,
   CompHeaderText,
   ProductSlider,

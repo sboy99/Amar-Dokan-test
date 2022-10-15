@@ -10,9 +10,15 @@ import CollapsibleMenu from "./CollapsibleMenu";
 import Listbox from "./Listbox";
 import Tip from "./Tip";
 import Button from "./Button";
-import { getMessage, sleep, formatToINR } from "./utilityFunc";
+import {
+  getMessage,
+  sleep,
+  formatToINR,
+  prepareUserPayload,
+} from "./utilityFunc";
 
 export {
+  prepareUserPayload,
   StarsDecor,
   DiagonalLinesDecor,
   Button,

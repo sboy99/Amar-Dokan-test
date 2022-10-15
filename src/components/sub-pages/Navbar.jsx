@@ -77,15 +77,17 @@ const Navbar = () => {
           {/* Cart Icon */}
           <IconButton Icon={ShoppingCartIcon} link={true} to="/cart" />
           {/* Bell Icon */}
-          <IconButton
-            Icon={BellIcon}
-            onClick={() => {}}
-            notify={true}
-            className="hidden lg:block"
-          />
+          {user && (
+            <IconButton
+              Icon={BellIcon}
+              onClick={() => {}}
+              notify={true}
+              className="hidden lg:block"
+            />
+          )}
           {/* Dot Icon */}
           <Panel
-            photo={user?.photo}
+            photo={user?.image}
             Icon={EllipsisVerticalIcon}
             popClass={`${!user && `lg:hidden`}`}
             className="flex flex-col divide-y bg-white py-1 shadow-xl ring-1 ring-slate-900/10"
@@ -100,6 +102,7 @@ const Navbar = () => {
               </PopLink>
             )}
           </Panel>
+          {/* For large devices */}
           {!user && (
             <NavLink
               to={"/signin"}

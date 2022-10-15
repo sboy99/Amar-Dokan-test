@@ -5,6 +5,12 @@ export const getMessage = (code) => {
     return "Email address already registered!";
 };
 
+export const prepareUserPayload = (userCred) => {
+  const { uid, displayName, email, photoURL } = userCred?.user;
+  const user = { uid, name: displayName, email, image: photoURL };
+  return user;
+};
+
 export const sleep = (sec) => {
   return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 };

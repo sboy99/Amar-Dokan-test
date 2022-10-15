@@ -18,7 +18,7 @@ const SignInPage = () => {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen snap-start items-center justify-center px-4 py-6">
+    <section className="relative z-0 flex min-h-screen snap-start items-center justify-center px-4 py-6">
       <div className="mx-auto min-h-64 w-full max-w-lg overflow-hidden rounded-lg bg-white/50 ring-2 ring-white backdrop-blur ">
         {/* decor */}
         {/* <div className="decor hidden shrink-0 bg-indigo-600 lg:block"></div> */}

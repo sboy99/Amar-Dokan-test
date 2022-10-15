@@ -1,5 +1,12 @@
 import React, { useEffect, createContext, useContext } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
+import auth, { googleProvider } from "../auth/firebase.config";
+import { useSelector, useDispatch } from "react-redux";
+import { auth as authState } from "../app/store";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getMessage, prepareUserPayload } from "../utils";
+import axios from "../api/local";
+import { ModalContexts } from "../data";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,10 +17,6 @@ import {
   signInWithPopup,
   confirmPasswordReset,
 } from "firebase/auth";
-import auth, { googleProvider } from "../auth/firebase.config";
-import { useSelector, useDispatch } from "react-redux";
-import { auth as authState } from "../app/store";
-import { useNavigate, useLocation } from "react-router-dom";
 import {
   setUser,
   setLoading,
@@ -21,8 +24,9 @@ import {
   setError,
   setMessage,
   resetState,
+  setModalContext,
+  setModalOpen,
 } from "../features";
-import { getMessage } from "../utils";
 
 const AuthContext = createContext({
   forgotPassword: () => Promise,
@@ -53,16 +57,25 @@ const AuthProvider = ({ children }) => {
   }, [isSuccess === true, isError === true]);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (userCred) => {
+    const unsubscribe = onAuthStateChanged(auth, async (userCred) => {
       if (userCred) {
         const user = {
           userId: userCred.uid,
           name: userCred.displayName,
-          photo: userCred.photoURL,
           isVerified: userCred.emailVerified,
+          image: userCred.photoURL,
         };
+        const { data } = await axios.get(`/user/showMe/${user?.userId}`);
+        user["role"] = data?.role;
+
         dispatch(setUser(user));
-        navigate("/products", { state: { from: location }, replace: true });
+
+        //> Send Alert about email verification
+        if (!user?.isVerified) {
+          dispatch(setModalContext(ModalContexts["VerificationReminder"]));
+          dispatch(setModalOpen(true));
+        }
+        // navigate("/products", { state: { from: location }, replace: true });
       } else {
         dispatch(setUser(null));
       }
@@ -72,17 +85,25 @@ const AuthProvider = ({ children }) => {
     };
 
     // eslint-disable-next-line
-  }, []);
+  }, [isSuccess]);
 
   const createUser = async (values) => {
     dispatch(setLoading(true));
     const { name, email, password } = values;
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCred = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       await updateUserName(name);
+      //> create an account to server
+      await axios.post("/user", prepareUserPayload(userCred));
       await sendVerificationMail();
       dispatch(setSuccess());
-      navigate("/", { state: { from: location }, replace: true });
+      dispatch(setModalContext(ModalContexts["VerifyEmail"]));
+      dispatch(setModalOpen(true));
+      navigate("/products", { state: { from: location }, replace: true });
     } catch (error) {
       dispatch(setError());
       dispatch(setMessage(getMessage(error.code)));
@@ -97,7 +118,7 @@ const AuthProvider = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       dispatch(setSuccess());
-      navigate("/", { state: { from: location }, replace: true });
+      navigate("/products", { state: { from: location }, replace: true });
     } catch (error) {
       dispatch(setError());
       dispatch(setMessage(getMessage(error.code)));
@@ -124,7 +145,7 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth?.currentUser, { displayName });
   };
 
-  const sendVerificationMail = () => {
+  const sendVerificationMail = async () => {
     return sendEmailVerification(auth?.currentUser);
   };
 
@@ -132,7 +153,9 @@ const AuthProvider = ({ children }) => {
   const loginWithGoogle = async () => {
     dispatch(setLoading(true));
     try {
-      await signInWithPopup(auth, googleProvider);
+      const userCred = await signInWithPopup(auth, googleProvider);
+      //> create an account to server
+      await axios.post("/user", prepareUserPayload(userCred));
       dispatch(setSuccess());
       navigate("/products", { state: { from: location }, replace: true });
     } catch (error) {

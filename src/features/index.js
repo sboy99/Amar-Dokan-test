@@ -27,8 +27,15 @@ export const {
   setError,
   setUser,
 } = AuthSlice.actions;
-export const { setSearchOpen, setSearchText, setMenuOpen, setGridView } =
-  LayoutSlice.actions;
+export const {
+  setSearchOpen,
+  setSearchText,
+  setMenuOpen,
+  setGridView,
+  setModalOpen,
+  setModalContext,
+  resetModalContext,
+} = LayoutSlice.actions;
 export const { getFeaturedProducts, sortBy } = ProductSlice.actions;
 export const { addProdoductToCart } = CartSlice.actions;
 
