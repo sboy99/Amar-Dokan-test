@@ -6,7 +6,6 @@ import { auth as authState } from "../app/store";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getMessage, prepareUserPayload } from "../utils";
 import axios from "../api/local";
-import { ModalContexts } from "../data";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -72,7 +71,7 @@ const AuthProvider = ({ children }) => {
 
         //> Send Alert about email verification
         if (!user?.isVerified) {
-          dispatch(setModalContext(ModalContexts["VerificationReminder"]));
+          dispatch(setModalContext("VerifyEmail"));
           dispatch(setModalOpen(true));
         }
         // navigate("/products", { state: { from: location }, replace: true });
@@ -101,8 +100,6 @@ const AuthProvider = ({ children }) => {
       await axios.post("/user", prepareUserPayload(userCred));
       await sendVerificationMail();
       dispatch(setSuccess());
-      dispatch(setModalContext(ModalContexts["VerifyEmail"]));
-      dispatch(setModalOpen(true));
       navigate("/products", { state: { from: location }, replace: true });
     } catch (error) {
       dispatch(setError());

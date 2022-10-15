@@ -7,8 +7,12 @@ import Error from "./ErrorPage";
 import Products from "./ProductPage";
 import SingleProduct from "./SingleProductPage";
 import SignIn from "./SignInPage";
+import UserPage from "./UserPage";
+import AdminPage from "./AdminPage";
 
 export {
+  UserPage,
+  AdminPage,
   SignIn,
   Home,
   About,

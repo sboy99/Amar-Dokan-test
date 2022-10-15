@@ -31,7 +31,7 @@ const LayoutSlice = createSlice({
       state.modalContext = action.payload;
     },
     resetModalContext: (state) => {
-      state.modalContext = {};
+      state.modalContext = null;
     },
   },
 });

@@ -7,6 +7,7 @@ import {
   SparklesIcon,
   HeartIcon,
   BoltIcon,
+  FingerPrintIcon,
 } from "@heroicons/react/24/outline";
 
 import {
@@ -372,15 +373,10 @@ export const HeaderTexts = {
 
 export const ModalContexts = {
   VerifyEmail: {
-    title: "Verify your email",
+    Icon: FingerPrintIcon,
+    title: "Please verify your email",
     desc: "A verification mail has been sent to your mail address. Please open your email and check inbox and spam folder for the email. For some technical issues mail might goes into spam folder, So, please consider checking your mail address. Thank You.",
     layoutColor: "success",
-    buttonText: "Got it,Thanks",
-  },
-  VerificationReminder: {
-    title: "Verify your email",
-    desc: "It looks like you haven't verify your email yet. So, please consider verify your email for a better experience. We have already sent you a verification email please do check your inbox as well as spam folder. Thank You.",
-    layoutColor: "danger",
     buttonText: "Got it,Thanks",
   },
 };
