@@ -1,6 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Layout, Protected, ResetPassword, Modal } from "./components";
+import {
+  Layout,
+  Protected,
+  ResetPassword,
+  Modal,
+  ProtectedForAdmin,
+} from "./components";
 import {
   Home,
   About,
@@ -10,6 +16,8 @@ import {
   CheckOut,
   Error,
   SignIn,
+  UserPage,
+  AdminPage,
 } from "./pages";
 
 const App = () => {
@@ -33,10 +41,32 @@ const App = () => {
                 </Protected>
               }
             />
+            {/* user profile */}
+            <Route
+              path="profile"
+              element={
+                <Protected>
+                  <UserPage />
+                </Protected>
+              }
+            />
+            {/* Admin Panel */}
+            <Route
+              path="admin"
+              element={
+                <Protected>
+                  <ProtectedForAdmin>
+                    <AdminPage />
+                  </ProtectedForAdmin>
+                </Protected>
+              }
+            />
           </Route>
+          {/* sign in */}
           <Route path="signin">
             <Route index element={<SignIn />} />
           </Route>
+          {/* 404 not found */}
           <Route path="*" element={<Error />} />
         </Routes>
       </section>

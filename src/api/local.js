@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: "http://localhost:3000/api/v1",
   timeout: 2000,
   headers: {
     Accept: "application/json",

@@ -379,4 +379,18 @@ export const ModalContexts = {
     layoutColor: "success",
     buttonText: "Got it,Thanks",
   },
+  NotLoggedIn: {
+    Icon: FingerPrintIcon,
+    title: "You're not logged in",
+    desc: "Its look like you are not logged in. So, please log in first to continue further",
+    layoutColor: "danger",
+    buttonText: "Thanks",
+  },
+  NotAdmin: {
+    Icon: FingerPrintIcon,
+    title: "Admin Only",
+    desc: "Its look like you are requesting admin only route. Your resquest can't be permitted",
+    layoutColor: "danger",
+    buttonText: "I understand!",
+  },
 };
