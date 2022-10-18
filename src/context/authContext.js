@@ -58,14 +58,8 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (userCred) => {
       if (userCred) {
-        const idToken = await userCred.getIdToken(true);
         //> Sending access token to verify user.
-        const { data: user } = await axios.get(`/user/showMe`, {
-          headers: {
-            authintication: `Bearer ${idToken}`,
-          },
-        });
-
+        const { data: user } = await axios.get(`/user/showMe`);
         //> After successful request set user from server response
         dispatch(setUser(user));
 
@@ -128,12 +122,7 @@ const AuthProvider = ({ children }) => {
   const logoutUser = async () => {
     dispatch(setLoading(true));
     try {
-      const idToken = await auth.currentUser.getIdToken();
-      await axios.delete(`/auth/logout`, {
-        headers: {
-          authintication: `Bearer ${idToken}`,
-        },
-      });
+      await axios.delete(`/auth/logout`);
       await signOut(auth);
       dispatch(setSuccess());
       dispatch(setMessage("user logged out"));
@@ -161,6 +150,7 @@ const AuthProvider = ({ children }) => {
       const userCred = await signInWithPopup(auth, googleProvider);
       //> create an account to server
       await axios.post("/user", prepareUserPayload(userCred));
+
       dispatch(setSuccess());
       navigate("/products", { state: { from: location }, replace: true });
     } catch (error) {

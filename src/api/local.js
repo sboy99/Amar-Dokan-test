@@ -1,9 +1,27 @@
 import axios from "axios";
+import auth from "../auth/firebase.config";
 
-export default axios.create({
+const needsAuthorization = ["/user/showMe", "/auth/logout"];
+
+const instance = axios.create({
   baseURL: "http://localhost:3000/api/v1",
-  timeout: 2000,
+  timeout: 5000,
   headers: {
     Accept: "application/json",
   },
 });
+
+instance.interceptors.request.use(
+  async (req) => {
+    if (needsAuthorization.includes(req.url)) {
+      const idToken = await auth.currentUser.getIdToken(true);
+      if (idToken) {
+        req.headers["Authorization"] = `Bearer ${idToken}`;
+      }
+    }
+    return req;
+  },
+  (error) => Promise.reject(error)
+);
+
+export default instance;
