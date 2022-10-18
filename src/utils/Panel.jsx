@@ -25,6 +25,8 @@ const Panel = ({
                 src={photo}
                 className="h-7 w-7 rounded-full object-cover object-center ring-2 ring-white group-hover:ring-sky-500"
                 alt="profile"
+                loading="lazy"
+                decoding="async"
               />
             ) : Icon ? (
               open ? (
