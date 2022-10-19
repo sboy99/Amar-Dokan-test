@@ -61,11 +61,11 @@ const App = () => {
             path="admin"
             element={
               //Todo: Get back auth when adminstration is complete
-              // <Protected>
-              // <ProtectedForAdmin>
+              //<Protected>
+              //<ProtectedForAdmin>
               <AdminPage />
-              // </ProtectedForAdmin>
-              // </Protected>
+              //</ProtectedForAdmin>
+              //</Protected>
             }
           >
             <Route index element={<Ecommerce />} />
