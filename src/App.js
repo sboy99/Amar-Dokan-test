@@ -6,6 +6,7 @@ import {
   ResetPassword,
   Modal,
   ProtectedForAdmin,
+  Ecommerce,
 } from "./components";
 import {
   Home,
@@ -50,22 +51,26 @@ const App = () => {
                 </Protected>
               }
             />
-            {/* Admin Panel */}
-            <Route
-              path="admin"
-              element={
-                <Protected>
-                  <ProtectedForAdmin>
-                    <AdminPage />
-                  </ProtectedForAdmin>
-                </Protected>
-              }
-            />
           </Route>
           {/* sign in */}
           <Route path="signin">
             <Route index element={<SignIn />} />
           </Route>
+          {/* Admin Panel */}
+          <Route
+            path="admin"
+            element={
+              //Todo: Get back auth when adminstration is complete
+              // <Protected>
+              // <ProtectedForAdmin>
+              <AdminPage />
+              // </ProtectedForAdmin>
+              // </Protected>
+            }
+          >
+            <Route index element={<Ecommerce />} />
+          </Route>
+
           {/* 404 not found */}
           <Route path="*" element={<Error />} />
         </Routes>
