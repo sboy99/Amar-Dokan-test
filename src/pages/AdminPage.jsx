@@ -12,7 +12,7 @@ const AdminPage = () => {
       {/* main */}
       <main className="flex h-full flex-auto flex-col">
         {/* navbar */}
-        <div className="h-16 flex-shrink-0 bg-white">
+        <div className="h-14 flex-shrink-0 bg-white">
           <Navbar />
         </div>
         {/* outlet */}

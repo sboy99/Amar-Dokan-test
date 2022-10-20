@@ -32,6 +32,7 @@ const Navbar = () => {
       <IconButton
         Icon={isSidebarOpen ? Bars3BottomRightIcon : Bars3BottomLeftIcon}
         onClick={() => dispatch(toogleSidebar(!isSidebarOpen))}
+        className="xl:hidden"
       />
 
       {/* discussion notification user info */}
