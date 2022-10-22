@@ -1,23 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { Navbar, Sidebar } from "../components/adminPage";
+import { useLayout } from "../app/store";
+import { Navbar, Sidebar, Menu } from "../components/adminPage";
 
 const AdminPage = () => {
+  // const { isSidebarOpen } = useAdmin();
+  const { width } = useLayout();
+  const [renderSidebar, setRenderSidebar] = useState(false);
+
+  useEffect(() => {
+    width > 1280 ? setRenderSidebar(false) : setRenderSidebar(true);
+  }, [width]);
+
   return (
-    <section className="flex h-screen items-center overflow-hidden bg-slate-300">
+    <section className="z-0 flex items-center bg-slate-100">
       {/* sidebar */}
-      <div className="h-full w-72 bg-slate-100">
-        <Sidebar />
-      </div>
-      {/* main */}
-      <main className="flex h-full flex-auto flex-col">
+      {renderSidebar && <Sidebar />}
+
+      <main className="flex h-full flex-auto flex-shrink-0 flex-col">
         {/* navbar */}
-        <div className="h-14 flex-shrink-0 bg-white">
+        <div className="sticky inset-0 z-10 h-16 flex-shrink-0 border-b border-slate-900/10 bg-white">
           <Navbar />
         </div>
-        {/* outlet */}
-        <div className="overflow-auto">
-          <Outlet />
+        {/* body */}
+        <div className="from-pink-00 pointer-events-none fixed inset-x-0 top-16 min-h-64 w-full bg-gradient-to-r from-rose-400 via-purple-500 to-indigo-600"></div>
+        <div className="container relative mx-auto flex h-full ">
+          {/* Menu for large screens */}
+          {!renderSidebar && (
+            <div className="sticky inset-0 top-16 h-[calc(100vh-4rem)] w-full max-w-xs flex-shrink-0 bg-white">
+              <div className="relative h-full">
+                {/* upper fade */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-8 w-full bg-gradient-to-b from-white via-white to-transparent"></div>
+                {/* menu */}
+                <Menu />
+                {/* lower fade */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-8 w-full bg-gradient-to-t from-white to-transparent"></div>
+              </div>
+            </div>
+          )}
+          {/* outlet */}
+          <div className="flex-auto flex-shrink-0 ">
+            <Outlet />
+          </div>
         </div>
       </main>
     </section>

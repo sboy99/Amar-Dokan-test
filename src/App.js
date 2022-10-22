@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AdminWrapper from "./wrappers/AdminWrapper";
 import {
   Layout,
   Protected,
@@ -63,7 +64,9 @@ const App = () => {
               //Todo: Get back auth when adminstration is complete
               //<Protected>
               //<ProtectedForAdmin>
-              <AdminPage />
+              <AdminWrapper>
+                <AdminPage />
+              </AdminWrapper>
               //</ProtectedForAdmin>
               //</Protected>
             }

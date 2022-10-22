@@ -36,6 +36,7 @@ export const {
   setUser,
 } = AuthSlice.actions;
 export const {
+  setWidth,
   setSearchOpen,
   setSearchText,
   setMenuOpen,
@@ -46,7 +47,7 @@ export const {
 } = LayoutSlice.actions;
 export const { getFeaturedProducts, sortBy } = ProductSlice.actions;
 export const { addProdoductToCart } = CartSlice.actions;
-export const { toogleSidebar } = AdminSlice.actions;
+export const { setSidebarOpen } = AdminSlice.actions;
 
 // -Export Async Thunks- //
 export { fetchAllProducts, fetchSingleProduct };

@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isSidebarOpen: true,
+  isSidebarOpen: false,
 };
 
 const AdminSlice = createSlice({
   name: "admin",
   initialState,
   reducers: {
-    toogleSidebar: (state, action) => {
+    setSidebarOpen: (state, action) => {
       state.isSidebarOpen = action.payload;
     },
   },

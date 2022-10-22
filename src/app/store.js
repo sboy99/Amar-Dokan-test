@@ -8,6 +8,7 @@ import {
 } from "../features";
 // import { apiSlice } from "../api/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import { useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
@@ -27,6 +28,9 @@ export const layout = (store) => store.layout;
 export const auth = (store) => store.auth;
 export const products = (store) => store.products;
 export const cart = (store) => store.cart;
-export const admin = (store) => store.admin;
+const admin = (store) => store.admin;
+
+export const useLayout = () => useSelector(layout);
+export const useAdmin = () => useSelector(admin);
 
 setupListeners(store.dispatch);

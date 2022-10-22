@@ -16,6 +16,13 @@ import {
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 
+import {
+  CubeIcon,
+  UsersIcon,
+  Squares2X2Icon,
+  SwatchIcon,
+} from "@heroicons/react/24/solid";
+
 import GLogo from "../assets/G_Logo.svg";
 import notFound from "../assets/img/not_found.png";
 import blueBG from "../assets/img/blue_bg.jpg";
@@ -394,3 +401,105 @@ export const ModalContexts = {
     buttonText: "I understand!",
   },
 };
+
+//> Admin
+
+export const AdminMenu = [
+  {
+    id: 4,
+    mainTitle: `User Management`,
+    icon: UsersIcon,
+    to: ``,
+    subLinks: [
+      {
+        id: 1,
+        title: `Active Users`,
+        to: ``,
+      },
+      {
+        id: 2,
+        title: `Block Users`,
+        to: ``,
+      },
+    ],
+  },
+  {
+    id: 1,
+    mainTitle: `Category Management`,
+    icon: Squares2X2Icon,
+    to: ``,
+    subLinks: [
+      {
+        id: 1,
+        title: `Available Categories`,
+        to: ``,
+      },
+      {
+        id: 2,
+        title: `Create Category`,
+        to: ``,
+      },
+      {
+        id: 3,
+        title: `Modify Categories`,
+        to: ``,
+      },
+      {
+        id: 4,
+        title: `Delete Categories`,
+        to: ``,
+      },
+    ],
+  },
+  {
+    id: 2,
+    mainTitle: `Product Management`,
+    icon: CubeIcon,
+    to: ``,
+    subLinks: [
+      {
+        id: 1,
+        title: `Available Products`,
+        to: ``,
+      },
+      {
+        id: 2,
+        title: `Create Product`,
+        to: ``,
+      },
+      {
+        id: 3,
+        title: `Modify Products`,
+        to: ``,
+      },
+      {
+        id: 4,
+        title: `Delete Products`,
+        to: ``,
+      },
+    ],
+  },
+  {
+    id: 3,
+    mainTitle: `Orders Report`,
+    icon: SwatchIcon,
+    to: ``,
+    subLinks: [
+      {
+        id: 1,
+        title: `All Orders`,
+        to: ``,
+      },
+      {
+        id: 2,
+        title: `Modify Orders`,
+        to: ``,
+      },
+      {
+        id: 3,
+        title: `Delete Orders`,
+        to: ``,
+      },
+    ],
+  },
+];

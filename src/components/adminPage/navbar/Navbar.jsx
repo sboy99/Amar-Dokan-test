@@ -1,10 +1,10 @@
 import React from "react";
 import UserInfo from "./UserInfo";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useAuth } from "../../../context/authContext";
-import { admin } from "../../../app/store";
+import { useAdmin } from "../../../app/store";
 import { IconButton, PopBtn } from "../../../utils";
-import { toogleSidebar } from "../../../features";
+import { setSidebarOpen } from "../../../features";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   ChatBubbleLeftRightIcon,
@@ -15,7 +15,7 @@ import {
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { isSidebarOpen } = useSelector(admin);
+  const { isSidebarOpen } = useAdmin();
   const { logoutUser } = useAuth();
 
   const location = useLocation();
@@ -27,11 +27,11 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="flex h-full items-center justify-between px-4">
+    <nav className="container mx-auto flex h-full items-center justify-between px-4 sm:px-2">
       {/* menu button */}
       <IconButton
         Icon={isSidebarOpen ? Bars3BottomRightIcon : Bars3BottomLeftIcon}
-        onClick={() => dispatch(toogleSidebar(!isSidebarOpen))}
+        onClick={() => dispatch(setSidebarOpen(!isSidebarOpen))}
         className="xl:hidden"
       />
 

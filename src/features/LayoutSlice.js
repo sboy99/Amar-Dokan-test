@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
+  width: window.innerWidth,
   gridView: true,
   searchOpen: false,
   menuOpen: false,
@@ -12,6 +13,9 @@ const LayoutSlice = createSlice({
   name: `Layout`,
   initialState,
   reducers: {
+    setWidth: (state, action) => {
+      state.width = action.payload;
+    },
     setSearchOpen: (state, action) => {
       state.searchOpen = action.payload;
     },
