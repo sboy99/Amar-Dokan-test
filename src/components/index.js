@@ -58,10 +58,7 @@ import HeadLine from "./signin/HeadLine";
 import RecommendedProduct from "./singleProductPage/RecommendedProduct";
 import PriceSection from "./singleProductPage/PriceSection";
 
-import { Ecommerce } from "./adminPage";
-
 export {
-  Ecommerce,
   ProtectedForAdmin,
   Modal,
   PriceSection,

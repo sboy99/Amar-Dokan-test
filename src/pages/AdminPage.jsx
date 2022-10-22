@@ -23,7 +23,7 @@ const AdminPage = () => {
           <Navbar />
         </div>
         {/* body */}
-        <div className="from-pink-00 pointer-events-none fixed inset-x-0 top-16 min-h-64 w-full bg-gradient-to-r from-rose-400 via-purple-500 to-indigo-600"></div>
+        <div className="from-pink-00 pointer-events-none fixed inset-x-0 top-16 min-h-64 w-full bg-gradient-to-r from-emerald-600 via-blue-600 to-indigo-600"></div>
         <div className="container relative mx-auto flex h-full ">
           {/* Menu for large screens */}
           {!renderSidebar && (

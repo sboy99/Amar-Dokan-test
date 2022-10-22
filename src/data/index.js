@@ -20,7 +20,18 @@ import {
   CubeIcon,
   UsersIcon,
   Squares2X2Icon,
-  SwatchIcon,
+  ListBulletIcon,
+  UserIcon,
+  RectangleStackIcon,
+} from "@heroicons/react/24/outline";
+
+import {
+  CubeIcon as CubeIconActive,
+  UsersIcon as UsersIconActive,
+  Squares2X2Icon as Squares2X2IconActive,
+  ListBulletIcon as ListBulletIconActive,
+  UserIcon as UserIconActive,
+  RectangleStackIcon as RectangleStackIconActive,
 } from "@heroicons/react/24/solid";
 
 import GLogo from "../assets/G_Logo.svg";
@@ -404,12 +415,55 @@ export const ModalContexts = {
 
 //> Admin
 
-export const AdminMenu = [
+export const AdminLinks = [
+  {
+    id: 1,
+    title: `Dashboard`,
+    icon: Squares2X2Icon,
+    activeIcon: Squares2X2IconActive,
+    to: `/admin`,
+  },
+  {
+    id: 2,
+    title: `Products`,
+    icon: CubeIcon,
+    activeIcon: CubeIconActive,
+    to: `/admin/products`,
+  },
+  {
+    id: 3,
+    title: `Category`,
+    icon: ListBulletIcon,
+    activeIcon: ListBulletIconActive,
+    to: `/admin/product-categories`,
+  },
+  {
+    id: 4,
+    title: `Customers`,
+    icon: UsersIcon,
+    activeIcon: UsersIconActive,
+    to: `/admin/customers`,
+  },
+  {
+    id: 5,
+    title: `Orders`,
+    icon: RectangleStackIcon,
+    activeIcon: RectangleStackIconActive,
+    to: `/admin/orders`,
+  },
+  {
+    id: 6,
+    title: `Staffs`,
+    icon: UserIcon,
+    activeIcon: UserIconActive,
+    to: `/admin/employees`,
+  },
+];
+
+export const AdminSubLinks = [
   {
     id: 4,
     mainTitle: `User Management`,
-    icon: UsersIcon,
-    to: ``,
     subLinks: [
       {
         id: 1,
@@ -426,8 +480,6 @@ export const AdminMenu = [
   {
     id: 1,
     mainTitle: `Category Management`,
-    icon: Squares2X2Icon,
-    to: ``,
     subLinks: [
       {
         id: 1,
@@ -454,8 +506,6 @@ export const AdminMenu = [
   {
     id: 2,
     mainTitle: `Product Management`,
-    icon: CubeIcon,
-    to: ``,
     subLinks: [
       {
         id: 1,
@@ -482,8 +532,6 @@ export const AdminMenu = [
   {
     id: 3,
     mainTitle: `Orders Report`,
-    icon: SwatchIcon,
-    to: ``,
     subLinks: [
       {
         id: 1,

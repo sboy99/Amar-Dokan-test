@@ -1,23 +1,47 @@
 import React from "react";
 import { Disclosure, Transition } from "@headlessui/react";
-import { AdminMenu } from "../../../data";
-import { Link } from "react-router-dom";
+import { AdminSubLinks, AdminLinks } from "../../../data";
+import { Link, NavLink } from "react-router-dom";
 
 const Menu = () => {
   return (
     <aside className="relative h-full overflow-auto p-4 xl:p-6">
       {/* menu */}
-      <div className="mt-2 flex flex-col gap-y-2">
-        {AdminMenu.map((link) => (
+      {/* main links */}
+      <ul className="flex flex-col justify-center gap-y-2">
+        {AdminLinks.map((link) => (
+          <NavLink
+            key={link?.id}
+            to={link?.to}
+            end
+            className={({ isActive }) =>
+              `flex items-center gap-x-2 font-inter  ${
+                isActive
+                  ? `text-lg font-bold text-sky-400`
+                  : `font-semibold text-slate-700`
+              } `
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <span>
+                  {isActive ? (
+                    <link.activeIcon className="h-5 w-5" />
+                  ) : (
+                    <link.icon className="h-5 w-5" />
+                  )}
+                </span>
+                {link?.title}
+              </>
+            )}
+          </NavLink>
+        ))}
+      </ul>
+      {/* sublinks */}
+      <div className="mt-4 flex flex-col justify-center gap-y-2">
+        {AdminSubLinks.map((link) => (
           <Disclosure as="div" className="" key={link?.id} defaultOpen>
-            <Disclosure.Button
-              as={Link}
-              to={link?.to}
-              className="flex items-center gap-x-2 font-inter  font-semibold capitalize text-slate-700"
-            >
-              <span className="rounded-md border border-slate-700 p-1 text-slate-700">
-                {<link.icon className="h-4 w-4" />}
-              </span>{" "}
+            <Disclosure.Button className="flex items-center gap-x-2 font-inter  font-semibold capitalize text-slate-700">
               {link?.mainTitle}
             </Disclosure.Button>
             <Transition

@@ -1,14 +1,24 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AdminWrapper from "./wrappers/AdminWrapper";
+
 import {
   Layout,
   Protected,
   ResetPassword,
   Modal,
   ProtectedForAdmin,
-  Ecommerce,
 } from "./components";
+
+import {
+  Category,
+  Customers,
+  Dashboard,
+  Employee,
+  Orders,
+  Products as Product,
+} from "./components/adminPage";
+
 import {
   Home,
   About,
@@ -71,7 +81,12 @@ const App = () => {
               //</Protected>
             }
           >
-            <Route index element={<Ecommerce />} />
+            <Route index element={<Dashboard />} />
+            <Route path="product-categories" element={<Category />} />
+            <Route path="products" element={<Product />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="employees" element={<Employee />} />
           </Route>
 
           {/* 404 not found */}
