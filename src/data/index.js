@@ -19,7 +19,7 @@ import {
 import {
   CubeIcon,
   UsersIcon,
-  Squares2X2Icon,
+  ChartBarIcon,
   ListBulletIcon,
   UserIcon,
   RectangleStackIcon,
@@ -28,7 +28,7 @@ import {
 import {
   CubeIcon as CubeIconActive,
   UsersIcon as UsersIconActive,
-  Squares2X2Icon as Squares2X2IconActive,
+  ChartBarIcon as ChartBarIconActive,
   ListBulletIcon as ListBulletIconActive,
   UserIcon as UserIconActive,
   RectangleStackIcon as RectangleStackIconActive,
@@ -418,9 +418,9 @@ export const ModalContexts = {
 export const AdminLinks = [
   {
     id: 1,
-    title: `Dashboard`,
-    icon: Squares2X2Icon,
-    activeIcon: Squares2X2IconActive,
+    title: `Overview`,
+    icon: ChartBarIcon,
+    activeIcon: ChartBarIconActive,
     to: `/admin`,
   },
   {

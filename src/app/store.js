@@ -31,6 +31,7 @@ export const cart = (store) => store.cart;
 const admin = (store) => store.admin;
 
 export const useLayout = () => useSelector(layout);
+export const useUser = () => useSelector(auth);
 export const useAdmin = () => useSelector(admin);
 
 setupListeners(store.dispatch);

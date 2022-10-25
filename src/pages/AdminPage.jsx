@@ -13,10 +13,9 @@ const AdminPage = () => {
   }, [width]);
 
   return (
-    <section className="z-0 flex items-center bg-slate-100">
+    <section className="z-0 min-h-screen bg-slate-100">
       {/* sidebar */}
       {renderSidebar && <Sidebar />}
-
       <main className="flex h-full flex-auto flex-shrink-0 flex-col">
         {/* navbar */}
         <div className="sticky inset-0 z-10 h-16 flex-shrink-0 border-b border-slate-900/10 bg-white">
@@ -24,7 +23,7 @@ const AdminPage = () => {
         </div>
         {/* body */}
         <div className="from-pink-00 pointer-events-none fixed inset-x-0 top-16 min-h-64 w-full bg-gradient-to-r from-emerald-600 via-blue-600 to-indigo-600"></div>
-        <div className="container relative mx-auto flex h-full ">
+        <div className="container relative mx-auto h-full xl:flex ">
           {/* Menu for large screens */}
           {!renderSidebar && (
             <div className="sticky inset-0 top-16 h-[calc(100vh-4rem)] w-full max-w-xs flex-shrink-0 bg-white">
@@ -39,7 +38,7 @@ const AdminPage = () => {
             </div>
           )}
           {/* outlet */}
-          <div className="flex-auto flex-shrink-0 ">
+          <div className="">
             <Outlet />
           </div>
         </div>

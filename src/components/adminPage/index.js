@@ -10,14 +10,19 @@ import Employee from "./e-commerce/Employee";
 import Orders from "./e-commerce/Orders";
 import Products from "./e-commerce/Products";
 
+import LineChart from "./charts/LineChart";
+import DonutChart from "./charts/DonutChart";
+
 export {
   Category,
   Customers,
   Dashboard,
+  DonutChart,
   Employee,
-  Orders,
+  LineChart,
   Menu,
   Navbar,
+  Orders,
   Products,
   Sidebar,
 };
