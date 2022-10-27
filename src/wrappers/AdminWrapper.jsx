@@ -1,16 +1,37 @@
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { layout } from "../app/store";
-// import { setSidebarOpen } from "../features";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useAdmin } from "../app/store";
+import { fetchAllCategories, resetAdminResponse } from "../features";
 
 const AdminWrapper = ({ children }) => {
-  // const dispatch = useDispatch();
-  // const { width } = useSelector(layout);
+  const { isLoading, isError, isSuccess } = useAdmin();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (width > 1280) dispatch(setSidebarOpen(true));
-  //   //eslint-disable-next-line
-  // }, [width]);
+  useEffect(() => {
+    let timeOut;
+
+    if (isError || isSuccess)
+      timeOut = setTimeout(() => {
+        dispatch(resetAdminResponse());
+      }, 5000);
+
+    return () => clearTimeout(timeOut);
+    //eslint-disable-next-line
+  }, [isError, isSuccess]);
+
+  //> Initially fetch all categories...
+  useEffect(() => {
+    const controller = new AbortController();
+    dispatch(fetchAllCategories(controller.signal));
+
+    return () => controller.abort();
+    //eslint-disable-next-line
+  }, []);
+
+  if (isLoading)
+    return (
+      <div className="fixed inset-0 h-2 bg-gradient-to-r from-amber-500 to-rose-600"></div>
+    );
 
   return children;
 };

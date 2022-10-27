@@ -13,12 +13,19 @@ import Products from "./e-commerce/Products";
 import LineChart from "./charts/LineChart";
 import DonutChart from "./charts/DonutChart";
 
+import AddCategory from "./e-commerce/addOnComps/AddCategory";
+import ControlAvlCategories from "./e-commerce/addOnComps/ControlAvlCategories";
+import Headline from "./e-commerce/addOnComps/Headline";
+
 export {
+  AddCategory,
   Category,
+  ControlAvlCategories,
   Customers,
   Dashboard,
   DonutChart,
   Employee,
+  Headline,
   LineChart,
   Menu,
   Navbar,

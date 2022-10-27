@@ -3,11 +3,14 @@ import LayoutSlice from "./LayoutSlice";
 import ProductSlice from "./ProductSlice";
 import CartSlice from "./CartSlice";
 import AdminSlice from "./AdminSlice";
+
 // Async Thunks //
 import {
   fetchAllProducts,
   fetchSingleProduct,
 } from "./reducers/ProductReducers";
+
+import { fetchAllCategories } from "./reducers/AdminReducers";
 
 const AuthReducer = AuthSlice.reducer;
 const LayoutReducer = LayoutSlice.reducer;
@@ -23,6 +26,9 @@ export {
   CartReducer,
   AdminReducer,
 };
+
+// -Export Async Thunks- //
+export { fetchAllProducts, fetchSingleProduct, fetchAllCategories };
 
 // -Export Actions- //
 export const {
@@ -47,7 +53,4 @@ export const {
 } = LayoutSlice.actions;
 export const { getFeaturedProducts, sortBy } = ProductSlice.actions;
 export const { addProdoductToCart } = CartSlice.actions;
-export const { setSidebarOpen } = AdminSlice.actions;
-
-// -Export Async Thunks- //
-export { fetchAllProducts, fetchSingleProduct };
+export const { setSidebarOpen, resetAdminResponse } = AdminSlice.actions;

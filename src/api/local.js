@@ -15,6 +15,7 @@ instance.interceptors.request.use(
   async (req) => {
     if (needsAuthorization.includes(req.url)) {
       const idToken = await auth.currentUser.getIdToken(true);
+      // console.log(idToken);
       if (idToken) {
         req.headers["Authorization"] = `Bearer ${idToken}`;
       }

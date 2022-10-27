@@ -2,12 +2,12 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Dialog, Combobox, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon as SearchIcon } from "@heroicons/react/24/outline";
 import { searchItems } from "../data";
-import { layout } from "../app/store";
+import { useLayout } from "../app/store";
 import { setSearchOpen as setIsOpen, setSearchText } from "../features";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const SearchPallete = () => {
-  const { searchOpen: isOpen } = useSelector(layout);
+  const { searchOpen: isOpen } = useLayout();
   const dispatch = useDispatch();
   const [query, setQuery] = useState(``);
 

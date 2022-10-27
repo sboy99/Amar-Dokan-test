@@ -3,6 +3,7 @@ import { useUser } from "../../../app/store";
 import { overview } from "../../../data/dummy";
 import { ArrowTrendingUpIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { LineChart, DonutChart } from "..";
+import { Headline } from "..";
 
 const Dashboard = () => {
   const { user } = useUser();
@@ -10,16 +11,11 @@ const Dashboard = () => {
   return (
     <main className="relative w-full">
       {/* head titles */}
-      <div className="mt-8 w-full px-4 py-2">
-        <h1 className="font-inter text-4xl font-extrabold capitalize tracking-tight text-white lg:text-5xl">
-          Welcome back, {user?.name}
-        </h1>
-        <p className="mt-1 w-full max-w-xl font-lexend text-sm leading-4 text-gray-200 md:text-base ">
-          Here's What's happening to your store today. These are some brief
-          overview of your store.
-        </p>
-      </div>
-
+      <Headline
+        mainHeading={`Welcome back, ${user?.name}`}
+        subHeading="Here's What's happening to your store today. These are some brief
+          overview of your store."
+      />
       {/* Grid Laylout */}
       <div className=" grid w-full grid-cols-1 gap-2 px-4 py-2 sm:grid-cols-2 lg:sticky lg:inset-x-0 lg:top-20 lg:grid-cols-3 xl:grid-cols-4">
         {overview.map((comp, index) => (

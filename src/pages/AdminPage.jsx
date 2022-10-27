@@ -38,7 +38,7 @@ const AdminPage = () => {
             </div>
           )}
           {/* outlet */}
-          <div className="">
+          <div className="flex-auto">
             <Outlet />
           </div>
         </div>
