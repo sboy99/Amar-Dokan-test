@@ -18,7 +18,7 @@ const AdminPage = () => {
       {renderSidebar && <Sidebar />}
       <main className="flex h-full flex-auto flex-shrink-0 flex-col">
         {/* navbar */}
-        <div className="sticky inset-0 z-10 h-16 flex-shrink-0 border-b border-slate-900/10 bg-white">
+        <div className="sticky inset-0 z-50 h-16 flex-shrink-0 border-b border-slate-900/10 bg-white">
           <Navbar />
         </div>
         {/* body */}
@@ -38,7 +38,7 @@ const AdminPage = () => {
             </div>
           )}
           {/* outlet */}
-          <div className="flex-auto">
+          <div className="z-0 flex-auto">
             <Outlet />
           </div>
         </div>

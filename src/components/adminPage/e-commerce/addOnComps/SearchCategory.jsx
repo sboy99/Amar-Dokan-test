@@ -4,28 +4,18 @@ import {
   MagnifyingGlassIcon as SearchIcon,
   ArrowUturnRightIcon as EnterIcon,
 } from "@heroicons/react/24/outline";
-
-const Categories = [
-  "All Categories",
-  "Electronics",
-  "Appliances",
-  "Foods",
-  "Grocery",
-  "Health & Care",
-  "Sports & Fitness",
-  "Books",
-  "Cloths",
-  "Furniture",
-  "Daily Essentials"
-];
+import { useDispatch } from "react-redux";
+import { setCategoryFilter } from "../../../../features";
+import { Categories } from "../../../../data/dummy";
 
 const SearchCategory = () => {
   const Input = useRef(null);
   const [selectedCaterogy, setSelectedCaterogy] = useState(``);
   const [query, setQuery] = useState(``);
+  const dispatch = useDispatch();
 
   const filteredCategory =
-    query === ``
+    query === `` || query === `All Categories`
       ? Categories
       : Categories.filter((cat) =>
           cat.toLowerCase().includes(query.toLowerCase())
@@ -33,6 +23,8 @@ const SearchCategory = () => {
 
   function handleSubmit(selectedItem) {
     setSelectedCaterogy(selectedItem);
+    if (selectedItem === `All Categories`) selectedItem = ``;
+    dispatch(setCategoryFilter({ filter: selectedItem }));
     Input.current.blur();
   }
 

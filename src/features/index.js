@@ -32,16 +32,6 @@ export { fetchAllProducts, fetchSingleProduct, fetchAllCategories };
 
 // -Export Actions- //
 export const {
-  resetState,
-  setRegister,
-  setForgotPassword,
-  setLoading,
-  setMessage,
-  setSuccess,
-  setError,
-  setUser,
-} = AuthSlice.actions;
-export const {
   setWidth,
   setSearchOpen,
   setSearchText,
@@ -51,6 +41,22 @@ export const {
   setModalContext,
   resetModalContext,
 } = LayoutSlice.actions;
+
+export const {
+  resetState,
+  setRegister,
+  setForgotPassword,
+  setLoading,
+  setMessage,
+  setSuccess,
+  setError,
+  setUser,
+} = AuthSlice.actions;
 export const { getFeaturedProducts, sortBy } = ProductSlice.actions;
 export const { addProdoductToCart } = CartSlice.actions;
-export const { setSidebarOpen, resetAdminResponse } = AdminSlice.actions;
+export const {
+  setSidebarOpen,
+  resetAdminResponse,
+  filterCategory,
+  setCategoryFilter,
+} = AdminSlice.actions;

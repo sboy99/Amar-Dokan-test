@@ -11,11 +11,11 @@ const Category = () => {
       />
 
       {/* add category */}
-      <div className="">
+      <div className="sticky inset-x-0 top-16">
         <AddCategory />
       </div>
       {/* control current category */}
-      <div className="">
+      <div className="mt-4">
         <ControlAvlCategories />
       </div>
     </section>

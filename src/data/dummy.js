@@ -106,3 +106,17 @@ export const salesByCategory = [
     color: `#0891b2`,
   },
 ];
+
+export const Categories = [
+  "All Categories",
+  "Electronics",
+  "Appliances",
+  "Foods",
+  "Grocery",
+  "Health & Care",
+  "Sports & Fitness",
+  "Books",
+  "Cloths",
+  "Furniture",
+  "Daily Essentials",
+].sort();

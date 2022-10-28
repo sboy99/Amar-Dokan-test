@@ -4,28 +4,39 @@ import {
   fetchAllCategoriesFullfilled,
   fetchAllCategoriesPending,
   fetchAllCategoriesRejected,
+  filterCategory,
 } from "./reducers/AdminReducers";
 
 const initialState = {
   isLoading: false,
-  isSuccess: false,
-  isError: false,
-  errorMessage: ``,
+  response: {
+    isSuccess: false,
+    isError: false,
+    errorMessage: ``,
+  },
   isSidebarOpen: false,
-  allCategories: [],
+  category: {
+    filter: ``,
+    allCategories: [],
+    filteredCategories: [],
+  },
 };
 
 const AdminSlice = createSlice({
   name: "admin",
   initialState,
   reducers: {
+    filterCategory: filterCategory,
     setSidebarOpen: (state, action) => {
       state.isSidebarOpen = action.payload;
     },
     resetAdminResponse: (state) => {
-      state.isSuccess = false;
-      state.isError = false;
-      state.errorMessage = ``;
+      state.response.isSuccess = false;
+      state.response.isError = false;
+      state.response.errorMessage = ``;
+    },
+    setCategoryFilter: (state, action) => {
+      state.category.filter = action.payload.filter;
     },
   },
   extraReducers: {

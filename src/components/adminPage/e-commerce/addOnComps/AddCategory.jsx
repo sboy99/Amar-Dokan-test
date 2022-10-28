@@ -6,8 +6,12 @@ import { useLayout } from "../../../../app/store";
 
 const AddCategory = () => {
   const { width } = useLayout();
+
   return (
-    <div className="mt-2 min-h-16 w-full px-4 md:mt-0 md:flex md:items-center md:gap-x-4 lg:px-2 xl:justify-end">
+    <div
+      className={`mt-2 min-h-16 w-full px-4 md:mt-0 md:flex md:items-center md:gap-x-4 lg:px-2 
+      xl:justify-end`}
+    >
       {/* search box */}
       <div className="relative md:flex-shrink-0">
         <SearchCategory />

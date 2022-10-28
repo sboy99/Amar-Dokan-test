@@ -1,10 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useAdmin } from "../app/store";
-import { fetchAllCategories, resetAdminResponse } from "../features";
+import {
+  fetchAllCategories,
+  resetAdminResponse,
+  filterCategory,
+} from "../features";
 
 const AdminWrapper = ({ children }) => {
-  const { isLoading, isError, isSuccess } = useAdmin();
+  const {
+    isLoading,
+    response: { isError, isSuccess },
+    category: { filter },
+  } = useAdmin();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,6 +35,13 @@ const AdminWrapper = ({ children }) => {
     return () => controller.abort();
     //eslint-disable-next-line
   }, []);
+
+  //> Filter Categories
+  useEffect(() => {
+    dispatch(filterCategory({ category: filter }));
+
+    //eslint-disable-next-line
+  }, [filter]);
 
   if (isLoading)
     return (
