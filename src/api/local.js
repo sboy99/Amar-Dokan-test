@@ -1,8 +1,6 @@
 import axios from "axios";
 import auth from "../auth/firebase.config";
 
-const needsAuthorization = ["/user/showMe", "/auth/logout"];
-
 const instance = axios.create({
   baseURL: "http://localhost:3000/api/v1",
   timeout: 5000,
@@ -13,7 +11,8 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (req) => {
-    if (needsAuthorization.includes(req.url)) {
+    if (!req?.needNoAuth) {
+      // console.log(req.url);
       const idToken = await auth.currentUser.getIdToken(true);
       console.log(idToken);
       if (idToken) {

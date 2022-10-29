@@ -10,7 +10,7 @@ import {
   fetchSingleProduct,
 } from "./reducers/ProductReducers";
 
-import { fetchAllCategories } from "./reducers/AdminReducers";
+import { fetchAllCategories, updateCategory } from "./reducers/AdminReducers";
 
 const AuthReducer = AuthSlice.reducer;
 const LayoutReducer = LayoutSlice.reducer;
@@ -28,7 +28,12 @@ export {
 };
 
 // -Export Async Thunks- //
-export { fetchAllProducts, fetchSingleProduct, fetchAllCategories };
+export {
+  fetchAllProducts,
+  fetchSingleProduct,
+  fetchAllCategories,
+  updateCategory,
+};
 
 // -Export Actions- //
 export const {

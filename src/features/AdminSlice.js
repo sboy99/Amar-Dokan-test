@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  startLoading,
+  requestRejected,
+  filterCategory,
   fetchAllCategories,
   fetchAllCategoriesFullfilled,
-  fetchAllCategoriesPending,
-  fetchAllCategoriesRejected,
-  filterCategory,
+  updateCategory,
+  updateCategoryFulfilled,
 } from "./reducers/AdminReducers";
 
 const initialState = {
@@ -40,9 +42,13 @@ const AdminSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchAllCategories.pending]: fetchAllCategoriesPending,
+    [fetchAllCategories.pending]: startLoading,
     [fetchAllCategories.fulfilled]: fetchAllCategoriesFullfilled,
-    [fetchAllCategories.rejected]: fetchAllCategoriesRejected,
+    [fetchAllCategories.rejected]: requestRejected,
+
+    [updateCategory.pending]: startLoading,
+    [updateCategory.fulfilled]: updateCategoryFulfilled,
+    [updateCategory.rejected]: requestRejected,
   },
 });
 
