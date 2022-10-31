@@ -8,7 +8,12 @@ import { FormikInput, FormikCheckBox } from "../../../../utils";
 import { useFormikError } from "../../../../hooks";
 import { Categories as CategoryTypes } from "../../../../data/dummy";
 import * as yup from "yup";
-import { ChevronDownIcon, CheckIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  CheckIcon,
+  PlusIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 const CategoryForm = () => {
   const dispatch = useDispatch();
@@ -89,6 +94,7 @@ const validationSchema = yup.object({
 });
 
 const RenderForm = ({ onReset, onSubmit }) => {
+  const [reRender, setReRender] = React.useState(0);
   const initialValues = {
     name: ``,
     subCategories: [],
@@ -110,6 +116,20 @@ const RenderForm = ({ onReset, onSubmit }) => {
     formik.values.type = value;
   }
 
+  function insertToSubCategories({ subCategory }) {
+    if (!formik.values.subCategories.indexOf(subCategory.toLowerCase())) {
+      formik.values.subCategories.push(subCategory.toLowerCase());
+      setReRender(reRender + 1);
+    }
+  }
+
+  function removeFromSubCategories(index) {
+    formik.values.subCategories = formik.values.subCategories.filter(
+      (sub, idx) => idx !== index
+    );
+    setReRender(reRender + 1);
+  }
+
   return (
     <form
       className="mx-auto flex max-w-xs flex-col justify-center gap-y-3"
@@ -124,7 +144,7 @@ const RenderForm = ({ onReset, onSubmit }) => {
         </p>
       </h1>
       {/* form body */}
-      <div className="flex flex-col justify-center gap-y-2">
+      <div className="z-0 flex flex-col justify-center gap-y-2">
         {/* category Type */}
         <SelectType onChange={selectedType} error={formikError} />
         {/* category Name */}
@@ -132,13 +152,34 @@ const RenderForm = ({ onReset, onSubmit }) => {
           label={`name`}
           name="Category Name"
           value={formik.values.name}
-          placeholder="ex: Electronics"
+          placeholder="ex: Smart Phones"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formikError}
         />
 
         {/* subCategories Array */}
+        <div className="">
+          <AddSubCategory onSubmit={insertToSubCategories} />
+          {/* subcategory list */}
+          <div className="mt-2 flex flex-wrap gap-1">
+            {formik.values.subCategories.map((sub, i) => (
+              <div
+                key={i + sub}
+                className="flex items-center justify-between gap-x-2 rounded-full bg-indigo-50 px-3 py-1 capitalize text-indigo-700"
+              >
+                {sub}{" "}
+                <button
+                  type="button"
+                  className="outline-none"
+                  onClick={() => removeFromSubCategories(i)}
+                >
+                  <XMarkIcon className="h-5 w-5" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* publish checkbox */}
         <FormikCheckBox
@@ -184,7 +225,7 @@ const SelectType = ({ onChange, error }) => {
       value={selectedType}
       onChange={setSelectedType}
       as="div"
-      className={`relative z-0 flex flex-col gap-1`}
+      className={`relative z-10 flex flex-col gap-1`}
     >
       <Listbox.Label
         className={`text-sm font-semibold capitalize text-slate-700`}
@@ -208,7 +249,7 @@ const SelectType = ({ onChange, error }) => {
           <Listbox.Option key={category + index} value={category}>
             {({ active, selected }) => (
               <div
-                className={`flex items-center justify-between px-3 py-1 text-sm font-medium ${
+                className={`flex cursor-pointer items-center justify-between px-3 py-1 text-sm font-medium ${
                   active ? `bg-indigo-100 text-indigo-600` : `text-slate-600`
                 }`}
               >
@@ -220,5 +261,66 @@ const SelectType = ({ onChange, error }) => {
       </Listbox.Options>
       <p className="ml-5 max-w-15 text-xs text-rose-600">{errorMessage}</p>
     </Listbox>
+  );
+};
+
+const subCategoryValidationSchema = yup.object({
+  subCategory: yup
+    .string()
+    .required(`Sub category should not be empty`)
+    .min(2, `Name should be atleaset 2 letters long`)
+    .max(30, `Max lengrh exceeds`),
+});
+
+const AddSubCategory = ({ onSubmit: reply }) => {
+  function onSubmit(value) {
+    formik.resetForm();
+    reply(value);
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      subCategory: ``,
+    },
+    onSubmit,
+    validationSchema: subCategoryValidationSchema,
+    validateOnBlur: true,
+  });
+
+  const errorMessage = formik.errors.subCategory;
+  return (
+    <div className="z-0 flex flex-col gap-y-1">
+      <label
+        htmlFor="subCategory"
+        className="text-sm font-semibold capitalize text-slate-700"
+      >
+        Sub Categories
+      </label>
+      {/* input with button */}
+      <div className="relative">
+        <input
+          type="text"
+          id="subCategory"
+          placeholder="ex: Android"
+          className={`w-full rounded-full border bg-transparent px-4 outline-none placeholder:text-slate-500/80 focus:border focus:ring-0 ${
+            errorMessage
+              ? `border-rose-600 focus:border-rose-600`
+              : `border-gray-300 focus:border-indigo-600`
+          }`}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.subCategory}
+        />
+        {/* add button */}
+        <button
+          type="button"
+          onClick={formik.handleSubmit}
+          className="absolute right-1 top-1/2 -translate-y-1/2 rounded-full bg-indigo-600 p-2 text-white outline-none"
+        >
+          <PlusIcon className="h-5 w-5" />
+        </button>
+      </div>
+      <p className="ml-5 max-w-15 text-xs text-rose-600">{errorMessage}</p>
+    </div>
   );
 };
