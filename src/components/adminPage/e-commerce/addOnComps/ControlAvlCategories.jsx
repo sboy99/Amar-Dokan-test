@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAdmin } from "../../../../app/store";
 import { Tip } from "../../../../utils";
 import { useFormik } from "formik";
-import { Categories } from "../../../../data/dummy";
+import { Categories as CategoryTypes } from "../../../../data/dummy";
 import { Listbox, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as yup from "yup";
@@ -13,10 +13,6 @@ import {
 } from "@heroicons/react/24/solid";
 import { useDispatch } from "react-redux";
 import { updateCategory } from "../../../../features";
-
-const CategoryTypes = Categories.filter(
-  (category) => category !== `All Categories`
-);
 
 const ControlAvlCategories = () => {
   const {

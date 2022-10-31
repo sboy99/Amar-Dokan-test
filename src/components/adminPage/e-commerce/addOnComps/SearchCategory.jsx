@@ -6,7 +6,9 @@ import {
 } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
 import { setCategoryFilter } from "../../../../features";
-import { Categories } from "../../../../data/dummy";
+import { Categories as rest } from "../../../../data/dummy";
+
+const Categories = [`All Categories`, ...rest];
 
 const SearchCategory = () => {
   const Input = useRef(null);

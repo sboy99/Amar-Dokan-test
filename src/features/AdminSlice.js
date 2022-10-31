@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  startLoading,
-  requestRejected,
   filterCategory,
   fetchAllCategories,
   fetchAllCategoriesFullfilled,
+  requestRejected,
+  startLoading,
   updateCategory,
   updateCategoryFulfilled,
+  openCategoryForm,
+  closeCategoryForm,
 } from "./reducers/AdminReducers";
 
 const initialState = {
@@ -18,6 +20,7 @@ const initialState = {
   },
   isSidebarOpen: false,
   category: {
+    isOpenCategoryForm: false,
     filter: ``,
     allCategories: [],
     filteredCategories: [],
@@ -28,7 +31,9 @@ const AdminSlice = createSlice({
   name: "admin",
   initialState,
   reducers: {
-    filterCategory: filterCategory,
+    openCategoryForm,
+    closeCategoryForm,
+    filterCategory,
     setSidebarOpen: (state, action) => {
       state.isSidebarOpen = action.payload;
     },

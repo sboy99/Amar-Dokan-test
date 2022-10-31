@@ -108,7 +108,6 @@ export const salesByCategory = [
 ];
 
 export const Categories = [
-  "All Categories",
   "Electronics",
   "Appliances",
   "Foods",

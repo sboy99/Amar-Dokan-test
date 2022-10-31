@@ -15,7 +15,7 @@ const Category = () => {
         <AddCategory />
       </div>
       {/* control current category */}
-      <div className="mt-4">
+      <div className="z-0 mt-4">
         <ControlAvlCategories />
       </div>
     </section>

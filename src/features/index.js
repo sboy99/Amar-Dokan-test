@@ -64,4 +64,6 @@ export const {
   resetAdminResponse,
   filterCategory,
   setCategoryFilter,
+  openCategoryForm,
+  closeCategoryForm,
 } = AdminSlice.actions;

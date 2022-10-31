@@ -16,10 +16,12 @@ import DonutChart from "./charts/DonutChart";
 import AddCategory from "./e-commerce/addOnComps/AddCategory";
 import ControlAvlCategories from "./e-commerce/addOnComps/ControlAvlCategories";
 import Headline from "./e-commerce/addOnComps/Headline";
+import CategoryForm from "./e-commerce/addOnComps/CategoryForm";
 
 export {
   AddCategory,
   Category,
+  CategoryForm,
   ControlAvlCategories,
   Customers,
   Dashboard,

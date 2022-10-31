@@ -20,6 +20,15 @@ export function stopLoading(state) {
   state.isLoading = false;
 }
 
+export function openCategoryForm(state) {
+  state.category.isOpenCategoryForm = true;
+}
+
+export function closeCategoryForm(state) {
+  state.category.isOpenCategoryForm = false;
+}
+
+//> Async requests ...
 export const requestRejected = (state, action) => {
   state.response.isError = true;
   state.response.errorMessage = action.error.message;
