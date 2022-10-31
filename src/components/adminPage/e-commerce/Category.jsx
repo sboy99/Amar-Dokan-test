@@ -3,7 +3,7 @@ import { AddCategory, ControlAvlCategories, Headline } from "..";
 
 const Category = () => {
   return (
-    <section className="flex w-full flex-col">
+    <section className="z-0 flex w-full flex-col">
       {/* Comp Info */}
       <Headline
         mainHeading={`Category`}
@@ -11,7 +11,7 @@ const Category = () => {
       />
 
       {/* add category */}
-      <div className="sticky inset-x-0 top-16">
+      <div className="sticky inset-x-0 top-16 z-20">
         <AddCategory />
       </div>
       {/* control current category */}
