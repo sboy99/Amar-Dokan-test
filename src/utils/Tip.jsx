@@ -1,8 +1,8 @@
 import React from "react";
 
-const Tip = ({ children, tip, bottom = false }) => {
+const Tip = ({ children, tip, bottom = false, className = "z-50" }) => {
   return (
-    <div className="group relative z-50 flex flex-col items-center">
+    <div className={`group relative flex flex-col items-center ${className}`}>
       {children}
       <div
         className={`absolute bottom-0 ${

@@ -105,13 +105,13 @@ function SingleCategory({ _id, name, type, subCategories = [] }) {
     <form
       onSubmit={formik.handleSubmit}
       onReset={handleCancel}
-      className="relative h-fit rounded-lg bg-white p-4 shadow-md shadow-slate-300/20 transition-all duration-300 ease-in-out"
+      className="relative z-0 h-fit rounded-lg bg-white p-4 shadow-md shadow-slate-300/20 transition-all duration-300 ease-in-out"
     >
       {/* Category Type */}
       {!editMode ? (
         <h6
           name="type"
-          className=" -ml-1 w-fit rounded-full text-xs font-medium text-slate-700"
+          className="-ml-1 w-fit rounded-full text-xs font-medium text-slate-700"
         >
           {selectedType}
         </h6>
@@ -218,9 +218,9 @@ function SingleCategory({ _id, name, type, subCategories = [] }) {
 
       {/* actions on edit mode */}
       {editMode && (
-        <div className="mt-4 flex items-center justify-between">
+        <div className="-z-20 mt-4 flex items-center justify-between">
           {/* add new Category...*/}
-          <Tip tip={`New Sub Category`}>
+          <Tip className="z-0" tip={`New Sub Category`}>
             <button
               type="button"
               onClick={insertItem}
@@ -256,7 +256,7 @@ function SelectType({ value, onChange }) {
         value={value}
         onChange={onChange}
         as="div"
-        className="relative z-20"
+        className="relative z-50"
       >
         <Listbox.Button className="flex items-center gap-x-2 rounded-full bg-slate-200 px-3 py-1 text-sm font-medium leading-none outline-none">
           {value}{" "}

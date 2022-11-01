@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { FormikInput, FormikCheckBox } from "../../../../utils";
 import { useFormikError } from "../../../../hooks";
 import { Categories as CategoryTypes } from "../../../../data/dummy";
+import { createCategory } from "../../../../features";
 import * as yup from "yup";
 import {
   ChevronDownIcon,
@@ -26,7 +27,7 @@ const CategoryForm = () => {
   }
 
   function handeSubmit(values) {
-    console.log(values);
+    dispatch(createCategory(values));
   }
 
   return (
@@ -117,7 +118,7 @@ const RenderForm = ({ onReset, onSubmit }) => {
   }
 
   function insertToSubCategories({ subCategory }) {
-    if (!formik.values.subCategories.indexOf(subCategory.toLowerCase())) {
+    if (!formik.values.subCategories.includes(subCategory.toLowerCase())) {
       formik.values.subCategories.push(subCategory.toLowerCase());
       setReRender(reRender + 1);
     }

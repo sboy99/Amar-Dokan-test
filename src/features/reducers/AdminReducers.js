@@ -68,6 +68,22 @@ export const fetchAllCategoriesFullfilled = requestFufilled((state, action) => {
   state.category.filteredCategories = state.category.allCategories;
 });
 
+//> Create Category
+export const createCategory = createAsyncThunk(
+  "/admin/category/createCategory",
+  asyncWrapper(async (payload) => {
+    const { data } = await axios.post(`/category`, payload);
+    return data;
+  })
+);
+
+export const createCategoryFulfilled = requestFufilled((state, action) => {
+  console.log(action.payload);
+  state.category.allCategories.push(action.payload);
+  state.category.filteredCategories = state.category.allCategories;
+});
+
+//> Update Category by id
 export const updateCategory = createAsyncThunk(
   "/admin/category/updateCategory",
   asyncWrapper(async (category) => {
@@ -87,7 +103,6 @@ export const updateCategoryFulfilled = requestFufilled((state, action) => {
       return category;
     }
   );
-
   state.category.filteredCategories = state.category.filteredCategories.map(
     (category) => {
       if (category._id === action.payload.id) {

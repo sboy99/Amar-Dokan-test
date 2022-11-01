@@ -9,6 +9,8 @@ import {
   updateCategoryFulfilled,
   openCategoryForm,
   closeCategoryForm,
+  createCategory,
+  createCategoryFulfilled,
 } from "./reducers/AdminReducers";
 
 const initialState = {
@@ -50,6 +52,10 @@ const AdminSlice = createSlice({
     [fetchAllCategories.pending]: startLoading,
     [fetchAllCategories.fulfilled]: fetchAllCategoriesFullfilled,
     [fetchAllCategories.rejected]: requestRejected,
+
+    [createCategory.pending]: startLoading,
+    [createCategory.fulfilled]: createCategoryFulfilled,
+    [createCategory.rejected]: requestRejected,
 
     [updateCategory.pending]: startLoading,
     [updateCategory.fulfilled]: updateCategoryFulfilled,
