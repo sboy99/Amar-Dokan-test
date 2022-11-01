@@ -56,7 +56,7 @@ export const fetchAllCategories = createAsyncThunk(
   "admin/category/fetchCategories",
   asyncWrapper(async (signal) => {
     const { data } = await axios.get(
-      "/category?select=name,type,subCategories",
+      "/category?select=name,type,subCategories,published",
       { signal, needNoAuth: true }
     );
     return data;

@@ -3,7 +3,7 @@ import { useAdmin } from "../../../../app/store";
 import { Tip } from "../../../../utils";
 import { useFormik } from "formik";
 import { Categories as CategoryTypes } from "../../../../data/dummy";
-import { Listbox, Transition } from "@headlessui/react";
+import { Listbox, Transition, Switch } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import * as yup from "yup";
 import {
@@ -22,7 +22,7 @@ const ControlAvlCategories = () => {
   return (
     <div className="w-full p-4 ">
       {/* Grid Layout for categories  */}
-      <div className="grid grid-flow-dense grid-cols-autofill-16 place-content-start gap-3">
+      <div className="grid h-fit grid-flow-dense grid-cols-autofill-16 place-content-start gap-3">
         {Categories.map((category) => (
           <SingleCategory key={category._id} {...category} />
         ))}
@@ -47,27 +47,31 @@ const validationSchema = yup.object({
       .max(30, `Max length exceeds`)
   ),
   type: yup.string().oneOf(CategoryTypes, `Please Select a valid type`),
+  published: yup.boolean(),
 });
 
-function SingleCategory({ _id, name, type, subCategories = [] }) {
+function SingleCategory({ _id, name, type, subCategories = [], published }) {
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
+  const [isPublic, setIsPublic] = useState(published);
   const [childCategories, setChildCategories] = useState([...subCategories]);
   const [selectedType, setSelectedType] = useState(type);
   // const { isLoading } = useAdmin();
-
-  // Final Submit
-  const handleSubmit = (values) => {
-    values.type = selectedType;
-    dispatch(updateCategory({ id: _id, data: values }));
-    setEditMode(false);
-  };
 
   // Form initial form values
   const initialValues = {
     name,
     type,
     subCategories,
+    published,
+  };
+
+  // Final Submit
+  const handleSubmit = (values) => {
+    values.type = selectedType;
+    values.published = isPublic;
+    setEditMode(false);
+    dispatch(updateCategory({ id: _id, data: values }));
   };
 
   // Handle cancel
@@ -76,6 +80,7 @@ function SingleCategory({ _id, name, type, subCategories = [] }) {
     setEditMode(false);
     formik.resetForm({ values: initialValues });
     setChildCategories(subCategories);
+    setIsPublic(published);
   };
 
   // Remove a item from array
@@ -116,15 +121,23 @@ function SingleCategory({ _id, name, type, subCategories = [] }) {
           {selectedType}
         </h6>
       ) : (
-        // In edit mode we can select type
-        <SelectType value={selectedType} onChange={setSelectedType} />
+        <div className="flex items-center justify-between">
+          {/* // In edit mode we can select type */}
+          <SelectType value={selectedType} onChange={setSelectedType} />
+          {/* // publish Toogle */}
+          <ToogleIsPublic value={isPublic} onChange={setIsPublic} />
+        </div>
       )}
 
       {/* Category Title */}
       <h2 className="my-2 flex items-center justify-between font-lexend text-lg font-semibold text-slate-700">
         <div className="flex items-center gap-x-2">
           {/* Activate indicator */}
-          <span className="rounded-full bg-emerald-500 p-1"></span>
+          <span
+            className={`rounded-full ${
+              isPublic ? `bg-emerald-500 ` : `bg-rose-500`
+            } p-1`}
+          ></span>
           {/* Name */}
           {!editMode ? (
             formik.values.name
@@ -290,5 +303,26 @@ function SelectType({ value, onChange }) {
         </Transition>
       </Listbox>
     </>
+  );
+}
+
+function ToogleIsPublic({ value, onChange }) {
+  return (
+    <Tip tip={`Publish Category`}>
+      <Switch
+        checked={value}
+        onChange={onChange}
+        className={`${
+          value ? "bg-emerald-600" : "bg-rose-600"
+        } relative inline-flex h-6 w-11 items-center rounded-full`}
+      >
+        <span className="sr-only">Enable notifications</span>
+        <span
+          className={`${
+            value ? "translate-x-6" : "translate-x-1"
+          } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+        />
+      </Switch>
+    </Tip>
   );
 }

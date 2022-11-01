@@ -27,7 +27,7 @@ const AdminPage = () => {
         <div className="container relative mx-auto h-full xl:flex ">
           {/* Menu for large screens */}
           {!renderSidebar && (
-            <div className="sticky inset-0 top-16 h-[calc(100vh-4rem)] w-full max-w-xs flex-shrink-0 bg-white">
+            <div className="sticky inset-0 top-16 z-20 h-[calc(100vh-4rem)] w-full max-w-xs flex-shrink-0 bg-white">
               <div className="relative h-full">
                 {/* upper fade */}
                 <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-8 w-full bg-gradient-to-b from-white via-white to-transparent"></div>
