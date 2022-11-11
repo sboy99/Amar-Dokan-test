@@ -1,6 +1,24 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Layout, Protected, ResetPassword, Modal } from "./components";
+import AdminWrapper from "./wrappers/AdminWrapper";
+
+import {
+  Layout,
+  Protected,
+  ResetPassword,
+  Modal,
+  ProtectedForAdmin,
+} from "./components";
+
+import {
+  Category,
+  Customers,
+  Dashboard,
+  Employee,
+  Orders,
+  Products as Product,
+} from "./components/adminPage";
+
 import {
   Home,
   About,
@@ -10,6 +28,8 @@ import {
   CheckOut,
   Error,
   SignIn,
+  UserPage,
+  AdminPage,
 } from "./pages";
 
 const App = () => {
@@ -33,10 +53,43 @@ const App = () => {
                 </Protected>
               }
             />
+            {/* user profile */}
+            <Route
+              path="profile"
+              element={
+                <Protected>
+                  <UserPage />
+                </Protected>
+              }
+            />
           </Route>
+          {/* sign in */}
           <Route path="signin">
             <Route index element={<SignIn />} />
           </Route>
+          {/* Admin Panel */}
+          <Route
+            path="admin"
+            element={
+              //Todo: Get back auth when adminstration is complete
+              //<Protected>
+              //<ProtectedForAdmin>
+              <AdminWrapper>
+                <AdminPage />
+              </AdminWrapper>
+              //</ProtectedForAdmin>
+              //</Protected>
+            }
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="product-categories" element={<Category />} />
+            <Route path="products" element={<Product />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="employees" element={<Employee />} />
+          </Route>
+
+          {/* 404 not found */}
           <Route path="*" element={<Error />} />
         </Routes>
       </section>

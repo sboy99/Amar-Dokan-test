@@ -6,7 +6,6 @@ import { auth as authState } from "../app/store";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getMessage, prepareUserPayload } from "../utils";
 import axios from "../api/local";
-import { ModalContexts } from "../data";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -59,20 +58,14 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (userCred) => {
       if (userCred) {
-        const user = {
-          userId: userCred.uid,
-          name: userCred.displayName,
-          isVerified: userCred.emailVerified,
-          image: userCred.photoURL,
-        };
-        const { data } = await axios.get(`/user/showMe/${user?.userId}`);
-        user["role"] = data?.role;
-
+        //> Sending access token to verify user.
+        const { data: user } = await axios.get(`/user/showMe`);
+        //> After successful request set user from server response
         dispatch(setUser(user));
 
         //> Send Alert about email verification
         if (!user?.isVerified) {
-          dispatch(setModalContext(ModalContexts["VerificationReminder"]));
+          dispatch(setModalContext("VerifyEmail"));
           dispatch(setModalOpen(true));
         }
         // navigate("/products", { state: { from: location }, replace: true });
@@ -99,10 +92,9 @@ const AuthProvider = ({ children }) => {
       await updateUserName(name);
       //> create an account to server
       await axios.post("/user", prepareUserPayload(userCred));
+
       await sendVerificationMail();
       dispatch(setSuccess());
-      dispatch(setModalContext(ModalContexts["VerifyEmail"]));
-      dispatch(setModalOpen(true));
       navigate("/products", { state: { from: location }, replace: true });
     } catch (error) {
       dispatch(setError());
@@ -130,10 +122,12 @@ const AuthProvider = ({ children }) => {
   const logoutUser = async () => {
     dispatch(setLoading(true));
     try {
+      await axios.delete(`/auth/logout`);
       await signOut(auth);
       dispatch(setSuccess());
       dispatch(setMessage("user logged out"));
     } catch (error) {
+      console.log(error);
       dispatch(setError());
       dispatch(setMessage(error.code));
     } finally {
@@ -156,6 +150,7 @@ const AuthProvider = ({ children }) => {
       const userCred = await signInWithPopup(auth, googleProvider);
       //> create an account to server
       await axios.post("/user", prepareUserPayload(userCred));
+
       dispatch(setSuccess());
       navigate("/products", { state: { from: location }, replace: true });
     } catch (error) {

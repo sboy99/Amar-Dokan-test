@@ -8,6 +8,8 @@ import {
   XMarkIcon,
   ArrowLeftOnRectangleIcon as LogoutIcon,
   ArrowRightOnRectangleIcon as LoginIcon,
+  UserCircleIcon,
+  UserGroupIcon,
 } from "@heroicons/react/24/outline";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/solid";
 import { NavbarItems } from "../../data";
@@ -93,9 +95,19 @@ const Navbar = () => {
             className="flex flex-col divide-y bg-white py-1 shadow-xl ring-1 ring-slate-900/10"
           >
             {user ? (
-              <PopBtn onClick={() => logoutUser()} Icon={LogoutIcon}>
-                logout
-              </PopBtn>
+              <>
+                {user?.role === "admin" && (
+                  <PopLink to={`/admin`} Icon={UserGroupIcon}>
+                    Administration
+                  </PopLink>
+                )}
+                <PopLink to={`/profile`} Icon={UserCircleIcon}>
+                  profile
+                </PopLink>
+                <PopBtn onClick={() => logoutUser()} Icon={LogoutIcon}>
+                  logout
+                </PopBtn>
+              </>
             ) : (
               <PopLink to={`/signin`} Icon={LoginIcon}>
                 Sign In

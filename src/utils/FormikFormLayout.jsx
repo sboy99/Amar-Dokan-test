@@ -4,7 +4,7 @@ import Submit from "./Submit";
 
 const FormikFormLayout = ({
   children,
-  Icon,
+  Icon = null,
   iconColor = "fill-indigo-600 text-indigo-600",
   handleSubmit,
   headTitle,
@@ -21,7 +21,7 @@ const FormikFormLayout = ({
 }) => {
   return (
     <div className="mx-auto w-full max-w-sm py-10 px-4">
-      <HeadLine Icon={Icon} className={iconColor} />
+      {Icon && <HeadLine Icon={Icon} className={iconColor} />}
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="mb-4">
           <h1

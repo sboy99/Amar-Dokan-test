@@ -7,6 +7,7 @@ import {
   SparklesIcon,
   HeartIcon,
   BoltIcon,
+  FingerPrintIcon,
 } from "@heroicons/react/24/outline";
 
 import {
@@ -14,6 +15,24 @@ import {
   CheckBadgeIcon,
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
+
+import {
+  CubeIcon,
+  UsersIcon,
+  ChartBarIcon,
+  ListBulletIcon,
+  UserIcon,
+  RectangleStackIcon,
+} from "@heroicons/react/24/outline";
+
+import {
+  CubeIcon as CubeIconActive,
+  UsersIcon as UsersIconActive,
+  ChartBarIcon as ChartBarIconActive,
+  ListBulletIcon as ListBulletIconActive,
+  UserIcon as UserIconActive,
+  RectangleStackIcon as RectangleStackIconActive,
+} from "@heroicons/react/24/solid";
 
 import GLogo from "../assets/G_Logo.svg";
 import notFound from "../assets/img/not_found.png";
@@ -372,15 +391,163 @@ export const HeaderTexts = {
 
 export const ModalContexts = {
   VerifyEmail: {
-    title: "Verify your email",
+    Icon: FingerPrintIcon,
+    title: "Please verify your email",
     desc: "A verification mail has been sent to your mail address. Please open your email and check inbox and spam folder for the email. For some technical issues mail might goes into spam folder, So, please consider checking your mail address. Thank You.",
     layoutColor: "success",
     buttonText: "Got it,Thanks",
   },
-  VerificationReminder: {
-    title: "Verify your email",
-    desc: "It looks like you haven't verify your email yet. So, please consider verify your email for a better experience. We have already sent you a verification email please do check your inbox as well as spam folder. Thank You.",
+  NotLoggedIn: {
+    Icon: FingerPrintIcon,
+    title: "You're not logged in",
+    desc: "Its look like you are not logged in. So, please log in first to continue further",
     layoutColor: "danger",
-    buttonText: "Got it,Thanks",
+    buttonText: "Thanks",
+  },
+  NotAdmin: {
+    Icon: FingerPrintIcon,
+    title: "Admin Only",
+    desc: "Its look like you are requesting admin only route. Your resquest can't be permitted",
+    layoutColor: "danger",
+    buttonText: "I understand!",
   },
 };
+
+//> Admin
+
+export const AdminLinks = [
+  {
+    id: 1,
+    title: `Overview`,
+    icon: ChartBarIcon,
+    activeIcon: ChartBarIconActive,
+    to: `/admin`,
+  },
+  {
+    id: 2,
+    title: `Products`,
+    icon: CubeIcon,
+    activeIcon: CubeIconActive,
+    to: `/admin/products`,
+  },
+  {
+    id: 3,
+    title: `Category`,
+    icon: ListBulletIcon,
+    activeIcon: ListBulletIconActive,
+    to: `/admin/product-categories`,
+  },
+  {
+    id: 4,
+    title: `Customers`,
+    icon: UsersIcon,
+    activeIcon: UsersIconActive,
+    to: `/admin/customers`,
+  },
+  {
+    id: 5,
+    title: `Orders`,
+    icon: RectangleStackIcon,
+    activeIcon: RectangleStackIconActive,
+    to: `/admin/orders`,
+  },
+  {
+    id: 6,
+    title: `Staffs`,
+    icon: UserIcon,
+    activeIcon: UserIconActive,
+    to: `/admin/employees`,
+  },
+];
+
+export const AdminSubLinks = [
+  {
+    id: 4,
+    mainTitle: `User Management`,
+    subLinks: [
+      {
+        id: 1,
+        title: `Active Users`,
+        to: ``,
+      },
+      {
+        id: 2,
+        title: `Block Users`,
+        to: ``,
+      },
+    ],
+  },
+  {
+    id: 1,
+    mainTitle: `Category Management`,
+    subLinks: [
+      {
+        id: 1,
+        title: `Available Categories`,
+        to: ``,
+      },
+      {
+        id: 2,
+        title: `Create Category`,
+        to: ``,
+      },
+      {
+        id: 3,
+        title: `Modify Categories`,
+        to: ``,
+      },
+      {
+        id: 4,
+        title: `Delete Categories`,
+        to: ``,
+      },
+    ],
+  },
+  {
+    id: 2,
+    mainTitle: `Product Management`,
+    subLinks: [
+      {
+        id: 1,
+        title: `Available Products`,
+        to: ``,
+      },
+      {
+        id: 2,
+        title: `Create Product`,
+        to: ``,
+      },
+      {
+        id: 3,
+        title: `Modify Products`,
+        to: ``,
+      },
+      {
+        id: 4,
+        title: `Delete Products`,
+        to: ``,
+      },
+    ],
+  },
+  {
+    id: 3,
+    mainTitle: `Orders Report`,
+    subLinks: [
+      {
+        id: 1,
+        title: `All Orders`,
+        to: ``,
+      },
+      {
+        id: 2,
+        title: `Modify Orders`,
+        to: ``,
+      },
+      {
+        id: 3,
+        title: `Delete Orders`,
+        to: ``,
+      },
+    ],
+  },
+];
