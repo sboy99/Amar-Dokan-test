@@ -9,6 +9,9 @@ import {
   updateCategoryFulfilled,
   openCategoryForm,
   closeCategoryForm,
+  openProductForm,
+  closeProductForm,
+  filterProduct,
   createCategory,
   createCategoryFulfilled,
 } from "./reducers/AdminReducers";
@@ -27,6 +30,9 @@ const initialState = {
     allCategories: [],
     filteredCategories: [],
   },
+  product: {
+    isOpenProductForm: false,
+  },
 };
 
 const AdminSlice = createSlice({
@@ -36,6 +42,11 @@ const AdminSlice = createSlice({
     openCategoryForm,
     closeCategoryForm,
     filterCategory,
+
+    openProductForm,
+    closeProductForm,
+    filterProduct,
+
     setSidebarOpen: (state, action) => {
       state.isSidebarOpen = action.payload;
     },

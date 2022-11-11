@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useLayout } from "../app/store";
 import { Navbar, Sidebar, Menu } from "../components/adminPage";
-import { CategoryForm } from "../components/adminPage";
-
 const AdminPage = () => {
   // const { isSidebarOpen } = useAdmin();
   const { width } = useLayout();
@@ -42,8 +40,6 @@ const AdminPage = () => {
           <div className="z-0 flex-auto">
             <Outlet />
           </div>
-          {/* Open Category Form... */}
-          <CategoryForm />
         </div>
       </main>
     </section>

@@ -1,17 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../api/local";
 
-export function filterCategory(state, action) {
-  if (action.payload.category === "") {
-    state.category.filteredCategories = state.category.allCategories;
-  } else {
-    state.category.filteredCategories = state.category.allCategories.filter(
-      (category) =>
-        category.type.toLowerCase() === action.payload.category.toLowerCase()
-    );
-  }
-}
-
 export function startLoading(state) {
   state.isLoading = true;
 }
@@ -27,6 +16,27 @@ export function openCategoryForm(state) {
 export function closeCategoryForm(state) {
   state.category.isOpenCategoryForm = false;
 }
+
+export function filterCategory(state, action) {
+  if (action.payload.category === "") {
+    state.category.filteredCategories = state.category.allCategories;
+  } else {
+    state.category.filteredCategories = state.category.allCategories.filter(
+      (category) =>
+        category.type.toLowerCase() === action.payload.category.toLowerCase()
+    );
+  }
+}
+
+export function openProductForm(state) {
+  state.product.isOpenProductForm = true;
+}
+
+export function closeProductForm(state) {
+  state.product.isOpenProductForm = false;
+}
+
+export function filterProduct(state, action) {}
 
 //> Async requests ...
 export const requestRejected = (state, action) => {

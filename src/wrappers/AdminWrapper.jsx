@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useAdmin } from "../app/store";
+import { ProductForm, CategoryForm } from "../components/adminPage";
 import {
   fetchAllCategories,
   resetAdminResponse,
@@ -48,7 +49,14 @@ const AdminWrapper = ({ children }) => {
       <div className="fixed inset-0 h-2 bg-gradient-to-r from-amber-500 to-rose-600"></div>
     );
 
-  return children;
+  return (
+    <>
+      {/* Pop up Forms */}
+      <CategoryForm />
+      <ProductForm />
+      {children}
+    </>
+  );
 };
 
 export default AdminWrapper;

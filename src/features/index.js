@@ -71,4 +71,6 @@ export const {
   setCategoryFilter,
   openCategoryForm,
   closeCategoryForm,
+  openProductForm,
+  closeProductForm,
 } = AdminSlice.actions;
