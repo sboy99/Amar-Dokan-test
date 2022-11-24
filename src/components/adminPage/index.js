@@ -17,12 +17,15 @@ import AddCategory from "./e-commerce/addOnComps/AddCategory";
 import ControlAvlCategories from "./e-commerce/addOnComps/ControlAvlCategories";
 import Headline from "./e-commerce/addOnComps/Headline";
 import CategoryForm from "./e-commerce/addOnComps/CategoryForm";
-import ProductForm from "./e-commerce/addOnComps/ProductForm";
 
+import AddNewProduct from "./e-commerce/products/AddNewProduct";
 import AvailableProducts from "./e-commerce/products/AvailableProducts";
 import FilterByCategory from "./e-commerce/products/FilterByCategory";
 
+import ProductForm from "./e-commerce/products/productForm/ProductForm";
+
 export {
+  AddNewProduct,
   ProductForm,
   AddCategory,
   AvailableProducts,

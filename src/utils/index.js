@@ -10,6 +10,7 @@ import CollapsibleMenu from "./CollapsibleMenu";
 import Listbox from "./Listbox";
 import Tip from "./Tip";
 import Button from "./Button";
+import ImageUploader from "./ImageUploader";
 import {
   getMessage,
   sleep,
@@ -18,6 +19,7 @@ import {
 } from "./utilityFunc";
 
 export {
+  ImageUploader,
   prepareUserPayload,
   StarsDecor,
   DiagonalLinesDecor,
