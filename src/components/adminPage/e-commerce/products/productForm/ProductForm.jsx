@@ -1,14 +1,15 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAdmin } from "../../../../../app/store";
 import { useDispatch } from "react-redux";
 import { closeProductForm } from "../../../../../features";
-import { Button } from "../../../../../utils";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+// import { Button } from "../../../../../utils";
+// import { XMarkIcon } from "@heroicons/react/24/outline";
 import axios from "../../../../../api/local";
 import RenderForm from "./RenderForm";
 
 const ProductForm = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const {
     product: { isOpenProductForm: isOpen },
@@ -18,8 +19,18 @@ const ProductForm = () => {
     dispatch(closeProductForm());
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values) => {
+    setLoading(true);
+    try {
+      const { data } = await axios.post("/product", values);
+      console.log(data);
+      // Todo: Insert to the available products...
+    } catch (error) {
+      console.log(error.response.data);
+    } finally {
+      setLoading(false);
+    }
+    hideProductForm();
   };
 
   const handleReset = (values) => {
@@ -35,11 +46,7 @@ const ProductForm = () => {
 
   return (
     <Transition appear show={isOpen}>
-      <Dialog
-        onClose={hideProductForm}
-        as="div"
-        className={`fixed inset-0 z-50`}
-      >
+      <Dialog onClose={() => {}} as="div" className={`fixed inset-0 z-50`}>
         {/* adding a backdrop so that main panel get focused */}
         <Transition.Child
           as={Fragment}
@@ -71,15 +78,19 @@ const ProductForm = () => {
                 <h2 className="font-inter text-2xl font-semibold capitalize tracking-tight text-slate-700">
                   Create new product
                 </h2>
-                <Button
+                {/* <Button
                   onClick={hideProductForm}
                   hover="Close"
                   className="hover:text-rose-600"
                 >
                   <XMarkIcon className="h-5 w-5" />
-                </Button>
+                </Button> */}
               </div>
-              <RenderForm onReset={handleReset} onSubmit={handleSubmit} />
+              <RenderForm
+                onReset={handleReset}
+                onSubmit={handleSubmit}
+                disabled={loading}
+              />
             </Dialog.Panel>
           </Transition.Child>
         </div>

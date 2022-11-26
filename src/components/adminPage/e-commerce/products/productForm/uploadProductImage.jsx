@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "../../../../../api/local";
-import { Tip, Button, ImageUploader } from "../../../../../utils";
-import { TrashIcon } from "@heroicons/react/24/solid";
+import { Button, ImageUploader } from "../../../../../utils";
+import { TrashIcon } from "@heroicons/react/24/outline";
 import ProcessImage from "./ProcessImage";
 
 const UploadProductImage = ({ formik = null }) => {
@@ -44,20 +44,19 @@ const UploadProductImage = ({ formik = null }) => {
     <div className="flex items-center gap-4 overflow-auto p-4 pb-8">
       {images.length > 0 &&
         images.map((image) => (
-          <div className="relative h-[12rem] w-full max-w-xs flex-shrink-0 rounded-lg bg-slate-100">
+          <div className="relative h-[12rem] w-full max-w-xs flex-shrink-0 rounded-lg bg-slate-100 ">
             <img
               src={image.url}
               alt="product_image"
               className="h-full w-full rounded-lg object-cover object-center"
             />
-            <Tip tip="Remove">
-              <Button
-                onClick={() => handleRemove(image.id)}
-                className="absolute bottom-0 left-1/2 z-10 translate-y-1/2 -translate-x-1/2 rounded-full bg-white p-2 text-slate-500"
-              >
-                <TrashIcon className="h-6 w-6" />
-              </Button>
-            </Tip>
+            <Button
+              hover="Remove"
+              onClick={() => handleRemove(image.id)}
+              className="absolute bottom-0 left-1/2 z-10 translate-y-1/2 -translate-x-1/2 rounded-full bg-white p-2 text-rose-600"
+            >
+              <TrashIcon className="h-6 w-6" />
+            </Button>
           </div>
         ))}
       {files.map((file) => (

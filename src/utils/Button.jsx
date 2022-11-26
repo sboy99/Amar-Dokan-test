@@ -8,10 +8,12 @@ const Button = ({
   active = false,
   onClick = () => {},
   type = "button",
+  disabled = false,
 }) => {
   return (
     <Tip tip={hover}>
       <button
+        disabled={disabled}
         type={type}
         onClick={onClick}
         className={`${className} outline-none ${
