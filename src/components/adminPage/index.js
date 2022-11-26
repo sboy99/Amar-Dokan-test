@@ -19,9 +19,9 @@ import Headline from "./e-commerce/addOnComps/Headline";
 import CategoryForm from "./e-commerce/addOnComps/CategoryForm";
 
 import AddNewProduct from "./e-commerce/products/AddNewProduct";
-import AvailableProducts from "./e-commerce/products/AvailableProducts";
 import FilterByCategory from "./e-commerce/products/FilterByCategory";
 
+import AvailableProducts from "./e-commerce/products/availableProducts/AvailableProducts";
 import ProductForm from "./e-commerce/products/productForm/ProductForm";
 
 export {

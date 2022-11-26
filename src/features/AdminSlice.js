@@ -1,19 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  startLoading,
+  requestRejected,
+  openCategoryForm,
+  closeCategoryForm,
   filterCategory,
   fetchAllCategories,
   fetchAllCategoriesFullfilled,
-  requestRejected,
-  startLoading,
   updateCategory,
   updateCategoryFulfilled,
-  openCategoryForm,
-  closeCategoryForm,
+  createCategory,
+  createCategoryFulfilled,
   openProductForm,
   closeProductForm,
   filterProduct,
-  createCategory,
-  createCategoryFulfilled,
+  fetchAllProducts,
+  fetchAllProductsFullfilled,
+  createProduct,
+  createProductFulfilled,
 } from "./reducers/AdminReducers";
 
 const initialState = {
@@ -32,6 +36,8 @@ const initialState = {
   },
   product: {
     isOpenProductForm: false,
+    allProducts: [],
+    filteredProducts: [],
   },
 };
 
@@ -71,6 +77,14 @@ const AdminSlice = createSlice({
     [updateCategory.pending]: startLoading,
     [updateCategory.fulfilled]: updateCategoryFulfilled,
     [updateCategory.rejected]: requestRejected,
+
+    [fetchAllProducts.pending]: startLoading,
+    [fetchAllProducts.fulfilled]: fetchAllProductsFullfilled,
+    [fetchAllProducts.rejected]: requestRejected,
+
+    [createProduct.pending]: startLoading,
+    [createProduct.fulfilled]: createProductFulfilled,
+    [createProduct.rejected]: requestRejected,
   },
 });
 

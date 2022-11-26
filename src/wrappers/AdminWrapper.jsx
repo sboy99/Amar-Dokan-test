@@ -6,6 +6,7 @@ import {
   fetchAllCategories,
   resetAdminResponse,
   filterCategory,
+  fetchCurrentProducts,
 } from "../features";
 
 const AdminWrapper = ({ children }) => {
@@ -43,6 +44,15 @@ const AdminWrapper = ({ children }) => {
 
     //eslint-disable-next-line
   }, [filter]);
+
+  //> Initially fetch all products ...
+  useEffect(() => {
+    const controller = new AbortController();
+    dispatch(fetchCurrentProducts(controller.signal, { page: 0, limit: 5 }));
+
+    return () => controller.abort();
+    //eslint-disable-next-line
+  }, []);
 
   if (isLoading)
     return (

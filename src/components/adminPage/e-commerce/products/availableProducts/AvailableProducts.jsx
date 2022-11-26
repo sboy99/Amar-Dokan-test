@@ -1,7 +1,8 @@
 import React from "react";
-import { Button } from "../../../../utils";
+import { Button } from "../../../../../utils";
 import { Squares2X2Icon, ListBulletIcon } from "@heroicons/react/24/outline";
-import { FilterByCategory } from "../../";
+import { FilterByCategory } from "../../..";
+import DisplayProducts from "./DisplayProducts";
 
 const AvailableProducts = () => {
   return (
@@ -29,7 +30,9 @@ const AvailableProducts = () => {
       </div>
 
       {/* Display Products */}
-      <div className="p-4 "></div>
+      <div className="p-4 ">
+        <DisplayProducts />
+      </div>
     </div>
   );
 };

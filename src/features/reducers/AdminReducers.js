@@ -62,6 +62,7 @@ const asyncWrapper =
     }
   };
 
+//- Categoyy -//
 export const fetchAllCategories = createAsyncThunk(
   "admin/category/fetchCategories",
   asyncWrapper(async (signal) => {
@@ -88,7 +89,6 @@ export const createCategory = createAsyncThunk(
 );
 
 export const createCategoryFulfilled = requestFufilled((state, action) => {
-  console.log(action.payload);
   state.category.allCategories.push(action.payload);
   state.category.filteredCategories = state.category.allCategories;
 });
@@ -123,4 +123,39 @@ export const updateCategoryFulfilled = requestFufilled((state, action) => {
       return category;
     }
   );
+});
+
+//- Product -//
+export const fetchAllProducts = createAsyncThunk(
+  "admin/product/fetchProducts",
+  asyncWrapper(async (signal, pageOfset) => {
+    const pageNumber = pageOfset?.page || 0;
+    const limit = pageOfset?.limit || 10;
+
+    const { data } = await axios.get(
+      `/product?select=-description,-createdAt,-updatedAt,-images&page=${pageNumber}&limit=${limit}`,
+      { signal, needNoAuth: true }
+    );
+    return data;
+  })
+);
+
+export const fetchAllProductsFullfilled = requestFufilled((state, action) => {
+  state.product.allProducts = [...action.payload.data];
+  state.product.filteredProducts = state.product.allProducts;
+});
+
+export const createProduct = createAsyncThunk(
+  "admin/product/createProduct",
+  asyncWrapper(async (payload) => {
+    const { data } = await axios.post("/product", payload);
+    return data;
+  })
+);
+
+export const createProductFulfilled = requestFufilled((state, action) => {
+  const { creatorId, images, description, __v, createdAt, updatedAt, ...rest } =
+    action.payload;
+  state.product.allProducts.push(rest);
+  state.product.filteredProducts = state.product.allProducts;
 });

@@ -14,6 +14,8 @@ import {
   fetchAllCategories,
   createCategory,
   updateCategory,
+  fetchAllProducts as fetchCurrentProducts,
+  createProduct,
 } from "./reducers/AdminReducers";
 
 const AuthReducer = AuthSlice.reducer;
@@ -33,11 +35,13 @@ export {
 
 // -Export Async Thunks- //
 export {
-  fetchAllProducts,
+  fetchAllProducts, // requested by users
   fetchSingleProduct,
   fetchAllCategories,
   createCategory,
   updateCategory,
+  fetchCurrentProducts, // requested by admins
+  createProduct,
 };
 
 // -Export Actions- //
