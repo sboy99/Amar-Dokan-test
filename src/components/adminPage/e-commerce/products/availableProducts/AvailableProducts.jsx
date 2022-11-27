@@ -6,7 +6,7 @@ import DisplayProducts from "./DisplayProducts";
 
 const AvailableProducts = () => {
   return (
-    <div className="mt-2 w-full rounded-md bg-white">
+    <div className="mt-2 w-full rounded-md bg-white px-4 pb-6">
       {/* Menu Bar */}
       <div className=" flex items-center justify-between gap-x-2 border-b border-slate-300/50 px-4 py-2">
         {/* Filter By Category */}
@@ -30,7 +30,7 @@ const AvailableProducts = () => {
       </div>
 
       {/* Display Products */}
-      <div className="p-4 ">
+      <div className="relative overflow-auto pb-4">
         <DisplayProducts />
       </div>
     </div>
