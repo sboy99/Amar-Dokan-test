@@ -1,5 +1,7 @@
 import Navbar from "./navbar/Navbar";
 
+import ToastMessage from "./ToastMessage";
+
 import Menu from "./sidebar/Menu";
 import Sidebar from "./sidebar/Sidebar";
 
@@ -25,6 +27,7 @@ import AvailableProducts from "./e-commerce/products/availableProducts/Available
 import ProductForm from "./e-commerce/products/productForm/ProductForm";
 
 export {
+  ToastMessage,
   AddNewProduct,
   ProductForm,
   AddCategory,

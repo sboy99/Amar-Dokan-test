@@ -27,7 +27,7 @@ const initialState = {
   response: {
     isSuccess: false,
     isError: false,
-    errorMessage: ``,
+    message: ``,
   },
   isSidebarOpen: false,
   category: {
@@ -61,7 +61,7 @@ const AdminSlice = createSlice({
     resetAdminResponse: (state) => {
       state.response.isSuccess = false;
       state.response.isError = false;
-      state.response.errorMessage = ``;
+      state.response.message = ``;
     },
     setCategoryFilter: (state, action) => {
       state.category.filter = action.payload.filter;

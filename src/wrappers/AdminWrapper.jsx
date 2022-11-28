@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useAdmin } from "../app/store";
-import { ProductForm, CategoryForm } from "../components/adminPage";
+import {
+  ProductForm,
+  CategoryForm,
+  ToastMessage,
+} from "../components/adminPage";
 import {
   fetchAllCategories,
-  resetAdminResponse,
   filterCategory,
   fetchCurrentProducts,
 } from "../features";
@@ -12,22 +15,9 @@ import {
 const AdminWrapper = ({ children }) => {
   const {
     isLoading,
-    response: { isError, isSuccess },
     category: { filter },
   } = useAdmin();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    let timeOut;
-
-    if (isError || isSuccess)
-      timeOut = setTimeout(() => {
-        dispatch(resetAdminResponse());
-      }, 5000);
-
-    return () => clearTimeout(timeOut);
-    //eslint-disable-next-line
-  }, [isError, isSuccess]);
 
   //> Initially fetch all categories...
   useEffect(() => {
@@ -54,14 +44,15 @@ const AdminWrapper = ({ children }) => {
     //eslint-disable-next-line
   }, []);
 
-  if (isLoading)
-    return (
-      <div className="fixed inset-0 h-2 bg-gradient-to-r from-amber-500 to-rose-600"></div>
-    );
+  // if (isLoading)
+  //   return (
+  //     <div className="fixed inset-0 h-2 bg-gradient-to-r from-amber-500 to-rose-600"></div>
+  //   );
 
   return (
     <>
       {/* Pop up Forms */}
+      <ToastMessage />
       <CategoryForm />
       <ProductForm />
       {children}
