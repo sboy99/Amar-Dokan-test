@@ -41,12 +41,15 @@ export function filterProduct(state, action) {}
 //> Async requests ...
 export const requestRejected = (state, action) => {
   state.response.isError = true;
-  state.response.errorMessage = action.error.message;
+  state.response.message = action.error.message;
   stopLoading(state);
 };
 
 export const requestFufilled = (fn) => (state, action) => {
   state.response.isSuccess = true;
+  if (action.payload?.message) {
+    state.response.message = action.payload.message;
+  }
   fn(state, action);
   stopLoading(state);
 };
