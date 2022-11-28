@@ -24,10 +24,22 @@ const ProductData = ({ data = {} }) => {
       <td className="py-4 px-6">{data.type}</td>
       <td className="py-4 px-6">{data.categoryName}</td>
       <td className="py-4 px-6">
-        {<InstantUpdateProduct value={data.freeShipping} />}
+        {
+          <InstantUpdateProduct
+            value={data.freeShipping}
+            id={data.productId}
+            field={`freeShipping`}
+          />
+        }
       </td>
       <td className="py-4 px-6">
-        {<InstantUpdateProduct value={data.published} />}
+        {
+          <InstantUpdateProduct
+            value={data.published}
+            id={data.productId}
+            field={`published`}
+          />
+        }
       </td>
     </>
   );

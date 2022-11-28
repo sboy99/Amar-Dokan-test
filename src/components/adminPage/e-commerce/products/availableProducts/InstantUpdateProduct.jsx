@@ -1,14 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useAdmin } from "../../../../../app/store";
+import { updateProduct } from "../../../../../features";
 import { SpinCircle, Toogle } from "../../../../../utils";
 
-const InstantUpdateProduct = ({ value }) => {
+const InstantUpdateProduct = ({ value, id, field }) => {
   const { isLoading } = useAdmin();
   const dispatch = useDispatch();
 
   const onToggle = (val) => {
-    console.log(val);
+    const payload = { [field]: val };
+    dispatch(updateProduct({ payload, id }));
   };
   return (
     <div className="flex items-center ">

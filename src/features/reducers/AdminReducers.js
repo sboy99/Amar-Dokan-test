@@ -126,6 +126,14 @@ export const updateCategoryFulfilled = requestFufilled((state, action) => {
 });
 
 //- Product -//
+
+const getEssentialFields = (Object) => {
+  const { creatorId, images, description, __v, createdAt, updatedAt, ...rest } =
+    Object;
+  return rest;
+};
+
+// Fetch Product
 export const fetchAllProducts = createAsyncThunk(
   "admin/product/fetchProducts",
   asyncWrapper(async (signal, pageOfset) => {
@@ -144,7 +152,7 @@ export const fetchAllProductsFullfilled = requestFufilled((state, action) => {
   state.product.allProducts = [...action.payload.data];
   state.product.filteredProducts = state.product.allProducts;
 });
-
+// Create Product
 export const createProduct = createAsyncThunk(
   "admin/product/createProduct",
   asyncWrapper(async (payload) => {
@@ -154,8 +162,27 @@ export const createProduct = createAsyncThunk(
 );
 
 export const createProductFulfilled = requestFufilled((state, action) => {
-  const { creatorId, images, description, __v, createdAt, updatedAt, ...rest } =
-    action.payload;
-  state.product.allProducts.push(rest);
+  state.product.allProducts.push(getEssentialFields(action.payload));
+  state.product.filteredProducts = state.product.allProducts;
+});
+
+// Update Product
+export const updateProduct = createAsyncThunk(
+  "admin/product/updateProduct",
+  asyncWrapper(async ({ payload, id }) => {
+    const { data } = await axios.patch(`product/${id}`, payload);
+    return data;
+  })
+);
+
+export const updateProductFullfilled = requestFufilled((state, action) => {
+  const productData = getEssentialFields(action.payload.data);
+  state.product.allProducts = state.product.allProducts.reduce((acc, curr) => {
+    if (curr._id === productData._id) {
+      acc.push(productData);
+    } else acc.push(curr);
+    return acc;
+  }, []);
+
   state.product.filteredProducts = state.product.allProducts;
 });

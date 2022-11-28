@@ -18,6 +18,8 @@ import {
   fetchAllProductsFullfilled,
   createProduct,
   createProductFulfilled,
+  updateProduct,
+  updateProductFullfilled,
 } from "./reducers/AdminReducers";
 
 const initialState = {
@@ -85,6 +87,10 @@ const AdminSlice = createSlice({
     [createProduct.pending]: startLoading,
     [createProduct.fulfilled]: createProductFulfilled,
     [createProduct.rejected]: requestRejected,
+
+    [updateProduct.pending]: startLoading,
+    [updateProduct.fulfilled]: updateProductFullfilled,
+    [updateProduct.rejected]: requestRejected,
   },
 });
 

@@ -16,6 +16,7 @@ import {
   updateCategory,
   fetchAllProducts as fetchCurrentProducts,
   createProduct,
+  updateProduct,
 } from "./reducers/AdminReducers";
 
 const AuthReducer = AuthSlice.reducer;
@@ -42,6 +43,7 @@ export {
   updateCategory,
   fetchCurrentProducts, // requested by admins
   createProduct,
+  updateProduct,
 };
 
 // -Export Actions- //
