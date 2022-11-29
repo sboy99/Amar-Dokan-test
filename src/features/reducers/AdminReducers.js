@@ -136,6 +136,10 @@ const getEssentialFields = (Object) => {
   return rest;
 };
 
+export const setRequestId = (state, action) => {
+  state.request.id = action.payload;
+};
+
 // Fetch Product
 export const fetchAllProducts = createAsyncThunk(
   "admin/product/fetchProducts",

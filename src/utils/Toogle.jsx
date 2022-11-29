@@ -6,11 +6,12 @@ const Toogle = ({
   value = false,
   onToggle = () => {},
   loading = false,
+  toggleId,
 }) => {
   const [enabled, setEnabled] = useState(value);
   const handleChange = (val) => {
     setEnabled(val);
-    onToggle(val);
+    onToggle(val, toggleId);
   };
 
   return (
@@ -21,7 +22,7 @@ const Toogle = ({
       className={`${
         enabled ? "bg-emerald-500" : "bg-rose-500"
       } relative inline-flex h-6 w-11 items-center rounded-full ${
-        loading ? `!opacity-75` : `!opacity-100`
+        loading ? `!opacity-90` : `!opacity-100`
       }`}
     >
       <span className="sr-only">{text}</span>
