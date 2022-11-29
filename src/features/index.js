@@ -79,4 +79,5 @@ export const {
   closeCategoryForm,
   openProductForm,
   closeProductForm,
+  setRequestId,
 } = AdminSlice.actions;

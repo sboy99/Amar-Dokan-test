@@ -20,10 +20,14 @@ import {
   createProductFulfilled,
   updateProduct,
   updateProductFullfilled,
+  setRequestId,
 } from "./reducers/AdminReducers";
 
 const initialState = {
   isLoading: false,
+  request: {
+    id: null,
+  },
   response: {
     isSuccess: false,
     isError: false,
@@ -54,6 +58,8 @@ const AdminSlice = createSlice({
     openProductForm,
     closeProductForm,
     filterProduct,
+
+    setRequestId,
 
     setSidebarOpen: (state, action) => {
       state.isSidebarOpen = action.payload;
