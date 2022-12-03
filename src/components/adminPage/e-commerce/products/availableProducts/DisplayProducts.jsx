@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useAdmin } from "../../../../../app/store";
 import ProductData from "./ProductData";
 const attributes = [
-  "product id",
   "name",
   "price",
   "type",
@@ -40,11 +39,22 @@ const DisplayProducts = () => {
     //eslint-disable-next-line
   }, [filteredProducts.length]);
 
-  const TableHead = attributes.map((attribute) => (
-    <th key={attribute} scope="col" className="whitespace-nowrap py-3 px-6">
-      {attribute}
-    </th>
-  ));
+  const TableHead = (
+    <>
+      <th className="hidden whitespace-nowrap py-3 px-6 md:block">
+        Product Id
+      </th>
+      {attributes.map((attribute) => (
+        <th
+          key={attribute}
+          scope="col"
+          className="whitespace-nowrap py-2 px-4 sm:py-3 sm:px-6"
+        >
+          {attribute}
+        </th>
+      ))}
+    </>
+  );
 
   const TableBody = products.map((prod) => {
     return <ProductData key={prod.productId} data={prod} />;

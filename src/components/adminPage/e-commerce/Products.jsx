@@ -4,7 +4,7 @@ import { AddNewProduct } from "..";
 
 const Products = () => {
   return (
-    <section>
+    <section className="">
       {/* Headline */}
       <Headline
         mainHeading={`Manage your products`}

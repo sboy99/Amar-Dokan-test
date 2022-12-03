@@ -12,18 +12,18 @@ const ProductData = ({ data = {} }) => {
 
   const TableData = (
     <>
-      <td className="py-4 px-6 ">
+      <td className="hidden py-4 px-6 md:block ">
         <span className="rounded-full bg-slate-50 px-3 py-1 font-medium text-slate-500">
           ...{data.productId.slice(data.productId.length - 6)}
         </span>
       </td>
-      <th scope="row" className="py-4 px-6">
+      <th scope="row" className="py-2 px-4 sm:py-4 sm:px-6">
         <p className="whitespace-nowrap text-slate-600">{data.name}</p>
       </th>
-      <td className="py-4 px-6">{data.price}</td>
-      <td className="py-4 px-6">{data.type}</td>
-      <td className="py-4 px-6">{data.categoryName}</td>
-      <td className="py-4 px-6">
+      {[data.price, data.type, data.categoryName].map((data) => (
+        <td className="py-2 px-4 sm:py-4 sm:px-6">{data}</td>
+      ))}
+      <td className="py-2 px-4 sm:py-4 sm:px-6">
         {
           <InstantUpdateProduct
             value={data.freeShipping}
@@ -32,7 +32,7 @@ const ProductData = ({ data = {} }) => {
           />
         }
       </td>
-      <td className="py-4 px-6">
+      <td className="py-2 px-4 sm:py-4 sm:px-6">
         {
           <InstantUpdateProduct
             value={data.published}
@@ -48,7 +48,7 @@ const ProductData = ({ data = {} }) => {
     <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
       {TableData}
       {/* actions */}
-      <th scope="row" className="py-4 px-6">
+      <th scope="row" className="py-2 px-4 sm:py-4 sm:px-6">
         <Button
           hover={isEditMode ? `Save` : `Edit`}
           className=""
