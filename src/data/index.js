@@ -59,7 +59,9 @@ export {
   stars,
 };
 
+// > Regular Expressions
 export const PW_REGX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+export const MONGODB_OBJECT_ID_RGEX = /^[0-9a-fA-F]{24}$/;
 
 //> URLs
 export const products_url = "/react-store-products";

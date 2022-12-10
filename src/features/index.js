@@ -14,6 +14,11 @@ import {
   fetchAllCategories,
   createCategory,
   updateCategory,
+  fetchAllProducts as fetchCurrentProducts,
+  createProduct,
+  updateProduct,
+  getSingleProduct,
+  deleteProductImage,
 } from "./reducers/AdminReducers";
 
 const AuthReducer = AuthSlice.reducer;
@@ -33,14 +38,20 @@ export {
 
 // -Export Async Thunks- //
 export {
-  fetchAllProducts,
+  fetchAllProducts, // requested by users
   fetchSingleProduct,
   fetchAllCategories,
   createCategory,
   updateCategory,
+  fetchCurrentProducts, // requested by admins
+  createProduct,
+  updateProduct,
+  getSingleProduct,
+  deleteProductImage,
 };
 
 // -Export Actions- //
+
 export const {
   setWidth,
   setSearchOpen,
@@ -71,4 +82,11 @@ export const {
   setCategoryFilter,
   openCategoryForm,
   closeCategoryForm,
+  openProductForm,
+  closeProductForm,
+  openProductEditMode,
+  closeProductEditMode,
+  setRequestId,
+  insertToDeleteImages,
+  clearDeleteImages,
 } = AdminSlice.actions;

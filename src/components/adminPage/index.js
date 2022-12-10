@@ -1,5 +1,7 @@
 import Navbar from "./navbar/Navbar";
 
+import ToastMessage from "./ToastMessage";
+
 import Menu from "./sidebar/Menu";
 import Sidebar from "./sidebar/Sidebar";
 
@@ -18,8 +20,18 @@ import ControlAvlCategories from "./e-commerce/addOnComps/ControlAvlCategories";
 import Headline from "./e-commerce/addOnComps/Headline";
 import CategoryForm from "./e-commerce/addOnComps/CategoryForm";
 
+import AddNewProduct from "./e-commerce/products/AddNewProduct";
+import FilterByCategory from "./e-commerce/products/FilterByCategory";
+
+import AvailableProducts from "./e-commerce/products/availableProducts/AvailableProducts";
+import ProductForm from "./e-commerce/products/productForm/ProductForm";
+
 export {
+  ToastMessage,
+  AddNewProduct,
+  ProductForm,
   AddCategory,
+  AvailableProducts,
   Category,
   CategoryForm,
   ControlAvlCategories,
@@ -27,6 +39,7 @@ export {
   Dashboard,
   DonutChart,
   Employee,
+  FilterByCategory,
   Headline,
   LineChart,
   Menu,

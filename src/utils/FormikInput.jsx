@@ -9,10 +9,11 @@ const FormikInput = ({
   onBlur,
   value,
   error,
+  className = "rounded-full bg-transparent",
 }) => {
   const errorMessage = error(label);
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex w-full flex-col gap-1">
       <label
         htmlFor={label}
         className="text-sm font-semibold capitalize text-slate-700"
@@ -28,7 +29,7 @@ const FormikInput = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        className={`rounded-full border bg-transparent px-4 outline-none placeholder:text-slate-500/80 focus:border focus:ring-0 ${
+        className={`${className} border  px-4 outline-none placeholder:text-slate-500/80 focus:border focus:ring-0 ${
           errorMessage
             ? `border-rose-600 focus:border-rose-600`
             : `border-gray-300 focus:border-indigo-600`

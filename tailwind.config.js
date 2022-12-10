@@ -64,6 +64,7 @@ module.exports = {
     require("prettier-plugin-tailwindcss"),
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/aspect-ratio"),
+
     function ({ addUtilities }) {
       addUtilities({
         ".scrollbar-hide": {
