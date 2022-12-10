@@ -60,10 +60,10 @@ const validationSchema = yup.object({
   published: yup.boolean(),
 });
 
-const RenderForm = ({ onReset, onSubmit, disabled = false }) => {
+const RenderForm = ({ onReset, onSubmit, disabled = false, data = null }) => {
   const [detailError, setDetailError] = useState(false);
   const [uploadError, setUploadError] = useState(false);
-  const initialValues = {
+  let initialValues = {
     name: ``,
     price: 0.0,
     images: [],
@@ -75,6 +75,20 @@ const RenderForm = ({ onReset, onSubmit, disabled = false }) => {
     freeShipping: false,
     published: false,
   };
+
+  if (data?._id)
+    initialValues = {
+      name: data.name,
+      price: data.price,
+      images: data.images,
+      description: data.description,
+      type: data.type,
+      category: data.category,
+      subCategories: data.subCategories,
+      inventory: data.inventory,
+      freeShipping: data.freeShipping,
+      published: data.published,
+    };
 
   const formik = useFormik({
     initialValues,
@@ -164,8 +178,10 @@ const RenderForm = ({ onReset, onSubmit, disabled = false }) => {
             {disabled ? (
               <div className="flex items-center capitalize">
                 <SpinCircle />
-                Creating...
+                {data?._id ? `Updating...` : `Creating...`}
               </div>
+            ) : data?._id ? (
+              `Update`
             ) : (
               `Create`
             )}

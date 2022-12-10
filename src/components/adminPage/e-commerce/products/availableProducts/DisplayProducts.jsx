@@ -37,7 +37,7 @@ const DisplayProducts = () => {
     setProducts(newProducts);
 
     //eslint-disable-next-line
-  }, [filteredProducts.length]);
+  }, [filteredProducts]);
 
   const TableHead = (
     <>

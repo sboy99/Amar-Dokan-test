@@ -174,6 +174,47 @@ export const createProductFulfilled = requestFufilled((state, action) => {
 });
 
 // Update Product
+export const deleteProductImage = createAsyncThunk(
+  "admin/product/deleteProductImage",
+  asyncWrapper(async (payload) => {
+    await axios.delete(`product/upload-image?id=${payload.id}`);
+  })
+);
+
+export const deleteProductImageFullfilled = requestFufilled((state, action) => {
+  state.response.message = `Image Deleted`;
+});
+
+export const insertToDeleteImages = (state, action) => {
+  state.product.deleteImages = [...state.product.deleteImages, action.payload];
+};
+
+export const clearDeleteImages = (state) => {
+  state.product.deleteImages = [];
+};
+
+export const openProductEditMode = (state, action) => {
+  state.product.productEditMode = true;
+  state.product.editProductId = action.payload;
+};
+export const closeProductEditMode = (state) => {
+  state.product.productEditMode = false;
+  state.product.editProductId = ``;
+  state.product.singleProduct = null;
+};
+
+export const getSingleProduct = createAsyncThunk(
+  "admin/product/getProductDetails",
+  asyncWrapper(async ({ id }) => {
+    const { data } = await axios.get(`product/${id}`);
+    return data;
+  })
+);
+
+export const getSingleProductFulfilled = requestFufilled((state, action) => {
+  state.product.singleProduct = action.payload;
+});
+
 export const updateProduct = createAsyncThunk(
   "admin/product/updateProduct",
   asyncWrapper(async ({ payload, id }) => {
