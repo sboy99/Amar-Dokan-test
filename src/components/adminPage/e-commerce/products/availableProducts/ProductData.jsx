@@ -1,14 +1,16 @@
 import React from "react";
 import { Button } from "../../../../../utils";
-import {
-  PencilSquareIcon,
-  DocumentArrowUpIcon,
-} from "@heroicons/react/24/outline";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import InstantUpdateProduct from "./InstantUpdateProduct";
+import { openProductEditMode } from "../../../../../features";
+import { useDispatch } from "react-redux";
 
 const ProductData = ({ data = {} }) => {
-  const [isEditMode, setEditMode] = React.useState(false);
-  const toogleEditMode = () => setEditMode((val) => !val);
+  const dispatch = useDispatch();
+
+  const openProductUpdateForm = () => {
+    dispatch(openProductEditMode(data.productId));
+  };
 
   const TableData = (
     <>
@@ -21,7 +23,9 @@ const ProductData = ({ data = {} }) => {
         <p className="whitespace-nowrap text-slate-600">{data.name}</p>
       </th>
       {[data.price, data.type, data.categoryName].map((data) => (
-        <td className="py-2 px-4 sm:py-4 sm:px-6">{data}</td>
+        <td key={data} className="py-2 px-4 sm:py-4 sm:px-6">
+          {data}
+        </td>
       ))}
       <td className="py-2 px-4 sm:py-4 sm:px-6">
         {
@@ -49,16 +53,8 @@ const ProductData = ({ data = {} }) => {
       {TableData}
       {/* actions */}
       <th scope="row" className="py-2 px-4 sm:py-4 sm:px-6">
-        <Button
-          hover={isEditMode ? `Save` : `Edit`}
-          className=""
-          onClick={toogleEditMode}
-        >
-          {isEditMode ? (
-            <DocumentArrowUpIcon className="h-6 w-6" />
-          ) : (
-            <PencilSquareIcon className="h-6 w-6" />
-          )}
+        <Button hover={`Edit`} className="" onClick={openProductUpdateForm}>
+          {<PencilSquareIcon className="h-6 w-6" />}
         </Button>
       </th>
     </tr>

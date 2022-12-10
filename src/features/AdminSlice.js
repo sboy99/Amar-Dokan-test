@@ -13,7 +13,11 @@ import {
   createCategoryFulfilled,
   openProductForm,
   closeProductForm,
+  openProductEditMode,
+  closeProductEditMode,
   filterProduct,
+  getSingleProduct,
+  getSingleProductFulfilled,
   fetchAllProducts,
   fetchAllProductsFullfilled,
   createProduct,
@@ -21,6 +25,10 @@ import {
   updateProduct,
   updateProductFullfilled,
   setRequestId,
+  insertToDeleteImages,
+  clearDeleteImages,
+  deleteProductImage,
+  deleteProductImageFullfilled,
 } from "./reducers/AdminReducers";
 
 const initialState = {
@@ -41,9 +49,13 @@ const initialState = {
     filteredCategories: [],
   },
   product: {
+    productEditMode: false,
+    editProductId: ``,
     isOpenProductForm: false,
     allProducts: [],
     filteredProducts: [],
+    singleProduct: null,
+    deleteImages: [],
   },
 };
 
@@ -57,7 +69,11 @@ const AdminSlice = createSlice({
 
     openProductForm,
     closeProductForm,
+    openProductEditMode,
+    closeProductEditMode,
     filterProduct,
+    insertToDeleteImages,
+    clearDeleteImages,
 
     setRequestId,
 
@@ -90,9 +106,17 @@ const AdminSlice = createSlice({
     [fetchAllProducts.fulfilled]: fetchAllProductsFullfilled,
     [fetchAllProducts.rejected]: requestRejected,
 
+    [getSingleProduct.pending]: startLoading,
+    [getSingleProduct.fulfilled]: getSingleProductFulfilled,
+    [getSingleProduct.rejected]: requestRejected,
+
     [createProduct.pending]: startLoading,
     [createProduct.fulfilled]: createProductFulfilled,
     [createProduct.rejected]: requestRejected,
+
+    [deleteProductImage.pending]: (state, action) => {},
+    [deleteProductImage.fulfilled]: deleteProductImageFullfilled,
+    [deleteProductImage.rejected]: requestRejected,
 
     [updateProduct.pending]: startLoading,
     [updateProduct.fulfilled]: updateProductFullfilled,

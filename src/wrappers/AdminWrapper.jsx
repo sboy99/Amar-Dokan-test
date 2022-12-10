@@ -14,7 +14,7 @@ import {
 
 const AdminWrapper = ({ children }) => {
   const {
-    isLoading,
+    // isLoading,
     category: { filter },
   } = useAdmin();
   const dispatch = useDispatch();
@@ -55,6 +55,7 @@ const AdminWrapper = ({ children }) => {
       <ToastMessage />
       <CategoryForm />
       <ProductForm />
+      {/* <UpdateProductForm /> */}
       {children}
     </>
   );

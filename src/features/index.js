@@ -17,6 +17,8 @@ import {
   fetchAllProducts as fetchCurrentProducts,
   createProduct,
   updateProduct,
+  getSingleProduct,
+  deleteProductImage,
 } from "./reducers/AdminReducers";
 
 const AuthReducer = AuthSlice.reducer;
@@ -44,9 +46,12 @@ export {
   fetchCurrentProducts, // requested by admins
   createProduct,
   updateProduct,
+  getSingleProduct,
+  deleteProductImage,
 };
 
 // -Export Actions- //
+
 export const {
   setWidth,
   setSearchOpen,
@@ -79,5 +84,9 @@ export const {
   closeCategoryForm,
   openProductForm,
   closeProductForm,
+  openProductEditMode,
+  closeProductEditMode,
   setRequestId,
+  insertToDeleteImages,
+  clearDeleteImages,
 } = AdminSlice.actions;
