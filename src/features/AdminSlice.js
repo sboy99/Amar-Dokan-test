@@ -29,6 +29,8 @@ import {
   clearDeleteImages,
   deleteProductImage,
   deleteProductImageFullfilled,
+  deleteProduct,
+  deleteProductFullfilled,
 } from "./reducers/AdminReducers";
 
 const initialState = {
@@ -121,6 +123,10 @@ const AdminSlice = createSlice({
     [updateProduct.pending]: startLoading,
     [updateProduct.fulfilled]: updateProductFullfilled,
     [updateProduct.rejected]: requestRejected,
+
+    [deleteProduct.pending]: startLoading,
+    [deleteProduct.fulfilled]: deleteProductFullfilled,
+    [deleteProduct.rejected]: requestRejected,
   },
 });
 

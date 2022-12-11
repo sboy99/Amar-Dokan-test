@@ -234,3 +234,20 @@ export const updateProductFullfilled = requestFufilled((state, action) => {
 
   state.product.filteredProducts = state.product.allProducts;
 });
+
+// Delete Products
+export const deleteProduct = createAsyncThunk(
+  "admin/product/deleteProduct",
+  asyncWrapper(async (payload) => {
+    await axios.delete(`product/${payload.id}`);
+    return payload.id;
+  })
+);
+
+export const deleteProductFullfilled = requestFufilled((state, action) => {
+  console.log();
+  state.product.allProducts = state.product.allProducts.filter(
+    (prod) => prod._id !== action.payload
+  );
+  state.product.filteredProducts = state.product.allProducts;
+});

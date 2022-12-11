@@ -19,7 +19,7 @@ const DisplayProducts = () => {
     category: { allCategories },
   } = useAdmin();
 
-  React.useEffect(() => {
+  React.useMemo(() => {
     const newProducts = filteredProducts.map((product) => {
       const { _id, name, price, type, category, freeShipping, published } =
         product;
@@ -37,7 +37,7 @@ const DisplayProducts = () => {
     setProducts(newProducts);
 
     //eslint-disable-next-line
-  }, [filteredProducts]);
+  }, [filteredProducts, filteredProducts.length]);
 
   const TableHead = (
     <>

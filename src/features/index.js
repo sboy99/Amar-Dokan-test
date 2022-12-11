@@ -19,6 +19,7 @@ import {
   updateProduct,
   getSingleProduct,
   deleteProductImage,
+  deleteProduct,
 } from "./reducers/AdminReducers";
 
 const AuthReducer = AuthSlice.reducer;
@@ -48,6 +49,7 @@ export {
   updateProduct,
   getSingleProduct,
   deleteProductImage,
+  deleteProduct,
 };
 
 // -Export Actions- //
